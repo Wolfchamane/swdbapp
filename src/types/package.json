@@ -1,0 +1,11 @@
+{
+	"name": "@swdbapp/types",
+	"private": true,
+	"scripts": {
+		"format:check": "prettier --check --config .prettierrc.cjs .",
+		"format:fix": "prettier --write --config .prettierrc.cjs .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint . --ext .vue,.ts --config .eslintrc.cjs",
+		"lint:js:fix": "eslint . --ext .vue,.ts --fix --config .eslintrc.cjs"
+	}
+}
