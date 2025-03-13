@@ -1,0 +1,19 @@
+{
+	"name": "swdbapp",
+	"author": "Arturo Martínez Diaz <arturo.martinez@amartinez.dev>",
+	"private": true,
+	"description": "A showcase demo application inspired by https://swapi.dev",
+	"workspaces": [
+		"./tools/configurations",
+		"./src/infr/http",
+		"./src/vuejs"
+	],
+	"scripts": {
+		"format:check": "npm run format:check --workspaces --if-present",
+		"format:fix": "npm run format:fix --workspaces --if-present",
+		"lint:check": "npm run lint:check --workspaces --if-present",
+		"test:unit": "npm run test:unit --workspaces --if-present",
+		"test:unit:coverage": "npm run test:unit --workspaces --if-present -- --coverage",
+		"type:check": "npm run type:check --workspaces --if-present"
+	}
+}
