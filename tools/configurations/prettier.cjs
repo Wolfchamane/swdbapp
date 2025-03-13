@@ -17,7 +17,7 @@ module.exports = {
 	endOfLine: 'lf',
 	singleAttributePerLine: false,
 	htmlWhitespaceSensitivity: 'css',
-	importOrder: ['^./(.*).s(a|c)ss$', '^@swdbapp/(.*)$', '^@/(.*)', '^../(.*)', '^./'],
+	importOrder: ['^.+(.*).s(a|c)ss$', '^(vue|@vue|@react).+', '^@swdbapp/(.*)$', '^@/(.*)', '^../(.*)', '^./'],
 	importOrderSeparation: false,
 	importOrderSortSpecifiers: true,
 };
