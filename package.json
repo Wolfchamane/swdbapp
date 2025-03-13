@@ -5,8 +5,10 @@
 	"description": "A showcase demo application inspired by https://swapi.dev",
 	"workspaces": [
 		"./tools/configurations",
-		"./src/infr/http",
-		"./src/vuejs"
+        "./src/types",
+        "./src/infra/http",
+		"./src/features/people",
+		"./src/apps/vuejs"
 	],
 	"scripts": {
 		"format:check": "npm run format:check --workspaces --if-present",
