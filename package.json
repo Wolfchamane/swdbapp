@@ -7,7 +7,7 @@
 	"workspaces": [
 		"./src/types",
 		"./src/infra/http",
-        "./src/components/vue-js",
+		"./src/components/vue-js",
 		"./src/features/people",
 		"./src/apps/vue-js"
 	],
