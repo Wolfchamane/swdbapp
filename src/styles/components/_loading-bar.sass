@@ -1,0 +1,26 @@
+@keyframes gradient
+    0%
+        background-position: 0% 50%
+
+    50%
+        background-position: 100% 50%
+
+    100%
+        background-position: 0% 50%
+
+
+.loading-bar
+    display: block
+    width: 100%
+    height: .80em
+    background: var(--color-black)
+    background: linear-gradient(90deg, var(--color-tertiary), var(--color-black), var(--color-secondary), var(--color-primary))
+    background-size: 400% 400%
+    overflow: hidden
+    opacity: 0
+    animation: none
+    transition: opacity .2s ease-in-out
+
+    &--visible
+        animation: gradient 15s ease infinite
+        opacity: 1
