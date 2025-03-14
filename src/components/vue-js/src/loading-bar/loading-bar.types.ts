@@ -1,3 +1,3 @@
 export interface LoadingBarProperties {
-    isVisible: boolean;
+	isVisible: boolean;
 }
