@@ -7,8 +7,9 @@
 	"workspaces": [
 		"./src/types",
 		"./src/infra/http",
+        "./src/components/vue-js",
 		"./src/features/people",
-		"./src/apps/vuejs"
+		"./src/apps/vue-js"
 	],
 	"scripts": {
 		"format:check": "npm run format:check --workspaces --if-present",
