@@ -1,0 +1,35 @@
+{
+    "name": "Star Wars DB App",
+    "short_name": "SWDBApp",
+    "start_url": "./",
+    "display": "standalone",
+    "theme_color": "#ffe81f",
+    "icons": [
+        {
+            "src": "favicon_16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "favicon_32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "favicon_96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "favicon_120.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "web",
+            "url": "https://swapi.dev"
+        }
+    ]
+}
