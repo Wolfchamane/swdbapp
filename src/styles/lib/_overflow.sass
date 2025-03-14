@@ -1,0 +1,11 @@
+$overflow-behaviors: hidden, auto
+
+@each $behavior in $overflow-behaviors
+    .overflow-#{$behavior}
+        overflow: #{$behavior}
+
+    .overflow-x-#{$behavior}
+        overflow-x: #{$behavior}
+
+    .overflow-y-#{$behavior}
+        overflow-y: #{$behavior}

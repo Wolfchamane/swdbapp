@@ -1,11 +1,17 @@
+@use './fonts'
+@use './lib'
+@use './components'
+@use './views'
 @use './reset'
 
 html,
 body
-    display: flex
-    flex-direction: column
+    display: block
     width: 100dvw
     height: 100dvh
     margin: 0
     padding: 0
+    color: var(--color-foreground)
+    font: normal normal 16px/1
+    background-color: var(--color-background)
     overflow: hidden

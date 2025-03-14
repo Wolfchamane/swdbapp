@@ -1,0 +1,32 @@
+$border-sizes: 1,2,3,4,0
+$radius-sizes:('xs': .25, 's': .5, 'm': 1, 'l': 1.25, 'xl': 1.5)
+
+@each $size in $border-sizes
+    .border-#{$size}
+        border-width: #{$size}px
+        border-style: solid
+        border-color: var(--color-grey-900)
+
+    .border-bottom-#{$size}
+        border-bottom-width: #{$size}px
+        border-bottom-style: solid
+        border-bottom-color: var(--color-grey-900)
+
+    .border-top-#{$size}
+        border-top-width: #{$size}px
+        border-top-style: solid
+        border-top-color: var(--color-grey-900)
+
+    .border-left-#{$size}
+        border-left-width: #{$size}px
+        border-left-style: solid
+        border-left-color: var(--color-grey-900)
+
+    .border-right-#{$size}
+        border-right-width: #{$size}px
+        border-right-style: solid
+        border-right-color: var(--color-grey-900)
+
+@each $size, $value in $radius-sizes
+    .radius-#{$size}
+        border-radius: #{$value}em

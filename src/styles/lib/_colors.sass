@@ -1,0 +1,30 @@
+@use 'sass:map'
+
+$foreground: #000
+$background: #fff
+$primary-color: #ffe81f
+$black: #000
+$white: #fff
+$grey-900: #a8a8a8
+$grey-600: #ccc
+$grey-300: #ddd
+
+
+$base-colors:('black': $black, 'white': $white, 'grey-300': $grey-300, 'grey-600': $grey-600, 'grey-900': $grey-900)
+$app-colors:('foreground': $foreground, 'background': $background)
+$brand-colors:('primary': $primary-color)
+
+$colors-map: map.merge(map.merge($base-colors, $app-colors), $brand-colors)
+
+@each $name, $value in $colors-map
+    .color-#{$name}
+        color: #{$value}
+
+:root
+    @each $name, $value in $colors-map
+        #{--color-#{$name}}: #{$value}
+
+@media (prefers-color-scheme: dark)
+    :root
+        #{--color-foreground}: $background
+        #{--color-background}: $foreground
