@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type {
 	FilmsHttpClient,
 	Film as InfraFilm,
@@ -5,12 +6,12 @@ import type {
 	ListOutput,
 	PeopleHttpClient,
 } from '@swdbapp/infra-http';
+import type { Nullable } from '@swdbapp/types';
 import type {
 	DescribePeoplePortInput,
 	Film,
 	ListPeoplePortInput,
 	ListPeoplePortOutput,
-	Nullable,
 	People,
 	PeoplePorts,
 } from '../../application';
@@ -35,7 +36,7 @@ export class PeopleHttpAdapter implements PeoplePorts {
 	}
 
 	private async _mapInfraToApplicationPeople(item: InfraPeople): Promise<People> {
-		let films: Nullable<Film>[] = [];
+		const films: Nullable<Film>[] = [];
 		for (const film of item.films) {
 			films.push(await this._resolveFilmInPeople(film));
 		}
@@ -64,7 +65,7 @@ export class PeopleHttpAdapter implements PeoplePorts {
 			throw response;
 		}
 
-		let items: People[] = [];
+		const items: People[] = [];
 		for (const result of response.results) {
 			items.push(await this._mapInfraToApplicationPeople(result));
 		}
@@ -81,3 +82,4 @@ export class PeopleHttpAdapter implements PeoplePorts {
 		return Promise.resolve({} as People);
 	}
 }
+/* eslint-enable @typescript-eslint/no-unused-vars */

@@ -1,5 +1,5 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { type PeoplePorts } from './people.ports';
-import { type People } from './people.types';
 
 export interface PeopleUseCases {
 	list(): Promise<any>;
@@ -12,3 +12,4 @@ export class DefaultPeopleUseCases implements PeopleUseCases {
 		return this.ports.list({});
 	}
 }
+/* eslint-enable  @typescript-eslint/no-explicit-any */

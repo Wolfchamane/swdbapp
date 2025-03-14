@@ -1,4 +1,4 @@
-export type Nullable<T> = T | null;
+import type { Nullable } from '@swdbapp/types';
 
 export interface Film {
 	title: string;

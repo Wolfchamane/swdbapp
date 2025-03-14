@@ -1,4 +1,4 @@
-import type { People } from './people.types';
+import { type People } from './people.types';
 
 export interface DescribePeoplePortInput {
 	id: string;

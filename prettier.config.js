@@ -1,6 +1,4 @@
-/* global module */
-
-module.exports = {
+export default {
 	plugins: ['@trivago/prettier-plugin-sort-imports'],
 	printWidth: 120,
 	tabWidth: 4,
@@ -17,7 +15,7 @@ module.exports = {
 	endOfLine: 'lf',
 	singleAttributePerLine: false,
 	htmlWhitespaceSensitivity: 'css',
-	importOrder: ['^.+(.*).s(a|c)ss$', '^(vue|@vue|@react).+', '^@swdbapp/(.*)$', '^@/(.*)', '^../(.*)', '^./'],
+	importOrder: ['^.+/(.*).(sa|sc|c)ss$', '^@?(vue|react).+', '^@swdbapp/(.*)$', '^@/(.*)', '^../(.*)', '^./'],
 	importOrderSeparation: false,
 	importOrderSortSpecifiers: true,
 };
