@@ -1,11 +1,11 @@
 import type { Nullable } from '@swdbapp/types';
 
-export interface Film {
+export interface CharacterFilm {
 	title: string;
 	releaseDate: Date;
 }
 
-export interface People {
+export interface Character {
 	birthYear: string;
 	eyeColor: string;
 	gender: string;
@@ -18,8 +18,13 @@ export interface People {
 	created: Date;
 	edited: Date;
 	url: URL;
-	films: Nullable<Film>[];
+	films: Nullable<CharacterFilm>[];
 	/* species: Specie[]; */
 	/* starships: Starship[]; */
 	/* vehicles: Vehicle[]; */
+}
+
+export interface PeopleListItem {
+	$id: number;
+	name: string;
 }

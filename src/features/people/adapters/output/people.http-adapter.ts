@@ -1,60 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import type { FilmsHttpClient, People as InfraPeople, ListOutput, PeopleHttpClient } from '@swdbapp/infra-http';
 import type {
-	FilmsHttpClient,
-	Film as InfraFilm,
-	People as InfraPeople,
-	ListOutput,
-	PeopleHttpClient,
-} from '@swdbapp/infra-http';
-import type { Nullable } from '@swdbapp/types';
-import type {
+	Character,
 	DescribePeoplePortInput,
-	Film,
 	ListPeoplePortInput,
 	ListPeoplePortOutput,
-	People,
+	PeopleListItem,
 	PeoplePorts,
 } from '../../application';
 
 export class PeopleHttpAdapter implements PeoplePorts {
 	constructor(
 		private readonly peopleHttpClient: PeopleHttpClient,
-		private readonly filmsHttpClient: FilmsHttpClient
+		private readonly _: FilmsHttpClient
 	) {}
 
-	private _mapInfraToApplicationFilm(item: InfraFilm): Film {
-		return {
-			title: item.title,
-			releaseDate: new Date(Date.parse(item.release_date)),
-		};
-	}
-
-	private async _resolveFilmInPeople(film: string): Promise<Film | null> {
-		const id: string = film.replace(/.+(\d+)\/$/, '$1');
-		const response: InfraFilm | Error = await this.filmsHttpClient.describe({ id });
-		return response instanceof Error ? null : this._mapInfraToApplicationFilm(response);
-	}
-
-	private async _mapInfraToApplicationPeople(item: InfraPeople): Promise<People> {
-		const films: Nullable<Film>[] = [];
-		for (const film of item.films) {
-			films.push(await this._resolveFilmInPeople(film));
-		}
+	private _mapInfraToApplicationPeopleListItem(item: InfraPeople): PeopleListItem {
+		const $id: number = Number(item.url.replace(/.+\/(\d+)$/, '$1'));
 
 		return {
-			birthYear: item.birth_year,
-			eyeColor: item.eye_color,
-			gender: item.gender,
-			hairColor: item.hair_color,
-			height: item.height,
-			homeWorld: item.homeworld,
-			mass: item.mass,
+			$id,
 			name: item.name,
-			skinColor: item.skin_color,
-			created: new Date(Date.parse(item.created)),
-			edited: new Date(Date.parse(item.edited)),
-			url: new URL(item.url),
-			films,
 		};
 	}
 
@@ -65,21 +31,16 @@ export class PeopleHttpAdapter implements PeoplePorts {
 			throw response;
 		}
 
-		const items: People[] = [];
-		for (const result of response.results) {
-			items.push(await this._mapInfraToApplicationPeople(result));
-		}
-
 		return {
 			count: response.count,
 			next: response.next ? new URL(response.next) : undefined,
 			previous: response.previous ? new URL(response.previous) : undefined,
-			items,
+			items: response.results.map(this._mapInfraToApplicationPeopleListItem.bind(this)),
 		};
 	}
 
-	describe(input: DescribePeoplePortInput): Promise<People> {
-		return Promise.resolve({} as People);
+	describe(_: DescribePeoplePortInput): Promise<Character> {
+		return Promise.resolve({} as Character);
 	}
 }
 /* eslint-enable @typescript-eslint/no-unused-vars */
