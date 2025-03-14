@@ -1,11 +1,7 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
-import HomeView from '@/views/home-view.vue';
-
-const routes = [
-    { path: '/', component: HomeView },
-]
+import { createWebHashHistory, createRouter } from 'vue-router'
+import routes from './routes';
 
 export default createRouter({
-    history: createMemoryHistory(),
+    history: createWebHashHistory(),
     routes,
 })
