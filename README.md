@@ -39,9 +39,46 @@ _So I have decided to create this web application as kind of "portfolio" showcas
 I will try to create the same web application using different Frontend technologies, to know:
 
 - [ ] [VueJS]()
-- [ ] ReactJS
-- [ ] Web Components
+- [ ] _W.I.P._: ReactJS
+- [ ] _W.I.P._: Web Components
 - [ ] ??
 
 The application will be a consultative web application of the project https://swapi.dev,
 a public backend API based on Star Wars ® fictional universe.
+
+## Technologies
+
+This project has been developed using the following technologies:
+
+- [Typescript](https://www.typescriptlang.org/) for developing each ES6+ code.
+- [SaSS](https://sass-lang.com/) for developing the CSS styles.
+- [ViteJS](https://vite.dev/) as bundler utility.
+- [Vitest](https://vitest.dev/) for unitary testing.
+- [eslintJs](https://eslint.org/) to lint source code.
+- [prettier](https://prettier.io/) to format code.
+- ?? for e2e testing.
+
+For the specific VueJS application solution:
+
+- [VueJS](https://vuejs.org/)
+- [vue-router](https://router.vuejs.org/)
+
+## Architecture
+
+Description of main folders:
+
+```bash
+.
+├── .github             # contains CI/CD resources
+├── assets              # contains static resources
+└── src
+    ├── apps            # contains each application solution for each library
+    ├── components      # contains specific cross components for each library
+    ├── features        # contains solutions for each application feature
+    ├── infra           # contains specific infra solution for API
+    ├── styles          # contains all application styles
+    └── types           # contains cross types
+```
+
+The main architecture follows [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+and [Atomic Design](https://atomicdesign.bradfrost.com/).
