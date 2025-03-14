@@ -17,7 +17,7 @@
 		"type:check": "vue-tsc --build --force"
 	},
 	"devDependencies": {
-        "@swdbapp/feature-people": "file:../../features/people",
+		"@swdbapp/feature-people": "file:../../features/people",
 		"@fortawesome/vue-fontawesome": "^3.0.8",
 		"@vitejs/plugin-vue": "^5.2.1",
 		"@vue/eslint-config-prettier": "^10.2.0",

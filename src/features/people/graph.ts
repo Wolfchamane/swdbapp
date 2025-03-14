@@ -1,8 +1,8 @@
 import {
-    DefaultFilmsHttpClient,
-    DefaultPeopleHttpClient,
-    type FilmsHttpClient,
-    type PeopleHttpClient,
+	DefaultFilmsHttpClient,
+	DefaultPeopleHttpClient,
+	type FilmsHttpClient,
+	type PeopleHttpClient,
 } from '@swdbapp/infra-http';
 import { PeopleHttpAdapter } from './adapters/output';
 import { DefaultPeopleUseCases, type PeoplePorts, PeopleUseCases } from './application';

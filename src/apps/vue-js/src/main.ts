@@ -5,6 +5,6 @@ import router from '@/router';
 
 window.addEventListener('DOMContentLoaded', () => {
 	const app = createApp(AppWrapper);
-    app.use(router);
+	app.use(router);
 	app.mount('#app');
 });
