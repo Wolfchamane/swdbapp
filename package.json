@@ -2,7 +2,7 @@
 	"name": "@amjs/swdbapp",
 	"author": "Arturo Martínez Diaz <arturo.martinez@amartinez.dev>",
 	"private": true,
-    "type": "module",
+	"type": "module",
 	"description": "A showcase demo application inspired by https://swapi.dev",
 	"workspaces": [
 		"./src/types",
@@ -20,6 +20,8 @@
 	},
 	"devDependencies": {
 		"@amjs/js-utils": "^0.5.0",
+		"@fortawesome/fontawesome-svg-core": "^6.7.2",
+		"@fortawesome/free-solid-svg-icons": "^6.7.2",
 		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
 		"@tsconfig/node22": "^22.0.0",
 		"@types/jsdom": "^21.1.6",
