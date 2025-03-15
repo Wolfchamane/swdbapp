@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="author" content="Arturo Martínez Díaz" />
+        <meta name="license" content="© 2025"/>
+        <link rel='stylesheet' href='assets/fonts.css'/>
+		<title>Star Wars DB Application</title>
+        <style>
+            :root{--foreground:#000;--background:#fff;--primary:#ffe81f;--secondary:#790914;}
+            * {box-sizing:border-box}
+            a,a:active,a:visited,a h2{text-transform:none;text-decoration:none;outline:none;color:var(--foreground)}
+            html,body{display:flex;flex-direction:column;width:100dvw;height:100dvh;margin:0;padding:0;overflow:hidden;color:var(--foreground);background-color:var(--background);font:normal normal 16px/1 'Arial', 'sans-serif';}
+            header,footer{display:flex;align-items:center;justify-content:center;}
+            header{border-bottom:1px solid #ccc;}
+            header h1{text-align:center;color:var(--primary);font-family:'Star Jedi', 'Arial', 'sans-serif';}
+            footer{padding:1em 0;border-top:1px solid #ccc;}
+            main{flex-grow:1;padding:1em;overflow:hidden;overflow-y:auto;}
+            .app-selector{display:flex;flex-direction:column;justify-content:center;width:100%;}
+            .card{display:flex;flex-direction:column;align-items:center;justify-content:center;margin:1em;padding:0.5em 0;border:1px solid var(--background);border-radius:.5em;cursor:pointer;transition:all .2s ease-in-out;background-color:#fff;}
+            .card img{width:64px;height:64px;margin-bottom:0.5em;}.card h2{width:100%;margin:0;padding-top:0.5em;color:var(--secondary);border-top:1px solid var(--background);text-align:center;}.card.disabled{background-color:#eee;cursor:none;pointer-events:none;}.card.disabled img{color:#ccc;fill:#ccc;}
+            .card:hover,.card:hover h2{border-color:var(--foreground);}.card:hover img{transform:scale(1.2);}@media(prefers-color-scheme:dark){:root{--background:#000;--foreground:#fff;}}
+        </style>
+	</head>
+    <body>
+        <header>
+            <h1>Star Wars ® DB Application</h1>
+        </header>
+        <main>
+            <div class='app-selector'>
+                <p style='text-align:center'>Select any distribution to access into the application.</p>
+                <a class='card' href='./vue-js'>
+                    <img src='assets/vue.svg' alt='VueJS'>
+                    <h2>VueJS</h2>
+                </a>
+                <a class='card disabled'>
+                    <img src='assets/react.svg' alt='ReactJS'>
+                    <h2>ReactJS</h2>
+                </a>
+                <a class='card disabled'>
+                    <img src='assets/web_components.svg' alt='WebComponents'>
+                    <h2>WebComponents</h2>
+                </a>
+            </div>
+        </main>
+        <footer>
+            <span>&copy; 2025 Arturo Martínez Díaz</span>
+        </footer>
+    </body>
+</html>
