@@ -85,9 +85,6 @@ jobs:
                   cache: ${{ steps.detect-package-manager.outputs.manager }}
             - name: Install dependencies
               run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-            - name: Setup API KEY
-              run: |
-                  echo "VITE_API_KEY=${{ secrets.API_KEY }}" >> .env
             - name: Build project
               run: ${{ steps.detect-package-manager.outputs.runner }} npm run build-only
             - name: Upload artifact
