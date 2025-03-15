@@ -3,4 +3,6 @@ npm*
 .DS_Store
 .idea
 .vscode
-www/vue-js
+www/**/vue-js
+*.zip
+**/.env*
