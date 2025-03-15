@@ -86,7 +86,7 @@ jobs:
             - name: Install dependencies
               run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
             - name: Create environment file
-              run: echo "VITE_ASSETS_DIR=../assets" > /src/apps/vue-js/.env
+              run: echo "VITE_ASSETS_DIR=../assets" > ./src/apps/vue-js/.env
             - name: Build project
               run: ${{ steps.detect-package-manager.outputs.runner }} npm run build-only
             - name: Upload artifact
