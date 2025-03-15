@@ -1,3 +1,5 @@
+@use '../lib/colors'
+
 .home-view
     &__card
         transition: all .4s ease-in-out
@@ -7,6 +9,10 @@
 
             .home-view__card-title
                 color: var(--color-grey-300)
+
+        &--disabled
+            cursor: none
+            pointer-events: none
 
         &-picture-wrapper
             max-width: 300px
@@ -19,3 +25,7 @@
         &-title
             text-transform: uppercase
             color: var(--color-grey-900)
+
+        &--not-available
+            color: colors.color('white', 1)
+            background-color: colors.color('secondary', .5)

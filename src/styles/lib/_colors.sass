@@ -13,7 +13,6 @@ $grey-900: #a8a8a8
 $grey-600: #ccc
 $grey-300: #ddd
 
-
 $base-colors:('black': $black, 'white': $white, 'grey-300': $grey-300, 'grey-600': $grey-600, 'grey-900': $grey-900)
 $app-colors:('foreground': $foreground, 'background': $background)
 $brand-colors:('primary': $primary-color, 'secondary': $secondary-color, 'tertiary': $tertiary-color)
@@ -32,3 +31,6 @@ $colors-map: map.merge(map.merge($base-colors, $app-colors), $brand-colors)
     :root
         #{--color-foreground}: $background
         #{--color-background}: $foreground
+
+@function color($name, $alpha: 1)
+    @return rgba(map.get($colors-map, $name), $alpha)
