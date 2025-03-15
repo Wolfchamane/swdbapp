@@ -1,5 +1,6 @@
-import { JSONAdapter, type XHRConfiguration, XHR_FETCH_METHODS } from '@amjs/js-utils';
+import { XHR_FETCH_METHODS } from '@amjs/js-utils';
 import type { ListOutput, People } from '../models';
+import { BaseHttpClient } from './base.http-client';
 
 export interface PeopleDescribeInput {
 	id: string;
@@ -15,15 +16,8 @@ export interface PeopleHttpClient {
 	describe(input: PeopleDescribeInput): Promise<People | Error>;
 }
 
-export class DefaultPeopleHttpClient extends JSONAdapter implements PeopleHttpClient {
+export class DefaultPeopleHttpClient extends BaseHttpClient implements PeopleHttpClient {
 	private readonly path: string = '/people';
-
-	constructor(config?: XHRConfiguration) {
-		super({
-			...(config || {}),
-			hostname: 'swapi.dev/api',
-		});
-	}
 
 	list(params: PeopleListInput): Promise<ListOutput<People> | Error> {
 		return this.fetch<ListOutput<People>>(this.path, {
