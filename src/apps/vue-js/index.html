@@ -11,6 +11,18 @@
 	</head>
 	<body>
 		<div id="app" class="app-wrapper d-flex flex-column h-100"></div>
+		<script>
+			(async function () {
+				'use strict';
+				try {
+					const iconsSprite = await fetch('%VITE_ASSETS_DIR%/icons.svg');
+					const divIcons = document.createElement('div');
+					divIcons.classList.add('icons');
+					document.body.appendChild(divIcons);
+					divIcons.innerHTML = await iconsSprite.text();
+				} catch (e) {}
+			})();
+		</script>
 		<script type="module" src="/src/main.ts"></script>
 	</body>
 </html>

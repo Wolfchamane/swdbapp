@@ -2,12 +2,27 @@
 import type { FilmsHttpClient, People as InfraPeople, ListOutput, PeopleHttpClient } from '@swdbapp/infra-http';
 import type {
 	Character,
+	CharacterAlignment,
 	DescribePeoplePortInput,
 	ListPeoplePortInput,
 	ListPeoplePortOutput,
 	PeopleListItem,
 	PeoplePorts,
 } from '../../application';
+
+const mapCharacterAlignment = (name: string): CharacterAlignment => {
+	return (
+		{
+			lukeskywalker: 'jedi' as CharacterAlignment,
+			darthvader: 'sith' as CharacterAlignment,
+			palpatine: 'sith' as CharacterAlignment,
+			bobafett: 'sith' as CharacterAlignment,
+			sebulba: 'sith' as CharacterAlignment,
+			dooku: 'sith' as CharacterAlignment,
+			darthmaul: 'sith' as CharacterAlignment,
+		}[name] || 'jedi'
+	);
+};
 
 export class PeopleHttpAdapter implements PeoplePorts {
 	constructor(
@@ -16,11 +31,12 @@ export class PeopleHttpAdapter implements PeoplePorts {
 	) {}
 
 	private _mapInfraToApplicationPeopleListItem(item: InfraPeople): PeopleListItem {
-		const $id: number = Number(item.url.replace(/.+\/(\d+)$/, '$1'));
+		const $id: number = Number(item.url.replace(/.+\/(\d+)\/$/, '$1'));
 
 		return {
 			$id,
 			name: item.name,
+			alignment: mapCharacterAlignment(item.name.toLowerCase().replace(/\W+/g, '').trim()),
 		};
 	}
 

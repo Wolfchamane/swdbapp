@@ -48,7 +48,12 @@
 			:disabled="isLoading"
 			@paginate="onPaginate" />
 		<div class="grow p-1 overflow-y-auto">
-			<p-item v-for="people in peopleList" :key="`people-${people.$id}`" :name="people.name" :id="people.$id" />
+			<p-item
+				v-for="people in peopleList"
+				:key="`people-${people.$id}`"
+				:name="people.name"
+				:id="people.$id"
+				:alignment="people.alignment" />
 		</div>
 	</div>
 </template>

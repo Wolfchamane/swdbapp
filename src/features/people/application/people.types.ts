@@ -1,5 +1,7 @@
 import type { Nullable } from '@swdbapp/types';
 
+export type CharacterAlignment = 'jedi' | 'sith';
+
 export interface CharacterFilm {
 	title: string;
 	releaseDate: Date;
@@ -27,4 +29,5 @@ export interface Character {
 export interface PeopleListItem {
 	$id: number;
 	name: string;
+	alignment: CharacterAlignment;
 }

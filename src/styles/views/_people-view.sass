@@ -1,0 +1,22 @@
+$people-list-item: 'people-list-item'
+$alignment-variations: 'jedi', 'sith'
+
+.#{$people-list-item}
+    transition: all .4s ease-in-out
+
+    &__name,
+    &__lightSaber
+        transition: all .4s ease-in-out
+
+    &__lightSaber
+        color: var(--color-grey-300)
+        fill: var(--color-grey-300)
+
+    @each $alignment in $alignment-variations
+        &.#{$alignment}:hover
+            border-color: var(--color-#{$alignment})
+
+            .#{$people-list-item}__name,
+            .#{$people-list-item}__lightSaber
+                color: var(--color-#{$alignment})
+                fill: var(--color-#{$alignment})
