@@ -12,7 +12,7 @@
 		"./src/apps/vue-js"
 	],
 	"scripts": {
-        "build-only": "npm run build-only --workspaces --if-present",
+		"build-only": "npm run build-only --workspaces --if-present",
 		"format:check": "npm run format:check --workspaces --if-present",
 		"format:fix": "npm run format:fix --workspaces --if-present",
 		"lint:check": "npm run lint:check --workspaces --if-present",
