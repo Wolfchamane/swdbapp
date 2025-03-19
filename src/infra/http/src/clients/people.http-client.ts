@@ -20,7 +20,7 @@ export class DefaultPeopleHttpClient extends BaseHttpClient implements PeopleHtt
 	private readonly path: string = '/people';
 
 	list(params: PeopleListInput): Promise<ListOutput<People> | Error> {
-		return this.fetch<ListOutput<People>>(this.path, {
+		return this.fetch<ListOutput<People>>(`${this.path}/`, {
 			method: XHR_FETCH_METHODS.GET,
 			secure: true,
 			params,
@@ -28,7 +28,7 @@ export class DefaultPeopleHttpClient extends BaseHttpClient implements PeopleHtt
 	}
 
 	describe(params: PeopleDescribeInput): Promise<People | Error> {
-		return this.fetch<People>(`${this.path}/{id}`, {
+		return this.fetch<People>(`${this.path}/{id}/`, {
 			method: XHR_FETCH_METHODS.GET,
 			secure: true,
 			params,
