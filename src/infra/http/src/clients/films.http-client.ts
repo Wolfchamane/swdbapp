@@ -1,5 +1,6 @@
-import { JSONAdapter, type XHRConfiguration, XHR_FETCH_METHODS } from '@amjs/js-utils';
+import { XHR_FETCH_METHODS } from '@amjs/js-utils';
 import type { Film, ListOutput } from '../models';
+import { BaseHttpClient } from './base.http-client';
 
 export interface FilmsDescribeInput {
 	id: string;
@@ -15,18 +16,11 @@ export interface FilmsHttpClient {
 	describe(input: FilmsDescribeInput): Promise<Film | Error>;
 }
 
-export class DefaultFilmsHttpClient extends JSONAdapter implements FilmsHttpClient {
+export class DefaultFilmsHttpClient extends BaseHttpClient implements FilmsHttpClient {
 	private readonly path: string = '/films';
 
-	constructor(config?: XHRConfiguration) {
-		super({
-			...(config || {}),
-			hostname: 'swapi.dev/api',
-		});
-	}
-
 	list(params: FilmsListInput): Promise<ListOutput<Film> | Error> {
-		return this.fetch<ListOutput<Film>>(this.path, {
+		return this.fetch<ListOutput<Film>>(`${this.path}/`, {
 			method: XHR_FETCH_METHODS.GET,
 			secure: true,
 			params,
@@ -34,7 +28,7 @@ export class DefaultFilmsHttpClient extends JSONAdapter implements FilmsHttpClie
 	}
 
 	describe(params: FilmsDescribeInput): Promise<Film | Error> {
-		return this.fetch<Film>(`${this.path}/{id}`, {
+		return this.fetch<Film>(`${this.path}/{id}/`, {
 			method: XHR_FETCH_METHODS.GET,
 			secure: true,
 			params,
