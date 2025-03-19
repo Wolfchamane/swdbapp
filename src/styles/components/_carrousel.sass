@@ -1,0 +1,57 @@
+.carrousel
+    display: flex
+    width: calc(100% - 2em)
+    margin: .5em 1em
+    padding: 1em
+    overflow-x: auto
+    scroll-snap-type: x mandatory
+    scroll-behavior: smooth
+    --webkit-overflow-scrolling: touch
+
+    &::-webkit-scrollbar
+        width: .5em
+        height: .5em
+
+    &::-webkit-scrollbar-thumb
+        background: var(--color-primary)
+        border-radius: 10px
+
+    &::-webkit-scrollbar-track
+        background: transparent
+
+    &-item
+        display: flex
+        flex-direction: column
+        position: relative
+        margin: 0 .5em
+        transform-origin: center center
+        transform: scale(1)
+        transition: transform 0.5s
+
+        &:first-child
+            margin-left: 0
+
+        &:last-child
+            margin-right: 0
+
+$film-poster-width: 320
+$film-poster-height: 480
+
+.film-poster
+    flex-direction: column
+    border: 1px solid var(--color-grey-600)
+
+    &:hover
+        border-color: var(--color-white)
+
+    img
+        width: calc(#{$film-poster-width}px - 2px)
+        height: #{$film-poster-height}px
+
+    &__title
+        font-weight: 600
+
+@media (max-width: 375px)
+    .film-poster img
+        width: calc(calc(#{$film-poster-width}px  * 0.25) - 2px)
+        height: calc(#{$film-poster-height}px  * 0.25)

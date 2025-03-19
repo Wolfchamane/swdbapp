@@ -1,0 +1,38 @@
+@use '../lib/colors'
+
+@keyframes pulse
+    0%
+        color: var(--color-grey-300)
+        background-color: var(--color-grey-300)
+    50%
+        color: var(--color-grey-600)
+        background-color: var(--color-grey-600)
+    100%
+        color: var(--color-grey-900)
+        background-color: var(--color-grey-900)
+
+.character-view
+
+    &__background
+        background-repeat: no-repeat
+        background-size: 100% auto
+        filter: opacity(.5)
+
+    &__details
+        dt,
+        dd
+            display: inline
+            margin: .5em
+            padding: 0 .25em
+            width: auto
+            font-size: .75em
+
+        dd
+            display: block
+            text-indent: 1em
+            font-size: 1em
+
+        &--loading
+            dd
+                animation: pulse 4s infinite
+                transform: skew(-45deg)
