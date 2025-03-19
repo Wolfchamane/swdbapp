@@ -11,4 +11,10 @@ const peopleHttpClient: PeopleHttpClient = new DefaultPeopleHttpClient();
 const filmsHttpClient: FilmsHttpClient = new DefaultFilmsHttpClient();
 const peopleHttpAdapter: PeoplePorts = new PeopleHttpAdapter(peopleHttpClient, filmsHttpClient);
 
-export const providePeopleUseCases = (): PeopleUseCases => new DefaultPeopleUseCases(peopleHttpAdapter);
+let peopleUseCaseSingleton: PeopleUseCases | undefined;
+
+export const providePeopleUseCases = (): PeopleUseCases => {
+	peopleUseCaseSingleton = peopleUseCaseSingleton || new DefaultPeopleUseCases(peopleHttpAdapter);
+
+	return peopleUseCaseSingleton;
+};
