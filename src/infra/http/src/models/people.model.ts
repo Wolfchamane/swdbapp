@@ -1,9 +1,13 @@
+export type { UnknownField, NotAvailable } from '../types';
+
+export type PeopleGender = 'male' | 'female' | UnknownField | NotAvailable;
+
 export interface People {
 	birth_year: string;
 	eye_color: string;
 	films: string[];
-	gender: string;
-	hair_color: string;
+	gender: PeopleGender;
+	hair_color: string | UnknownField | NotAvailable;
 	height: string;
 	homeworld: string;
 	mass: string;
