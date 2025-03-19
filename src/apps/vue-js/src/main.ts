@@ -6,5 +6,6 @@ import router from '@/router';
 window.addEventListener('DOMContentLoaded', () => {
 	const app = createApp(AppWrapper);
 	app.use(router);
+	app.provide('ASSETS_DIR', import.meta.env.VITE_ASSETS_DIR);
 	app.mount('#app');
 });

@@ -3,7 +3,7 @@
 	import { faCircleLeft } from '@fortawesome/free-solid-svg-icons';
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 	import { type ComputedRef, computed } from 'vue';
-	import { useRoute, useRouter } from 'vue-router';
+	import { RouterView, useRoute, useRouter } from 'vue-router';
 
 	const ROUTER = useRouter();
 	const currentRoute = useRoute();
