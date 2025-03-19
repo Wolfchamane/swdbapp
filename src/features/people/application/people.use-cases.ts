@@ -1,15 +1,20 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { type PeoplePorts } from './people.ports';
-import { type PeopleListItem } from './people.types';
+import { Character, type PeopleListItem } from './people.types';
 
 export interface ListPeopleUseCaseInput {
 	search?: string;
 	page?: number;
 }
 
+export interface DescribePeopleUseCaseInput {
+	id: string;
+}
+
 export interface PeopleUseCases {
 	count: number;
 	list(input: ListPeopleUseCaseInput): Promise<PeopleListItem[]>;
+	describe(input: DescribePeopleUseCaseInput): Promise<Character>;
 }
 
 export class DefaultPeopleUseCases implements PeopleUseCases {
@@ -22,6 +27,10 @@ export class DefaultPeopleUseCases implements PeopleUseCases {
 
 		this.count = response.count;
 		return response.items;
+	}
+
+	async describe(input: DescribePeopleUseCaseInput): Promise<Character> {
+		return await this.ports.describe(input);
 	}
 }
 /* eslint-enable  @typescript-eslint/no-explicit-any */
