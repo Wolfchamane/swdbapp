@@ -5,6 +5,7 @@
 	"type": "module",
 	"description": "A showcase demo application inspired by https://swapi.dev",
 	"workspaces": [
+		"./src/utils",
 		"./src/types",
 		"./src/infra/http",
 		"./src/components/vue-js",
