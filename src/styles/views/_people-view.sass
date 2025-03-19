@@ -14,9 +14,12 @@ $alignment-variations: 'jedi', 'sith'
 
     @each $alignment in $alignment-variations
         &.#{$alignment}:hover
-            border-color: var(--color-#{$alignment})
+            border-color: var(--color-primary)
+            cursor: pointer
 
-            .#{$people-list-item}__name,
+            .#{$people-list-item}__name
+                color: var(--color-primary)
+
             .#{$people-list-item}__lightSaber
                 color: var(--color-#{$alignment})
                 fill: var(--color-#{$alignment})
