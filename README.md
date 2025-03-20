@@ -42,12 +42,14 @@ _So I have decided to create this web application as kind of "portfolio" showcas
 
 I will try to create the same web application using different Frontend technologies, to know:
 
-- [ ] [VueJS]()
-- [ ] _W.I.P._: ReactJS
-- [ ] _W.I.P._: Web Components
-- [ ] ??
+|                        FE Solution                        | Status | E.T.A. |
+|:---------------------------------------------------------:|:---:|:---:|
+| [VueJS](https://amartinez.dev/software/swdbapp/vue-js/#/) | In Progress | 2025 |
+|                          ReactJS                          | ToDo | Unknown |
+|                WebComponents (lit-element)                | ToDo | Unknown |
+|                           Other                           | --- | --- |
 
-The application will be a consultative web application of the project https://swapi.dev,
+The application will be a consultative web application of the project https://starwars-databank.vercel.app/,
 a public backend API based on Star Wars ® fictional universe.
 
 ## Technologies
@@ -73,15 +75,16 @@ Description of main folders:
 
 ```bash
 .
-├── .github             # contains CI/CD resources
-├── assets              # contains static resources
-└── src
-    ├── apps            # contains each application solution for each library
-    ├── components      # contains specific cross components for each library
-    ├── features        # contains solutions for each application feature
-    ├── infra           # contains specific infra solution for API
-    ├── styles          # contains all application styles
-    └── types           # contains cross types
+├── src
+│   ├── apps          # Each technology application
+│   ├── components    # Each technology components used within applications
+│   ├── features      # Single features
+│   ├── infra         # Infra solution
+│   ├── styles        # Application & components styles
+│   ├── types         # Cross shared types
+│   └── utils         # Cross shared utilities
+└── www               # Distribution directory
+
 ```
 
 The main architecture follows [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
