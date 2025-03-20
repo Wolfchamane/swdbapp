@@ -1,4 +1,4 @@
-import type { AppWindow, SWDBAppConfiguration, APIConfiguration } from './types';
+import type { APIConfiguration, AppWindow, SWDBAppConfiguration } from './types';
 
 export const provideAPIHostname = (): string => {
 	const w: AppWindow = window as AppWindow;
@@ -7,26 +7,26 @@ export const provideAPIHostname = (): string => {
 };
 
 export const isAPISecureProtocol = (): boolean => {
-    const w: AppWindow = window as AppWindow;
+	const w: AppWindow = window as AppWindow;
 
-    return w && 'swdbapp' in w ? (w.swdbapp as SWDBAppConfiguration).apiProtocol === 'https' : false;
+	return w && 'swdbapp' in w ? (w.swdbapp as SWDBAppConfiguration).apiProtocol === 'https' : false;
 };
 
 export const provideAPIPort = (): string => {
-    const w: AppWindow = window as AppWindow;
+	const w: AppWindow = window as AppWindow;
 
-    return w && 'swdbapp' in w ? (w.swdbapp as SWDBAppConfiguration).apiPort : '';
+	return w && 'swdbapp' in w ? (w.swdbapp as SWDBAppConfiguration).apiPort : '';
 };
 
 export const provideAPIConfiguration = (): APIConfiguration => {
-    let port: string | number | undefined = provideAPIPort();
-    if (port !== undefined) {
-        port = Number(port)
-    }
+	let port: string | number | undefined = provideAPIPort();
+	if (port !== undefined) {
+		port = Number(port);
+	}
 
-    return {
-        hostname: provideAPIHostname(),
-        secure: isAPISecureProtocol(),
-        port,
-    }
+	return {
+		hostname: provideAPIHostname(),
+		secure: isAPISecureProtocol(),
+		port,
+	};
 };
