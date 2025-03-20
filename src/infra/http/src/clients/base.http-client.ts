@@ -1,31 +1,28 @@
-import { JSONAdapter, type XHRConfiguration, XHRFetchOptions, XHR_DEBUG_LEVELS } from '@amjs/js-utils';
+import { JSONAdapter, type XHRConfiguration, type XHRFetchOptions, XHR_DEBUG_LEVELS } from '@amjs/js-utils';
 
 export class BaseHttpClient extends JSONAdapter {
 	private cacheExpiration: number | undefined;
 	private cache: Record<string, string> | undefined;
 
-	constructor(config?: XHRConfiguration) {
-		super({
-			...(config || {}),
-			hostname: 'swapi.dev/api',
-		});
+	constructor(config: XHRConfiguration) {
+		super(config);
 
 		this._setCacheExpiration();
 		this.cache = {};
 	}
 
 	private _cacheHasExpired(): boolean {
-		return Date.now() > this.cacheExpiration;
+		return this.cacheExpiration !== undefined ? Date.now() > this.cacheExpiration : true;
 	}
 
 	private _isCached(url: URL): boolean {
-		return Object.keys(this.cache).includes(url.href);
+		return Object.keys(this.cache || {}).includes(url.href);
 	}
 
 	private _fromCache<T>(url: URL): T | undefined {
 		let value: T | undefined;
 		try {
-			value = JSON.parse(this.cache[url.href]) as T;
+			value = this.cache && (JSON.parse(this.cache[url.href]) as T);
 		} catch (e: unknown) {
 			this._log(XHR_DEBUG_LEVELS.ERROR, false, 'Cannot parse undefined cached value: %o', e);
 		}
@@ -53,7 +50,7 @@ export class BaseHttpClient extends JSONAdapter {
 			this._setCacheExpiration();
 		}
 
-		if (!this._isCached(this.url)) {
+		if (this.url && !this._isCached(this.url)) {
 			this._toCache<T>(this.url, response);
 		}
 
@@ -63,10 +60,13 @@ export class BaseHttpClient extends JSONAdapter {
 	/**
 	 * @override
 	 */
-	async fetch<T>(path: string, options?: XHRFetchOptions): Promise<T | Error> {
+	async fetch<T>(path: string, options: XHRFetchOptions): Promise<T | Error> {
 		super.reset();
 		super.buildRequest(path, options);
-		const response: T | Error | undefined = this._fromCache<T>(this.url);
+		let response: T | Error | undefined;
+		if (this.url && this.request) {
+			response = this._fromCache<T>(this.url);
+		}
 
 		return response || (await super.fetch<T>(path, options));
 	}
