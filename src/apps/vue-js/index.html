@@ -20,6 +20,10 @@
 					divIcons.classList.add('icons');
 					document.body.appendChild(divIcons);
 					divIcons.innerHTML = await iconsSprite.text();
+
+					window.swdbapp = Object.freeze({
+						apiHostname: '%VITE_API_HOSTNAME%',
+					});
 				} catch (e) {}
 			})();
 		</script>

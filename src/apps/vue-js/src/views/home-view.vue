@@ -7,7 +7,7 @@
 
 <template>
 	<div class="home-view h-100 p-1 d-flex align-center justify-center flex-wrap overflow-hidden overflow-y-auto">
-		<home-view-card title="People" image="people" :assets-dir="assetsDir" />
+		<home-view-card title="Characters" image="people" :assets-dir="assetsDir" />
 		<home-view-card title="Films" image="films" :assets-dir="assetsDir" disabled />
 		<home-view-card title="Planets" image="planets" :assets-dir="assetsDir" disabled />
 		<home-view-card title="Species" image="species" :assets-dir="assetsDir" disabled />

@@ -1,4 +1,4 @@
+import charactersRoute from './characters.route';
 import homeRoute from './home.route';
-import peopleRoute from './people.route';
 
-export default [homeRoute, peopleRoute];
+export default [homeRoute, charactersRoute];
