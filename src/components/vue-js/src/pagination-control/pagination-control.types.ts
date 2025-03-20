@@ -1,8 +1,8 @@
 export interface PaginationControlProperties {
 	currentPage: number;
 	totalPages: number;
-	disabled: boolean;
 	min: number;
+	disabled?: boolean;
 }
 
 export interface PaginationControlEvents {
