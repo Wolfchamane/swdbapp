@@ -1,0 +1,13 @@
+{
+	"name": "@swdbapp/mocks",
+	"private": true,
+	"main": "index.mjs",
+	"type": "module",
+	"scripts": {
+		"format:check": "prettier --check --config ../prettier.config.js .",
+		"format:fix": "prettier --write --config ../prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .m?js --config ../eslint.config.js",
+		"lint:js:fix": "eslint  --ext .m?js --fix --config ../eslint.config.js"
+	}
+}
