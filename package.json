@@ -3,15 +3,17 @@
 	"author": "Arturo Martínez Diaz <arturo.martinez@amartinez.dev>",
 	"private": true,
 	"type": "module",
-	"description": "A showcase demo application inspired by https://swapi.dev",
+	"description": "A showcase demo application inspired by Star Wars fictional universe",
 	"workspaces": [
+        "./__mocks__/",
 		"./src/types",
 		"./src/infra/http",
 		"./src/components/vue-js",
-		"./src/features/people",
+		"./src/features/*",
 		"./src/apps/vue-js"
 	],
 	"scripts": {
+        "start:mocks": "node __mocks__/index.mjs",
 		"build-only": "npm run build-only --workspaces --if-present",
 		"format:check": "npm run format:check --workspaces --if-present",
 		"format:fix": "npm run format:fix --workspaces --if-present",
