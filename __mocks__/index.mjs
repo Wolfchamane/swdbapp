@@ -1,17 +1,15 @@
 import { createServer } from 'node:http';
 import { charactersListHandler } from './characters/index.mjs';
 
-
 const server = createServer((req, res) => {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
+	res.setHeader('Access-Control-Allow-Headers', 'Accept, Content-Type');
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Accept, Content-Type');
-
-    if (req.method === 'OPTIONS') {
-        res.statusCode = 200;
-        res.end();
-    } else {
+	if (req.method === 'OPTIONS') {
+		res.statusCode = 200;
+		res.end();
+	} else {
 		try {
 			charactersListHandler(req, res);
 		} catch (e) {
