@@ -5,8 +5,8 @@
 	"scripts": {
 		"build": "run-p type:check build-only",
 		"build-only": "vite build --emptyOutDir",
-		"format:check": "prettier --check --config ../../../prettier.config.js .",
-		"format:fix": "prettier --write --config ../../../prettier.config.js .",
+		"format:check": "prettier --check --config ./prettier.config.js .",
+		"format:fix": "prettier --write --config ./prettier.config.js .",
 		"lint:check": "npm run lint:js:check",
 		"lint:js:check": "eslint  --ext .vue,.ts --config ./eslint.config.js",
 		"lint:js:fix": "eslint  --ext .vue,.ts --fix --config ./eslint.config.js",

@@ -11,11 +11,10 @@ export default {
 	bracketSpacing: true,
 	bracketSameLine: true,
 	arrowParens: 'avoid',
-	vueIndentScriptAndStyle: true,
 	endOfLine: 'lf',
 	singleAttributePerLine: false,
 	htmlWhitespaceSensitivity: 'css',
-	importOrder: ['^.+/(.*).(sa|sc|c)ss$', '^@?(vue|react).+', '^@swdbapp/(.*)$', '^@/(.*)', '^../(.*)', '^./'],
+    importOrder: ['^.+/(.*).(sa|sc|c)ss$', '^@?(vue|react).+', '^@swdbapp/(.*)$', '^@/(.*)', '^../(.*)', '^./'],
 	importOrderSeparation: false,
 	importOrderSortSpecifiers: true,
 };
