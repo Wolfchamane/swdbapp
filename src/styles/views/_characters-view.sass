@@ -20,20 +20,26 @@
         &-name
             display: flex
             align-items: center
-            bottom: -50px
+            bottom: 0
             width: 100%
             height: 50px
             padding-left: 1em
             background: colors.color('black', .5)
-            transition: all .4s ease-in-out
 
         &:hover
             border-color: var(--color-foreground)
             // cursor: pointer
 
-        &:hover &-name
-            bottom: 0
-
         &--loading
             .characters-view__item-loading-veil
                 opacity: 1
+
+@media screen and (min-width: 1024px)
+    .characters-view
+        &__item
+            &-name
+                bottom: -50px
+                transition: all .4s ease-in-out
+
+            &:hover &-name
+                bottom: 0
