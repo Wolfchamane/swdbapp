@@ -63,9 +63,3 @@
 		</div>
 	</transition>
 </template>
-
-<style lang="sass">
-	.app-license
-	    width: calc(100% - 2em) !important
-	    height: calc(100% - 2em) !important
-</style>
