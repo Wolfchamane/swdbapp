@@ -7,6 +7,7 @@
 		<link rel="icon" href="%VITE_ASSETS_DIR%/favicon_120.png" />
 		<link rel="manifest" href="%VITE_ASSETS_DIR%/manifest.json" />
 		<link rel="stylesheet" href="%VITE_ASSETS_DIR%/fonts.css" />
+		<link rel="preconnect" href="https://lumiere-a.akamaihd.net" />
 		<title>SWDBApp: Vue</title>
 	</head>
 	<body>
@@ -15,11 +16,12 @@
 			(async function () {
 				'use strict';
 				try {
+					/*
 					const iconsSprite = await fetch('%VITE_ASSETS_DIR%/icons.svg');
 					const divIcons = document.createElement('div');
 					divIcons.classList.add('icons');
 					document.body.appendChild(divIcons);
-					divIcons.innerHTML = await iconsSprite.text();
+					divIcons.innerHTML = await iconsSprite.text();*/
 
 					window.swdbapp = Object.freeze({
 						apiHostname: '%VITE_API_HOSTNAME%',
