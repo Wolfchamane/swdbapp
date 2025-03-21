@@ -1,0 +1,5 @@
+$text-alignment: start, end, center, justify
+
+@each $alignment in $text-alignment
+    .ta-#{$alignment}
+        text-align: #{$alignment}

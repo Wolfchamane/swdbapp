@@ -26,6 +26,9 @@ $colors-map: map.merge(map.merge($base-colors, $app-colors), $brand-colors)
     .color-#{$name}
         color: #{$value}
 
+    .bg-color-#{$name}
+        background-color: #{$value}
+
 :root
     @each $name, $value in $colors-map
         #{--color-#{$name}}: #{$value}
