@@ -1,6 +1,7 @@
 $position-types: 'absolute', 'relative', 'fixed', 'sticky'
 $z-index: ('1': 1, '10': 10, '100': 100, '1000': 1000)
 $position-coords: ('0': 0, '50': 50, '100': 100)
+$position-relative-coords:1,2,3,4,5,6,7,8,9
 
 @each $type in $position-types
     .p-#{$type}
@@ -22,3 +23,16 @@ $position-coords: ('0': 0, '50': 50, '100': 100)
 
     .bottom-#{$coordinate}
         bottom: calc(#{$value} * 1%)
+
+@each $coordinate in $position-relative-coords
+    .top-#{$coordinate}
+        top: #{$coordinate}em
+
+    .left-#{$coordinate}
+        left: #{$coordinate}em
+
+    .right-#{$coordinate}
+        right: #{$coordinate}em
+
+    .bottom-#{$coordinate}
+        bottom: #{$coordinate}em

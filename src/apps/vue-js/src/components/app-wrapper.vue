@@ -52,14 +52,16 @@
 	</transition>
 	<transition name="slide">
 		<div
-			class="app-license d-flex flex-column p-absolute top-0 left-0 z-1 w-100 h-100 m-1 p-1 radius-m bg-color-background color-foreground"
+			class="app-license p-absolute top-0 left-0 z-1 w-100 h-100 m-1 p-1 radius-m bg-color-background color-foreground overflow-hidden"
 			v-show="showLicense">
 			<font-awesome-icon
 				:icon="faCircleXmark"
 				@click="toggleLicense"
-				class="cursor-pointer"
+				class="p-absolute top-1 right-1 cursor-pointer"
 				style="align-self: end" />
-			<pre v-html="LICENSE" class="grow ta-justify" />
+			<pre
+				v-html="LICENSE"
+				class="w-100 h-100 pt-3 pl-1 pr-1 pb-1 grow ta-justify overflow-hidden overflow-y-auto" />
 		</div>
 	</transition>
 </template>
