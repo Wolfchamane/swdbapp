@@ -1,7 +1,7 @@
 export interface IndexAPIConfiguration {
-    hostname: string;
-    protocol: string;
-    port: string;
+	hostname: string;
+	protocol: string;
+	port: string;
 }
 
 export interface APIConfiguration {
