@@ -24,9 +24,16 @@
 					divIcons.innerHTML = await iconsSprite.text();*/
 
 					window.swdbapp = Object.freeze({
-						apiHostname: '%VITE_API_HOSTNAME%',
-						apiProtocol: '%VITE_API_PROTOCOL%',
-						apiPort: '%VITE_API_PORT%',
+                        databank: {
+                            hostname: '%VITE_DATA_BANK_API_HOSTNAME%',
+                            protocol: '%VITE_DATA_BANK_API_PROTOCOL%',
+                            port: '%VITE_DATA_BANK_API_PORT%',
+                        },
+                        swapi: {
+                            hostname: '%VITE_SW_API_HOSTNAME%',
+                            protocol: '%VITE_SW_API_PROTOCOL%',
+                            port: '%VITE_SW_API_PORT%',
+                        },
 					});
 				} catch (e) {}
 			})();
