@@ -1,4 +1,4 @@
-type Nullable<T> = T | null;
+import type { Nullable } from '@swdbapp/types';
 
 export interface PaginationInfo {
 	total: number;
