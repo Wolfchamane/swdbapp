@@ -3,6 +3,7 @@
 	import { LoadingBar, PaginationControl } from '@swdbapp/vuejs-components';
 	import { provideCharactersUseCases } from '../../../graph';
 	import type { Character } from '../../../types';
+	import { CharactersViewItem } from './characters-view-item';
 
 	const useCases = provideCharactersUseCases();
 	const characters: Ref<Character[]> = ref([]);
@@ -39,29 +40,19 @@
 </script>
 
 <template>
-	<div class="characters-view__wrapper">
-		<loading-bar :is-visible="isLoading" />
-		<pagination-control :current-page="currentPage" :total-pages="totalPages" :min="1" @paginate="onPaginate" />
-		<div class="characters-view d-flex flex-wrap justify-center w-100 h-100 p-1 overflow-hidden overflow-y-auto">
-			<div
+	<div class="characters-view__wrapper d-flex flex-column w-100 h-100">
+		<div class="characters-view__controls pb-1">
+			<loading-bar :is-visible="isLoading" />
+			<pagination-control :current-page="currentPage" :total-pages="totalPages" :min="1" @paginate="onPaginate" />
+		</div>
+		<div
+			class="characters-view grow d-flex flex-wrap justify-center w-100 h-100 p-1 overflow-hidden overflow-y-auto">
+			<characters-view-item
 				v-for="(character, index) in characters"
 				:key="`character-${(character && character.$id) || index}`"
-				:class="[
-					'characters-view__item',
-					'd-block',
-					'p-relative',
-					'radius-xs',
-					'overflow-hidden',
-					{
-						'characters-view__item--loading': isLoading,
-					},
-				]">
-				<div class="characters-view__item-loading-veil d-block p-absolute z-1 top-0 left-0 w-100 h-100"></div>
-				<template v-if="!isLoading && character">
-					<img class="characters-view__item-picture" :src="character.image.href" :alt="character.name" />
-					<span class="characters-view__item-name p-absolute left-0 bottom-0">{{ character.name }}</span>
-				</template>
-			</div>
+				:is-loading="isLoading"
+				:image="character?.image.href || ''"
+				:name="character?.name || ''" />
 		</div>
 	</div>
 </template>

@@ -15,6 +15,7 @@ export interface CharactersListUseCaseOutput<T> {
 
 export interface CharactersUseCases {
 	list(input: CharactersListUseCaseInput): Promise<CharactersListUseCaseOutput<Character>>;
+	detail(input: Character): Promise<Character>;
 }
 
 export class DefaultCharactersUseCases implements CharactersUseCases {
@@ -22,5 +23,9 @@ export class DefaultCharactersUseCases implements CharactersUseCases {
 
 	async list(input: CharactersListUseCaseInput): Promise<CharactersListUseCaseOutput<Character>> {
 		return this.ports.list(input);
+	}
+
+	async detail({ $id }: Character): Promise<Character> {
+		return this.ports.detail({ id: $id });
 	}
 }

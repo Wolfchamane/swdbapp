@@ -1,32 +1,15 @@
-import type { APIConfiguration, AppWindow, SWDBAppConfiguration } from './types';
+import { APIConfiguration, APIType, AppWindow, IndexAPIConfiguration, SWDBAppConfiguration } from './types';
 
-export const provideAPIHostname = (): string => {
-	const w: AppWindow = window as AppWindow;
-
-	return w && 'swdbapp' in w ? (w.swdbapp as SWDBAppConfiguration).apiHostname : '';
-};
-
-export const isAPISecureProtocol = (): boolean => {
-	const w: AppWindow = window as AppWindow;
-
-	return w && 'swdbapp' in w ? (w.swdbapp as SWDBAppConfiguration).apiProtocol === 'https' : false;
-};
-
-export const provideAPIPort = (): string => {
-	const w: AppWindow = window as AppWindow;
-
-	return w && 'swdbapp' in w ? (w.swdbapp as SWDBAppConfiguration).apiPort : '';
-};
-
-export const provideAPIConfiguration = (): APIConfiguration => {
-	let port: string | number | undefined = provideAPIPort();
-	if (port !== undefined) {
-		port = Number(port);
+export const provideAPIConfiguration = (type: APIType): APIConfiguration => {
+	const appConfig: SWDBAppConfiguration = (window as AppWindow).swdbapp;
+	const apiConfig: IndexAPIConfiguration = appConfig[type];
+	if (!apiConfig) {
+		throw new Error(`Cannot find API configuration for "${type}"`);
 	}
 
 	return {
-		hostname: provideAPIHostname(),
-		secure: isAPISecureProtocol(),
-		port,
+		hostname: apiConfig.hostname,
+		port: apiConfig.port,
+		secure: apiConfig.protocol === 'https',
 	};
 };
