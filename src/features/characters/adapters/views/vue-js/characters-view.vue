@@ -1,15 +1,17 @@
 <script lang="ts" setup>
-	import { type Ref, onMounted, ref } from 'vue';
+	import { type Ref, onMounted, ref, watch } from 'vue';
+	import { useRoute, useRouter } from 'vue-router';
 	import { LoadingBar, PaginationControl } from '@swdbapp/vuejs-components';
 	import { provideCharactersUseCases } from '../../../graph';
 	import type { Character } from '../../../types';
 	import { CharactersViewItem } from './characters-view-item';
 
+	const ROUTER = useRouter();
+	const currentRoute = useRoute();
 	const useCases = provideCharactersUseCases();
 	const characters: Ref<Character[]> = ref([]);
 	const isLoading: Ref<boolean> = ref(false);
-	const page: Ref<number> = ref(1);
-	const currentPage: Ref<number> = ref(1);
+	const currentPage: Ref<number> = ref(NaN);
 	const totalPages: Ref<number> = ref(1);
 
 	const fetchCharacters = async (): Promise<void> => {
@@ -17,7 +19,7 @@
 		try {
 			characters.value = new Array(10);
 			const list = await useCases.list({
-				page: page.value,
+				page: currentPage.value,
 			});
 			totalPages.value = Math.ceil(Number(list.total / list.limit));
 			currentPage.value = list.page;
@@ -29,12 +31,27 @@
 		}
 	};
 
-	const onPaginate = async (nextPage: number): Promise<void> => {
-		page.value = nextPage;
-		await fetchCharacters();
+	const onPaginate = async (page: number): Promise<void> => {
+		await ROUTER.replace({ path: '/characters', query: { page } });
 	};
 
+	const setCurrentPageValue = (value: string | number | string[] | number[] | undefined): void => {
+		currentPage.value = Number(value);
+		if (isNaN(currentPage.value)) {
+			currentPage.value = 1;
+		}
+	};
+
+	watch(
+		() => currentRoute.query?.page,
+		async newPage => {
+			setCurrentPageValue(newPage);
+			await fetchCharacters();
+		}
+	);
+
 	onMounted(async () => {
+		setCurrentPageValue(currentRoute.query?.page);
 		await fetchCharacters();
 	});
 </script>
