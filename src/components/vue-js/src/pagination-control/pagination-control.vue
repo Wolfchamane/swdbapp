@@ -32,7 +32,7 @@
 	};
 </script>
 <template>
-	<div class="d-flex align-center justify-space-evenly">
+	<div class="pagination-controls d-flex align-center justify-space-evenly">
 		<button class="btn color-primary fs-l" @click="onFirstClick" :disabled="disabled || currentPage === min">
 			<font-awesome-icon :icon="faSquareCaretLeft" />
 		</button>
