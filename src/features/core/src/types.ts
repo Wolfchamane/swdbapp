@@ -1,13 +1,24 @@
-export interface SWDBAppConfiguration {
-	apiHostname: string;
-	apiProtocol: string;
-	apiPort: string;
+export interface IndexAPIConfiguration {
+    hostname: string;
+    protocol: string;
+    port: string;
 }
-
-export type AppWindow = Window & typeof globalThis & { swdbapp: SWDBAppConfiguration };
 
 export interface APIConfiguration {
 	hostname: string;
 	secure: boolean;
-	port?: number;
+	port?: string;
 }
+
+export type APIType = 'databank' | 'swapi';
+export const API_TYPES: Record<string, APIType> = Object.freeze({
+	DATABANK: 'databank',
+	SWAPI: 'swapi',
+});
+
+export interface SWDBAppConfiguration extends Record<APIType, IndexAPIConfiguration> {
+	databank: IndexAPIConfiguration;
+	swapi: IndexAPIConfiguration;
+}
+
+export type AppWindow = Window & typeof globalThis & { swdbapp: SWDBAppConfiguration };
