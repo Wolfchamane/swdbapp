@@ -12,6 +12,11 @@ export interface CharactersListPortOutput<T> {
 	items: T[];
 }
 
+export interface CharactersDetailPortInput {
+	id: string;
+}
+
 export interface CharactersPorts {
 	list(input: CharactersListPortInput): Promise<CharactersListPortOutput<Character>>;
+	detail(input: CharactersDetailPortInput): Promise<Character>;
 }
