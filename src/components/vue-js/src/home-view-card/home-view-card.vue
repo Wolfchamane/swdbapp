@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+	import { RouterLink } from 'vue-router';
 	import type { HomeViewCardProperties } from './home-view-card.types';
 
 	defineProps<HomeViewCardProperties>();
@@ -13,7 +14,7 @@
 
 <template>
 	<router-link
-		:to="{ name: disabled ? $route.name : `${title.toLowerCase()}-view` }"
+		:to="{ name: disabled ? $route.name : `${title.toLowerCase()}-view`, query }"
 		:class="[
 			'home-view__card card p-relative d-flex flex-column overflow-hidden m-1 border-1 radius-s shadow cursor-pointer',
 			{ 'home-view__card--disabled': disabled },
