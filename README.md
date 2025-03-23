@@ -48,12 +48,12 @@ _So I have decided to create this web application as kind of "portfolio" showcas
 
 I will try to create the same web application using different Frontend technologies, to know:
 
-|                        FE Solution                        | Status | E.T.A. |
-|:---------------------------------------------------------:|:---:|:---:|
-| [VueJS](https://amartinez.dev/software/swdbapp/vue-js/#/) | In Progress | 2025 |
-|                          ReactJS                          | ToDo | Unknown |
-|                WebComponents (lit-element)                | ToDo | Unknown |
-|                           Other                           | --- | --- |
+|                        FE Solution                        |   Status    | E.T.A.  |
+| :-------------------------------------------------------: | :---------: | :-----: |
+| [VueJS](https://amartinez.dev/software/swdbapp/vue-js/#/) | In Progress |  2025   |
+|                          ReactJS                          |    ToDo     | Unknown |
+|                WebComponents (lit-element)                |    ToDo     | Unknown |
+|                           Other                           |     ---     |   ---   |
 
 The application will be a consultative web application of the project https://starwars-databank.vercel.app/,
 a public backend API based on Star Wars ® fictional universe.
@@ -110,4 +110,3 @@ I am going to use data and information obtained from https://swapi.dev.
 >
 > - https://starwars-databank.vercel.app/
 > - https://starwars.com
-

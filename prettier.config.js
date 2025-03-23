@@ -14,7 +14,7 @@ export default {
 	endOfLine: 'lf',
 	singleAttributePerLine: false,
 	htmlWhitespaceSensitivity: 'css',
-    importOrder: ['^.+/(.*).(sa|sc|c)ss$', '^@?(vue|react).+', '^@swdbapp/(.*)$', '^@/(.*)', '^../(.*)', '^./'],
+	importOrder: ['^.+/(.*).(sa|sc|c)ss$', '^@?(vue|react).+', '^@swdbapp/(.*)$', '^@/(.*)', '^../(.*)', '^./'],
 	importOrderSeparation: false,
 	importOrderSortSpecifiers: true,
 };
