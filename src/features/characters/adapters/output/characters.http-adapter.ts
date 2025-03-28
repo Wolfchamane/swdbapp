@@ -1,5 +1,5 @@
 import type { CharacterModel, CharactersHttpClient } from '@swdbapp/infra-http-starwars-databank';
-import type { PeopleHttpClient, PeopleListOutput, PeopleModel } from '@swdbapp/infra-http-swapi';
+import type { PeopleInputAdapter, PeopleAdapterListOutput, People } from '@swdbapp/people';
 import type { Nullable } from '@swdbapp/types';
 import type {
 	CharactersDetailPortInput,
@@ -12,31 +12,31 @@ import type { Character, CharacterDetails } from '../../types';
 export class CharactersHttpAdapter implements CharactersPorts {
 	constructor(
 		private charactersHttpClient: CharactersHttpClient,
-		private peopleHttpClient: PeopleHttpClient
+		private peopleInputAdapter: PeopleInputAdapter,
 	) {}
 
-	private _mapPeopleInfraToApplicationCharacterDetails(item: PeopleModel): CharacterDetails {
+	private _mapPeopleInfraToApplicationCharacterDetails(item: People): CharacterDetails {
 		return {
-			birthYear: item.birth_year,
-			eyeColor: item.eye_color,
-			gender: item.gender,
-			hairColor: item.hair_color,
-			height: Number(item.height),
-			mass: Number(item.mass),
-			skinColor: item.skin_color,
-			homeWorld: new URL(item.homeworld),
-			films: item.films.map(film => new URL(film)),
-			species: item.species.map(specie => new URL(specie)),
-			starships: item.starships.map(starship => new URL(starship)),
-			vehicles: item.vehicles.map(vehicle => new URL(vehicle)),
-			url: new URL(item.url),
-			created: new Date(Date.parse(item.created)),
-			edited: new Date(Date.parse(item.edited)),
+            birthYear: item.birthYear,
+            eyeColor: item.eyeColor,
+            gender: item.gender,
+            hairColor: item.hairColor,
+            height: item.height,
+            mass: item.mass,
+            skinColor: item.skinColor,
+            homeWorld: item.homeWorld,
+            films: item.films,
+            species: item.species,
+            starships: item.starships,
+            vehicles: item.vehicles,
+            created: item.created,
+            edited: item.edited,
+            url: item.url,
 		};
 	}
 
 	private async _extendCharacterDetails({ name }: CharacterModel): Promise<Nullable<CharacterDetails>> {
-		const detailsResponse: PeopleListOutput | Error = await this.peopleHttpClient.list({ search: name });
+		const detailsResponse: PeopleAdapterListOutput | Error = await this.peopleInputAdapter.list({ search: name.toLowerCase() });
 
 		if (detailsResponse instanceof Error) {
 			throw detailsResponse;
