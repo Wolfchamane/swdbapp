@@ -14,7 +14,7 @@ export interface CharactersListUseCaseOutput<T> {
 }
 
 export interface CharactersDetailUseCasesInput {
-    id: string;
+	id: string;
 }
 
 export interface CharactersUseCases {

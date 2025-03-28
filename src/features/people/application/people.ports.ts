@@ -1,23 +1,23 @@
-import type { People } from '../types';
 import type { Nullable } from '@swdbapp/types';
+import type { People } from '../types';
 
 export interface PeoplePorts {
-    list(input: PeopleListPortInput): Promise<PeopleListPortOutput>;
-    describe(input: PeopleDescribePortInput): Promise<People>;
+	list(input: PeopleListPortInput): Promise<PeopleListPortOutput>;
+	describe(input: PeopleDescribePortInput): Promise<People>;
 }
 
 export interface PeopleListPortInput {
-    page?: number;
-    search?: string;
+	page?: number;
+	search?: string;
 }
 
 export interface PeopleListPortOutput {
-    count: number;
-    next: Nullable<URL>;
-    previous: Nullable<URL>;
-    results: People[];
+	count: number;
+	next: Nullable<URL>;
+	previous: Nullable<URL>;
+	results: People[];
 }
 
 export interface PeopleDescribePortInput {
-    id: string;
+	id: string;
 }

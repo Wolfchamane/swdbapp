@@ -42,6 +42,10 @@
 		}
 	};
 
+	const navigateToCharacterDetails = (character: Character): void => {
+		ROUTER.push({ name: 'character-details', params: { id: `${character.$id}` } });
+	};
+
 	watch(
 		() => currentRoute.query?.page,
 		async newPage => {
@@ -69,7 +73,8 @@
 				:key="`character-${(character && character.$id) || index}`"
 				:is-loading="isLoading"
 				:image="character?.image.href || ''"
-				:name="character?.name || ''" />
+				:name="character?.name || ''"
+				@click="navigateToCharacterDetails(character)" />
 		</div>
 	</div>
 </template>

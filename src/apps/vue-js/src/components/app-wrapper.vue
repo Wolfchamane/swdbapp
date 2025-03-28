@@ -14,11 +14,9 @@
 		return currentRoute.name === 'home-view';
 	});
 
-    const title: ComputedRef<string> = computed(() => {
-        return capitalize(String(currentRoute.name)
-            .replace('-view', ''))
-            .replace(/-/g, ' ');
-    });
+	const title: ComputedRef<string> = computed(() => {
+		return capitalize(String(currentRoute.name).replace('-view', '')).replace(/-/g, ' ');
+	});
 
 	const toggleLicense = () => (showLicense.value = !showLicense.value);
 

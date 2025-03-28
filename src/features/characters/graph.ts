@@ -1,8 +1,8 @@
 import { API_TYPES, provideAPIConfiguration } from '@swdbapp/core';
 import { type CharactersHttpClient, DefaultCharactersHttpClient } from '@swdbapp/infra-http-starwars-databank';
+import { providePeopleInputAdapter } from '@swdbapp/people';
 import { CharactersHttpAdapter } from './adapters/output/characters.http-adapter';
 import { type CharactersPorts, type CharactersUseCases, DefaultCharactersUseCases } from './application';
-import { providePeopleInputAdapter } from '@swdbapp/people';
 
 const dataBankAPIConfig = provideAPIConfiguration(API_TYPES.DATABANK);
 
