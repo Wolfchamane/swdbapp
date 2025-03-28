@@ -12,6 +12,7 @@
 			'p-relative',
 			'radius-xs',
 			'overflow-hidden',
+			'cursor-pointer',
 			{
 				'characters-view__item--loading': isLoading,
 			},
