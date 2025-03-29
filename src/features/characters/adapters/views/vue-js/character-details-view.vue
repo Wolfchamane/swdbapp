@@ -6,6 +6,7 @@
 	import type { Nullable } from '@swdbapp/types';
 	import { LoadingBar } from '@swdbapp/vuejs-components';
 	import { provideCharactersUseCases } from '../../../graph';
+    import { provideAssetsDir } from '@swdbapp/core';
 	import type { Character, CharacterDetails } from '../../../types';
 
 	const useCases = provideCharactersUseCases();
@@ -77,7 +78,7 @@
 								class="carrousel-item film-poster p-relative"
 								v-for="film in character?.details?.films"
 								:key="`film-${film.episodeNumber}`">
-								<img :src="`./images/films/${film.image}.jpeg`" :alt="film.title" />
+								<img :src="`${provideAssetsDir}/images/films/${film.image}.jpeg`" :alt="film.title" />
 								<div
 									class="film-poster__info p-absolute z-1 bottom-0 left-0 d-flex flex-column center w-100">
 									<span>Episode {{ film.episodeNumber }}</span>
