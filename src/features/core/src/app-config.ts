@@ -1,4 +1,4 @@
-import { APIConfiguration, APIType, AppWindow, IndexAPIConfiguration, SWDBAppConfiguration } from './types';
+import type { APIConfiguration, APIType, AppWindow, IndexAPIConfiguration, SWDBAppConfiguration } from './types';
 
 export const provideAPIConfiguration = (type: APIType): APIConfiguration => {
 	const appConfig: SWDBAppConfiguration = (window as AppWindow).swdbapp;
