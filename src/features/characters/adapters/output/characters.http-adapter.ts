@@ -1,5 +1,4 @@
 import type { CharacterModel, CharactersHttpClient } from '@swdbapp/infra-http-starwars-databank';
-import type { PeopleHttpClient, PeopleListOutput, PeopleModel } from '@swdbapp/infra-http-swapi';
 import type { Nullable } from '@swdbapp/types';
 import type {
 	CharactersDetailPortInput,
@@ -10,42 +9,7 @@ import type {
 import type { Character, CharacterDetails } from '../../types';
 
 export class CharactersHttpAdapter implements CharactersPorts {
-	constructor(
-		private charactersHttpClient: CharactersHttpClient,
-		private peopleHttpClient: PeopleHttpClient
-	) {}
-
-	private _mapPeopleInfraToApplicationCharacterDetails(item: PeopleModel): CharacterDetails {
-		return {
-			birthYear: item.birth_year,
-			eyeColor: item.eye_color,
-			gender: item.gender,
-			hairColor: item.hair_color,
-			height: Number(item.height),
-			mass: Number(item.mass),
-			skinColor: item.skin_color,
-			homeWorld: new URL(item.homeworld),
-			films: item.films.map(film => new URL(film)),
-			species: item.species.map(specie => new URL(specie)),
-			starships: item.starships.map(starship => new URL(starship)),
-			vehicles: item.vehicles.map(vehicle => new URL(vehicle)),
-			url: new URL(item.url),
-			created: new Date(Date.parse(item.created)),
-			edited: new Date(Date.parse(item.edited)),
-		};
-	}
-
-	private async _extendCharacterDetails({ name }: CharacterModel): Promise<Nullable<CharacterDetails>> {
-		const detailsResponse: PeopleListOutput | Error = await this.peopleHttpClient.list({ search: name });
-
-		if (detailsResponse instanceof Error) {
-			throw detailsResponse;
-		}
-
-		return detailsResponse.count === 1 && detailsResponse.results.length === 1
-			? this._mapPeopleInfraToApplicationCharacterDetails(detailsResponse.results.pop())
-			: null;
-	}
+	constructor(private charactersHttpClient: CharactersHttpClient) {}
 
 	private _mapCharacterInfraToApplication(item: CharacterModel, details: Nullable<CharacterDetails>): Character {
 		return {
@@ -79,13 +43,10 @@ export class CharactersHttpAdapter implements CharactersPorts {
 
 	async detail(input: CharactersDetailPortInput): Promise<Character> {
 		const characterResponse: CharacterModel | Error = await this.charactersHttpClient.describe(input);
-		let detailsResponse: Nullable<CharacterDetails> = null;
 		if (characterResponse instanceof Error) {
 			throw characterResponse;
-		} else {
-			detailsResponse = await this._extendCharacterDetails(characterResponse);
 		}
 
-		return this._mapCharacterInfraToApplication(characterResponse, detailsResponse);
+		return this._mapCharacterInfraToApplication(characterResponse, null);
 	}
 }

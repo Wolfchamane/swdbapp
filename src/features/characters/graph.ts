@@ -1,20 +1,21 @@
 import { API_TYPES, provideAPIConfiguration } from '@swdbapp/core';
+import { provideFilmsInputAdapter } from '@swdbapp/films';
 import { type CharactersHttpClient, DefaultCharactersHttpClient } from '@swdbapp/infra-http-starwars-databank';
-import { DefaultPeopleHttpClient, type PeopleHttpClient } from '@swdbapp/infra-http-swapi';
+import { providePeopleInputAdapter } from '@swdbapp/people';
 import { CharactersHttpAdapter } from './adapters/output/characters.http-adapter';
 import { type CharactersPorts, type CharactersUseCases, DefaultCharactersUseCases } from './application';
 
-const swAPIConfig = provideAPIConfiguration(API_TYPES.SWAPI);
 const dataBankAPIConfig = provideAPIConfiguration(API_TYPES.DATABANK);
 
-const peopleHttpClient: PeopleHttpClient = new DefaultPeopleHttpClient(swAPIConfig);
 const charactersHttpClient: CharactersHttpClient = new DefaultCharactersHttpClient(dataBankAPIConfig);
-const httpAdapter: CharactersPorts = new CharactersHttpAdapter(charactersHttpClient, peopleHttpClient);
+const httpAdapter: CharactersPorts = new CharactersHttpAdapter(charactersHttpClient);
 
 let charactersUseCasesSingleton: CharactersUseCases | undefined;
 
 export const provideCharactersUseCases = (): CharactersUseCases => {
-	charactersUseCasesSingleton = charactersUseCasesSingleton || new DefaultCharactersUseCases(httpAdapter);
+	charactersUseCasesSingleton =
+		charactersUseCasesSingleton ||
+		new DefaultCharactersUseCases(httpAdapter, providePeopleInputAdapter(), provideFilmsInputAdapter());
 
 	return charactersUseCasesSingleton;
 };

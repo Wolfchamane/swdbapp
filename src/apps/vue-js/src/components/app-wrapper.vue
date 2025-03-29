@@ -14,6 +14,10 @@
 		return currentRoute.name === 'home-view';
 	});
 
+	const title: ComputedRef<string> = computed(() => {
+		return capitalize(String(currentRoute.name).replace('-view', '')).replace(/-/g, ' ');
+	});
+
 	const toggleLicense = () => (showLicense.value = !showLicense.value);
 
 	const navigateBack = () => {
@@ -31,7 +35,7 @@
 			</div>
 		</template>
 		<template v-else>
-			<div class="grow sw-ff">{{ capitalize(String(currentRoute.name).replace('-view', '')) }}</div>
+			<div class="grow sw-ff">{{ title }}</div>
 		</template>
 		<div class="d-flex align-center justify-space-between px-1">
 			<font-awesome-icon :icon="faCircleInfo" class="mr-1 cursor-pointer" @click="toggleLicense" />
