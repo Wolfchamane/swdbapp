@@ -1,12 +1,15 @@
 import type { CharacterModel, CharactersHttpClient } from '@swdbapp/infra-http-starwars-databank';
 import type { Nullable } from '@swdbapp/types';
-import type { CharactersDetailPortInput, CharactersListPortInput, CharactersListPortOutput, CharactersPorts } from '../../application';
+import type {
+	CharactersDetailPortInput,
+	CharactersListPortInput,
+	CharactersListPortOutput,
+	CharactersPorts,
+} from '../../application';
 import type { Character, CharacterDetails } from '../../types';
 
 export class CharactersHttpAdapter implements CharactersPorts {
-	constructor(
-		private charactersHttpClient: CharactersHttpClient,
-	) {}
+	constructor(private charactersHttpClient: CharactersHttpClient) {}
 
 	private _mapCharacterInfraToApplication(item: CharacterModel, details: Nullable<CharacterDetails>): Character {
 		return {

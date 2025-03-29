@@ -1,10 +1,10 @@
 import type { Nullable } from '@swdbapp/types';
 
 export interface CharacterFilm {
-    title: string;
-    releaseDate: Date;
-    episodeNumber: string;
-    image: string;
+	title: string;
+	releaseDate: Date;
+	episodeNumber: string;
+	image: string;
 }
 
 export interface CharacterDetails {
@@ -17,9 +17,9 @@ export interface CharacterDetails {
 	skinColor: string;
 	homeWorld: URL;
 	films: CharacterFilm[];
-	species: (URL|string)[];
-	starships: (URL|string)[];
-	vehicles: (URL|string)[];
+	species: (URL | string)[];
+	starships: (URL | string)[];
+	vehicles: (URL | string)[];
 	created: Date;
 	edited: Date;
 	url: URL;

@@ -1,4 +1,5 @@
 import type { PeopleHttpClient, PeopleListOutput, PeopleModel } from '@swdbapp/infra-http-swapi';
+import { strToURL } from '@swdbapp/utils';
 import type {
 	PeopleDescribePortInput,
 	PeopleListPortInput,
@@ -6,7 +7,6 @@ import type {
 	PeoplePorts,
 } from '../../application';
 import type { People } from '../../types';
-import { strToURL } from '@swdbapp/utils';
 
 export class PeopleHttpAdapter implements PeoplePorts {
 	constructor(private readonly httpClient: PeopleHttpClient) {}
@@ -27,13 +27,13 @@ export class PeopleHttpAdapter implements PeoplePorts {
 			mass: Number(item.mass),
 			skinColor: item.skin_color,
 			homeWorld: new URL(item.homeworld),
-			films: item.films.map(str => (strToURL(str) || str)),
-			species: item.species.map(str => (strToURL(str) || str)),
-			starships: item.starships.map(str => (strToURL(str) || str)),
-			vehicles: item.vehicles.map(str => (strToURL(str) || str)),
+			films: item.films.map(str => strToURL(str) || str),
+			species: item.species.map(str => strToURL(str) || str),
+			starships: item.starships.map(str => strToURL(str) || str),
+			vehicles: item.vehicles.map(str => strToURL(str) || str),
 			created: new Date(Date.parse(item.created)),
 			edited: new Date(Date.parse(item.edited)),
-			url: strToURL(item.url)
+			url: strToURL(item.url),
 		};
 	}
 

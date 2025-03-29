@@ -27,9 +27,9 @@ export class DefaultFilmsHttpClient extends BaseHttpClient implements FilmsHttpC
 	}
 
 	describe(params: FilmsDescribeInput): Promise<FilmModel | Error> {
-        return this.fetch<FilmModel>(`${this.path}/{id}`, {
-            method: XHR_FETCH_METHODS.GET,
-            params,
-        });
+		return this.fetch<FilmModel>(`${this.path}/{id}`, {
+			method: XHR_FETCH_METHODS.GET,
+			params,
+		});
 	}
 }

@@ -11,7 +11,7 @@
 	const useCases = provideCharactersUseCases();
 	const ROUTE = useRoute();
 	const character: Ref<Nullable<Character>> = ref(null);
-    const characterDetails: Ref<Nullable<CharacterDetails>> = ref(null);
+	const characterDetails: Ref<Nullable<CharacterDetails>> = ref(null);
 	const expandDetails: Ref<boolean> = ref(false);
 	const isLoading: Ref<boolean> = ref(false);
 
@@ -26,18 +26,18 @@
 		isLoading.value = false;
 	};
 
-    const fetchCharacterDetails = async (): Promise<void> => {
-        await useCases.detail(character.value);
-    };
+	const fetchCharacterDetails = async (): Promise<void> => {
+		await useCases.detail(character.value);
+	};
 
 	const toggleExpandDetails = async () => {
-        if (!expandDetails.value && !characterDetails.value) {
-            isLoading.value = true;
-            await fetchCharacterDetails();
-            isLoading.value = false;
-        }
+		if (!expandDetails.value && !characterDetails.value) {
+			isLoading.value = true;
+			await fetchCharacterDetails();
+			isLoading.value = false;
+		}
 
-        expandDetails.value = !expandDetails.value;
+		expandDetails.value = !expandDetails.value;
 	};
 
 	watch(
@@ -72,17 +72,20 @@
 				<transition>
 					<div class="character-details__details-content" v-show="expandDetails">
 						<span>Films</span>
-                        <div class='carrousel'>
-                            <div class='carrousel-item film-poster p-relative' v-for='film in character?.details?.films'
-                            :key="`film-${film.episodeNumber}`">
-                                <img :src="`./images/films/${film.image}.jpeg`" :alt='film.title'/>
-                                <div class='film-poster__info p-absolute z-1 bottom-0 left-0 d-flex flex-column center w-100'>
-                                    <span>Episode {{ film.episodeNumber }}</span>
-                                    <span>{{ film.title }}</span>
-                                    <span>{{ film.releaseDate.getFullYear() }}</span>
-                                </div>
-                            </div>
-                        </div>
+						<div class="carrousel">
+							<div
+								class="carrousel-item film-poster p-relative"
+								v-for="film in character?.details?.films"
+								:key="`film-${film.episodeNumber}`">
+								<img :src="`./images/films/${film.image}.jpeg`" :alt="film.title" />
+								<div
+									class="film-poster__info p-absolute z-1 bottom-0 left-0 d-flex flex-column center w-100">
+									<span>Episode {{ film.episodeNumber }}</span>
+									<span>{{ film.title }}</span>
+									<span>{{ film.releaseDate.getFullYear() }}</span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</transition>
 			</article>

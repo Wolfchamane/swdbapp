@@ -18,9 +18,9 @@ export interface People {
 	mass: number;
 	name: string;
 	skinColor: string;
-    films: (URL|string)[];
-	species: (URL|string)[];
-	starships: (URL|string)[];
-	vehicles: (URL|string)[];
-    url: Nullable<URL>;
+	films: (URL | string)[];
+	species: (URL | string)[];
+	starships: (URL | string)[];
+	vehicles: (URL | string)[];
+	url: Nullable<URL>;
 }
