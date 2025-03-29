@@ -3,10 +3,10 @@
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 	import { type Ref, ref, watch } from 'vue';
 	import { useRoute } from 'vue-router';
+	import { provideAssetsDir } from '@swdbapp/core';
 	import type { Nullable } from '@swdbapp/types';
 	import { LoadingBar } from '@swdbapp/vuejs-components';
 	import { provideCharactersUseCases } from '../../../graph';
-    import { provideAssetsDir } from '@swdbapp/core';
 	import type { Character, CharacterDetails } from '../../../types';
 
 	const useCases = provideCharactersUseCases();

@@ -17,7 +17,7 @@ export const API_TYPES: Record<string, APIType> = Object.freeze({
 });
 
 export interface SWDBAppConfiguration extends Record<APIType, IndexAPIConfiguration> {
-    assetsDir: string;
+	assetsDir: string;
 	databank: IndexAPIConfiguration;
 	swapi: IndexAPIConfiguration;
 }
