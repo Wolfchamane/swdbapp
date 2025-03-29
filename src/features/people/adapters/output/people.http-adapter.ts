@@ -6,6 +6,7 @@ import type {
 	PeoplePorts,
 } from '../../application';
 import type { People } from '../../types';
+import { strToURL } from '@swdbapp/utils';
 
 export class PeopleHttpAdapter implements PeoplePorts {
 	constructor(private readonly httpClient: PeopleHttpClient) {}
@@ -26,13 +27,13 @@ export class PeopleHttpAdapter implements PeoplePorts {
 			mass: Number(item.mass),
 			skinColor: item.skin_color,
 			homeWorld: new URL(item.homeworld),
-			films: item.films.map(film => new URL(film)),
-			species: item.species.map(specie => new URL(specie)),
-			starships: item.starships.map(starship => new URL(starship)),
-			vehicles: item.vehicles.map(vehicle => new URL(vehicle)),
+			films: item.films.map(str => (strToURL(str) || str)),
+			species: item.species.map(str => (strToURL(str) || str)),
+			starships: item.starships.map(str => (strToURL(str) || str)),
+			vehicles: item.vehicles.map(str => (strToURL(str) || str)),
 			created: new Date(Date.parse(item.created)),
 			edited: new Date(Date.parse(item.edited)),
-			url: new URL(item.url),
+			url: strToURL(item.url)
 		};
 	}
 

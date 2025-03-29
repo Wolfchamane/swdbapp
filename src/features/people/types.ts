@@ -1,3 +1,5 @@
+import type { Nullable } from '@swdbapp/types';
+
 export type Unknown = 'unknown';
 export type NotAvailable = 'n/a';
 
@@ -9,7 +11,6 @@ export interface People {
 	created: Date;
 	edited: Date;
 	eyeColor: string;
-	films: URL[];
 	gender: PeopleGender;
 	hairColor: string | Unknown | NotAvailable;
 	height: number;
@@ -17,8 +18,9 @@ export interface People {
 	mass: number;
 	name: string;
 	skinColor: string;
-	species: URL[];
-	starships: URL[];
-	url: URL;
-	vehicles: URL[];
+    films: (URL|string)[];
+	species: (URL|string)[];
+	starships: (URL|string)[];
+	vehicles: (URL|string)[];
+    url: Nullable<URL>;
 }

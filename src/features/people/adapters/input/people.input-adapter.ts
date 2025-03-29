@@ -1,6 +1,7 @@
 import type { Nullable } from '@swdbapp/types';
 import type { PeopleUseCases } from '../../application';
 import type { People } from '../../types';
+import {providePeopleUseCases} from "../../graph";
 
 export interface PeopleAdapterListInput {
 	page?: number;
@@ -34,3 +35,7 @@ export class DefaultPeopleInputAdapter implements PeopleInputAdapter {
 		return this.useCases.list(input);
 	}
 }
+
+
+export const providePeopleInputAdapter = (): PeopleInputAdapter =>
+    new DefaultPeopleInputAdapter(providePeopleUseCases());
