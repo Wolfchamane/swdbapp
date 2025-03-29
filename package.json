@@ -7,6 +7,7 @@
 	"workspaces": [
 		"./__mocks__/",
 		"./src/types",
+		"./src/utils",
 		"./src/infra/http/*",
 		"./src/components/vue-js",
 		"./src/features/*",
