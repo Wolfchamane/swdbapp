@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 	import { RouterLink } from 'vue-router';
+	import { provideAssetsDir } from '@swdbapp/core';
 	import type { HomeViewCardProperties } from './home-view-card.types';
 
 	defineProps<HomeViewCardProperties>();
 
 	interface ImageURLInput {
-		assetsDir: string;
 		image: string;
 	}
 
-	const imageURL = ({ assetsDir, image }: ImageURLInput): string => `${assetsDir}/images/${image}.png`;
+	const imageURL = ({ image }: ImageURLInput): string => `${provideAssetsDir()}/images/${image}.png`;
 </script>
 
 <template>
@@ -25,7 +25,7 @@
 			Not Available
 		</div>
 		<div class="home-view__card-picture-wrapper p-1 overflow-hidden">
-			<img class="home-view__card-picture" :src="imageURL({ assetsDir, image })" :alt="title" />
+			<img class="home-view__card-picture" :src="imageURL({ image })" :alt="title" />
 		</div>
 		<div class="home-view__card-title center py-05 border-top-1">{{ title }}</div>
 	</router-link>
