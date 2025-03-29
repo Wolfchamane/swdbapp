@@ -19,7 +19,7 @@ export interface PeopleHttpClient {
 export class DefaultPeopleHttpClient extends BaseHttpClient implements PeopleHttpClient {
 	private readonly path: string = '/people';
 
-	async list(params?: PeopleListInput): Promise<PeopleListOutput | Error> {
+	list(params?: PeopleListInput): Promise<PeopleListOutput | Error> {
 		return this.fetch<ListOutput<PeopleModel>>(`${this.path}`, {
 			method: XHR_FETCH_METHODS.GET,
 			params,
@@ -27,7 +27,7 @@ export class DefaultPeopleHttpClient extends BaseHttpClient implements PeopleHtt
 	}
 
 	async describe(params: PeopleDescribeInput): Promise<PeopleModel | Error> {
-		return this.fetch<PeopleModel>(`${this.path}/{id}`, {
+		return await this.fetch<PeopleModel>(`${this.path}/{id}`, {
 			method: XHR_FETCH_METHODS.GET,
 			params,
 		});
