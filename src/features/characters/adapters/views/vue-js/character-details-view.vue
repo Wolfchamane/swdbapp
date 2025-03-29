@@ -7,7 +7,7 @@
 	import type { Nullable } from '@swdbapp/types';
 	import { LoadingBar } from '@swdbapp/vuejs-components';
 	import { provideCharactersUseCases } from '../../../graph';
-	import type { Character, CharacterDetails } from '../../../types';
+	import type { Character, CharacterDetails, CharacterFilm } from '../../../types';
 
 	const useCases = provideCharactersUseCases();
 	const ROUTE = useRoute();
@@ -39,6 +39,10 @@
 		}
 
 		expandDetails.value = !expandDetails.value;
+	};
+
+	const filmPoster = (film: CharacterFilm): string => {
+		return `${provideAssetsDir()}/images/films/${film.image}.jpeg`;
 	};
 
 	watch(
@@ -78,7 +82,7 @@
 								class="carrousel-item film-poster p-relative"
 								v-for="film in character?.details?.films"
 								:key="`film-${film.episodeNumber}`">
-								<img :src="`${provideAssetsDir}/images/films/${film.image}.jpeg`" :alt="film.title" />
+								<img :src="filmPoster(film)" :alt="film.title" />
 								<div
 									class="film-poster__info p-absolute z-1 bottom-0 left-0 d-flex flex-column center w-100">
 									<span>Episode {{ film.episodeNumber }}</span>
