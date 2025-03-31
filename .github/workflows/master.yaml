@@ -6,16 +6,8 @@ on:
             - master
 
 jobs:
-    prepare:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v4
-            - name: Create environment file
-              run: ./scripts/create-env-file.sh
     lint:
         runs-on: ubuntu-latest
-        needs: prepare
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v4
@@ -81,6 +73,8 @@ jobs:
                   cache: ${{ steps.detect-package-manager.outputs.manager }}
             - name: Install dependencies
               run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+            - name: Create environment file
+              run: ./scripts/create-env-file.sh
             - name: Build project
               run: ${{ steps.detect-package-manager.outputs.runner }} npm run build-only
     deploy:
