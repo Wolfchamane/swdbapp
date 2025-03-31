@@ -21,7 +21,7 @@
 		"@fortawesome/fontawesome-svg-core": "^6.7.2",
 		"@fortawesome/free-solid-svg-icons": "^6.7.2",
 		"@swdbapp/characters": "file:../../features/characters",
-        "@swdbapp/styles": "file:../../styles",
+		"@swdbapp/styles": "file:../../styles",
 		"@swdbapp/vuejs-components": "file:../../components/vue-js",
 		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
 		"@tsconfig/node22": "^22.0.0",

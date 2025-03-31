@@ -9,6 +9,7 @@
 		"./frontend/src/components/vue-js",
 		"./frontend/src/features/*",
 		"./frontend/src/infra/http/*",
+		"./frontend/src/styles",
 		"./frontend/src/types",
 		"./frontend/src/utils"
 	],
