@@ -1,0 +1,9 @@
+{
+    "name": "@swdbapp/styles",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "sass": "^1.77.4"
+    },
+    "main": "main.sass"
+}
