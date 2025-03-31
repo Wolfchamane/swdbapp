@@ -10,5 +10,9 @@
 		"lint:check": "npm run lint:js:check",
 		"lint:js:check": "eslint .. --ext .vue,.ts --config ../../../../eslint.config.js",
 		"lint:js:fix": "eslint .. --ext .vue,.ts --fix --config ../../../../eslint.config.js"
+	},
+	"dependencies": {
+		"@swdbapp/infra-http-shared": "file:../infra-http-shared",
+		"@amjs/js-utils": "^0.5.0"
 	}
 }
