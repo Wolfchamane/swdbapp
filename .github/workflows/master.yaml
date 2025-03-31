@@ -9,6 +9,8 @@ jobs:
     prepare:
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
             - name: Create environment file
               run: ./scripts/create-env-file.sh
     lint:
