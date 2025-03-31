@@ -20,11 +20,12 @@ concurrency:
 jobs:
     prepare:
         runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./frontend
         steps:
             -   name: Checkout Repository
                 uses: actions/checkout@v4
-            -   name: Move to frontend folder
-                run: cd frontend
             -   name: Detect package manager
                 id: detect-package-manager
                 run: |
@@ -52,6 +53,9 @@ jobs:
     lint:
         runs-on: ubuntu-latest
         needs: prepare
+        defaults:
+            run:
+                working-directory: ./frontend
         steps:
             - name: Check code format
               run: ${{ steps.detect-package-manager.outputs.runner }} npm run format:check
@@ -61,14 +65,21 @@ jobs:
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run test:check:coverage
             # - name: Check types integrity
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run type:check
-    build_and_deploy:
+    build:
         runs-on: ubuntu-latest
         needs: lint
+        defaults:
+            run:
+                working-directory: ./frontend
         steps:
             - name: Create environment file
               run: ./scripts/create-env-file.sh
             - name: Build project
               run: ${{ steps.detect-package-manager.outputs.runner }} npm run build-only
+    deploy:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
