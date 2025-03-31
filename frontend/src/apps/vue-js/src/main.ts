@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import '../../../styles/main.sass';
+import '@swdbapp/styles';
 import AppWrapper from '@/components/app-wrapper.vue';
 import router from '@/router';
 
