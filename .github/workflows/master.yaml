@@ -43,7 +43,7 @@ jobs:
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run test:check:coverage
             # - name: Check types integrity
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run type:check
-    build:
+    build_and_deploy:
         runs-on: ubuntu-latest
         needs: lint
         steps:
@@ -77,10 +77,6 @@ jobs:
               run: ./scripts/create-env-file.sh
             - name: Build project
               run: ${{ steps.detect-package-manager.outputs.runner }} npm run build-only
-    deploy:
-        runs-on: ubuntu-latest
-        needs: build
-        steps:
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
