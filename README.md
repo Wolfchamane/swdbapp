@@ -77,26 +77,10 @@ For the specific VueJS application solution:
 
 ## Architecture
 
-Description of main folders:
-
-```bash
-.
-├── src
-│   ├── apps          # Each technology application
-│   ├── components    # Each technology components used within applications
-│   ├── features      # Single features
-│   ├── infra         # Infra solution
-│   ├── styles        # Application & components styles
-│   ├── types         # Cross shared types
-│   └── utils         # Cross shared utilities
-└── www               # Distribution directory
-
-```
-
 The main architecture follows [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 and [Atomic Design](https://atomicdesign.bradfrost.com/).
 
-## Database API
+## Database
 
 I am going to use data and information obtained from https://swapi.dev.
 
@@ -109,4 +93,16 @@ I am going to use data and information obtained from https://swapi.dev.
 > additional sources of information, to know:
 >
 > - https://starwars-databank.vercel.app/
-> - https://starwars.com
+
+> [!NOTE]
+>
+> **2025-03-31**
+>
+> Is **impossible** to obtain fine information merging two (2) different APIs:
+> - https://swapi.dev is deprecated and the data is quite outdated.
+> - https://starwars-databank.vercel.app/ contains an updated version of data, but is missing
+> some very basics for any operational API (full pagination control, searches, etc.).
+>
+> Therefore, it seems that I will need to create a DB of my own.
+> Is quite frustrating that LucasFilms Ltd. or Disney haven't published an API for this content.
+> My big concern so far is how to obtain reliable information and keep it updated "_easily_".
