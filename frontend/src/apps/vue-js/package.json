@@ -1,0 +1,35 @@
+{
+	"name": "@swdbapp/vue-js",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "run-p type:check build-only",
+		"build-only": "vite build --emptyOutDir",
+		"format:check": "prettier --check --config prettier.config.js .",
+		"format:fix": "prettier --write --config prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .vue,.ts --config eslint.config.js",
+		"lint:js:fix": "eslint  --ext .vue,.ts --fix --config eslint.config.js",
+		"dev": "vite",
+		"test:unit": "vitest run --passWithNoTests",
+		"test:unit:coverage": "vitest run --passWithNoTests --coverage",
+		"test:unit:watch": "vitest",
+		"type:check": "vue-tsc --build --force"
+	},
+	"devDependencies": {
+		"@swdbapp/characters": "file:../../features/characters",
+		"@fortawesome/vue-fontawesome": "^3.0.8",
+		"@vitejs/plugin-vue": "^5.2.1",
+		"@vue/eslint-config-prettier": "^10.2.0",
+		"@vue/eslint-config-typescript": "^14.5.0",
+		"@vue/test-utils": "^2.4.6",
+		"@vue/tsconfig": "^0.7.0",
+		"eslint-plugin-vue": "~10.0.0",
+		"jsdom": "^26.0.0",
+		"vite-plugin-vue-devtools": "^7.7.2",
+		"vite-svg-loader": "^5.1.0",
+		"vue": "^3.5.13",
+		"vue-router": "^4.5.0",
+		"vue-tsc": "^2.2.8"
+	}
+}
