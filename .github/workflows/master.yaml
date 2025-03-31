@@ -23,6 +23,8 @@ jobs:
         steps:
             -   name: Checkout Repository
                 uses: actions/checkout@v4
+            -   name: Move to frontend folder
+                run: cd frontend
             -   name: Detect package manager
                 id: detect-package-manager
                 run: |
@@ -45,8 +47,6 @@ jobs:
                 with:
                     node-version: '22'
                     cache: ${{ steps.detect-package-manager.outputs.manager }}
-            -   name: Move to frontend folder
-                run: cd frontend
             -   name: Install dependencies
                 run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
     lint:
