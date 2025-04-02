@@ -12,6 +12,7 @@ npm*
 .dbdata
 *.insert.sql
 
-## Project files
+## Project files & folders
+db-data
 www/**/vue-js
 **/.env*
