@@ -1,0 +1,27 @@
+{
+	"name": "@swdbapp/backend",
+	"private": true,
+	"scripts": {
+		"build-only": "tsc",
+		"start": "node dist/server.js",
+		"dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+		"prestart": "npm run build-only",
+		"format:check": "prettier --check --config ../prettier.config.js .",
+		"format:fix": "prettier --write --config ../prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .mjs --config ../eslint.config.js",
+		"lint:js:fix": "eslint  --ext .mjs --fix --config ../eslint.config.js"
+	},
+	"devDependencies": {
+		"nodemon": "~3.1.9",
+		"@dotenvx/dotenvx": "~1.39.0",
+		"@types/pg": "~8.11.11",
+		"@types/node": "~22.13.17",
+		"@types/express": "~5.0.1",
+		"express": "~5.1.0",
+		"pg": "~8.14.1",
+		"pg-format": "~1.0.4",
+		"typescript": "~5.8.2",
+		"ts-node": "~10.9.2"
+	}
+}
