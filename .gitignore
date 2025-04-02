@@ -9,10 +9,11 @@ npm*
 *.zip
 
 ## Database
-.dbdata
+**/.dbdata
 *.insert.sql
 
 ## Project files & folders
-db-data
-www/**/vue-js
+**/dist
 **/.env*
+/db-data/
+www/**/vue-js
