@@ -3,7 +3,7 @@ import generator from './_generator.mjs';
 import nullableValue from '../utils/nullable-value.mjs';
 
 const valueLine = ({ name = '', image = '', description = '' }) =>
-    `('${name}', ${nullableValue(image)}, ${nullableValue(description)})`;
+	`('${name}', ${nullableValue(image)}, ${nullableValue(description)})`;
 
 const fileTemplate = (values = []) =>
 	`INSERT INTO "eras" ("name", "image", "description") VALUES\n\t${values.join(',\n\t')};`;
