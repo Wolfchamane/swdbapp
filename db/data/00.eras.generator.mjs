@@ -1,4 +1,4 @@
-import source from '@swdbapp/data/eras.json' with { type: 'json' };
+import source from '../../db-data/eras.json' with { type: 'json' };
 import generator from './_generator.mjs';
 
 const valueLine = ({ name = '', image = '', description = '' }) => `('${name}', '${image}', '${description}')`;

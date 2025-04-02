@@ -1,4 +1,4 @@
-import source from '@swdbapp/data/titles.json' with { type: 'json' };
+import source from '../../db-data/titles.json' with { type: 'json' };
 import generator from './_generator.mjs';
 import scapeSingleQuotes from '../utils/scape-single-quotes.mjs';
 
