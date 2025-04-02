@@ -1,0 +1,3 @@
+[submodule "db-data"]
+	path = db-data
+	url = git@github.com:Wolfchamane/swdbapp-db-data.git
