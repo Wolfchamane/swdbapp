@@ -5,6 +5,7 @@
 	"private": true,
 	"description": "A showcase demo application inspired by Star Wars fictional universe",
 	"workspaces": [
+        "./db",
 		"./frontend/src/apps/vue-js",
 		"./frontend/src/components/vue-js",
 		"./frontend/src/features/*",
@@ -14,6 +15,7 @@
 		"./frontend/src/utils"
 	],
 	"scripts": {
+        "preinstall": "git submodule update --init --recursive",
 		"db:build:inserts": "node db/main.mjs",
 		"build:docker:db": "rm -fr ./db/.dbdata && docker-compose down --volumes && docker-compose up",
 		"build-only": "npm run build-only --workspaces --if-present",
