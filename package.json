@@ -6,6 +6,8 @@
 	"description": "A showcase demo application inspired by Star Wars fictional universe",
 	"workspaces": [
         "./db",
+        "./backend",
+        "./infra/http",
 		"./frontend/src/apps/vue-js",
 		"./frontend/src/components/vue-js",
 		"./frontend/src/features/*",
