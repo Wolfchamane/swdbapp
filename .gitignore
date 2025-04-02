@@ -1,8 +1,17 @@
+## Node & NPM
 node_modules
 npm*
+
+## System files, editors & general
 .DS_Store
 .idea
 .vscode
-www/**/vue-js
 *.zip
+
+## Database
+.dbdata
+*.insert.sql
+
+## Project files
+www/**/vue-js
 **/.env*
