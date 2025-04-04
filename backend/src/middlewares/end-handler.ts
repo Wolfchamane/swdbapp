@@ -4,15 +4,22 @@ import type { AppError, AppResponse } from '../types/';
 export const endHandler =
 	() =>
 	(err: AppError | AppResponse, req: Request, res: Response, next: NextFunction): void => {
+		// console.log('[DEBUG] Request processed!');
+		const message: string = err.message || 'Internal Server Error';
 		res.statusCode = err.status || 500;
-		if (res.statusCode === 200) {
-			res.end(err.message);
-		} else {
-			res.end(
-				JSON.stringify({
-					status: err.status,
-					message: err.message || 'Internal Server Error',
-				})
-			);
+
+		switch (res.statusCode) {
+			case 200:
+				res.end(message);
+				break;
+			default:
+				// console.log(`[${res.statusCode}] ${message}`);
+				res.end(
+					JSON.stringify({
+						status: res.statusCode,
+						message,
+					})
+				);
+				break;
 		}
 	};
