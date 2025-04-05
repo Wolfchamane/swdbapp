@@ -1,4 +1,3 @@
-import '@dotenvx/dotenvx/config';
 import { Pool, type PoolConfig, type QueryConfig, type QueryResult } from 'pg';
 
 const config: PoolConfig = {

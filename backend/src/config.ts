@@ -1,5 +1,3 @@
-import '@dotenvx/dotenvx/config';
-
 export interface AppConfiguration {
 	allowOrigin: string;
 	port: number;
