@@ -1,5 +1,5 @@
 import source from '../../db-data/titles.json' with { type: 'json' };
-import generator from './_generator.mjs';
+import generator from '../utils/generator.mjs';
 import scapeSingleQuotes from '../utils/scape-single-quotes.mjs';
 import nullableValue from '../utils/nullable-value.mjs';
 

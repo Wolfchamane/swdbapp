@@ -1,5 +1,9 @@
 {
-	"name": "@swdbapp/db",
+	"name": "@swdbapp/database",
+    "version": "1.0.0",
+    "license": "UNLICENSED",
+    "description": "Star Wars ® DB Explorer application solution to build DB content",
+    "author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
 	"private": true,
 	"main": "main.mjs",
 	"type": "module",

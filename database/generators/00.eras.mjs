@@ -1,5 +1,5 @@
 import source from '../../db-data/eras.json' with { type: 'json' };
-import generator from './_generator.mjs';
+import generator from '../utils/generator.mjs';
 import nullableValue from '../utils/nullable-value.mjs';
 
 const valueLine = ({ name = '', image = '', description = '' }) =>
