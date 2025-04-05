@@ -6,9 +6,10 @@
 	"description": "Backend solution for Star Wars ® DB Explorer application",
 	"private": true,
 	"scripts": {
-		"build-only": "tsc",
-		"start": "node dist/server.js",
-		"dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+        "build": "tsc",
+		"start": "dotenvx run -f ../environments/.env.production -- node dist/server.js",
+		"dev:env:local": "dotenvx run -f ../environments/.env.local -- 'ts-node' src/server.ts",
+		"dev": "nodemon --watch 'src/**/*.ts' --exec npm run dev:env:local",
 		"prestart": "npm run build-only",
 		"format:check": "prettier --check --config ../prettier.config.js .",
 		"format:fix": "prettier --write --config ../prettier.config.js .",
