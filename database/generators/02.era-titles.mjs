@@ -1,4 +1,4 @@
-import source from '../../db-data/era_titles.json' with { type: 'json' };
+import source from '../../database-data/era_titles.json' with { type: 'json' };
 import generator from '../utils/generator.mjs';
 import scapeSingleQuotes from '../utils/scape-single-quotes.mjs';
 
