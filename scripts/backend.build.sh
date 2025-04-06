@@ -1,22 +1,33 @@
 #!/usr/bin/env bash
 
-if ! [ -f "$(pwd)/.env" ]; then
-    echo "Could not found '$(pwd)/.env' file!"
-    exit 1
+CI_FLAG=$1;
+LOCAL_ENV_FILE="$(pwd)/environments/.env.local";
+BACKEND_DOCKER_FILE="$(pwd)/backend/Dockerfile";
+
+echo "CI_FLAG=$CI_FLAG";
+
+if ! [ -f "$BACKEND_DOCKER_FILE" ]; then
+    echo "Could not found '$BACKEND_DOCKER_FILE' file!";
+    exit 1;
 fi
 
-# Read each line of the .env file
-while IFS='=' read -r key value; do
-  # Skip comments and empty lines
-  if [[ $key == \#* ]] || [[ -z $key ]]; then
-    continue
-  fi
-  export $key="$value"
-done < "$(pwd)/.env"
+if [ -z "$CI_FLAG" ]; then
+    echo "Loading local environment variables";
 
-if ! [ -f "$(pwd)/docker/Dockerfile.backend" ]; then
-    echo "Could not found '$(pwd)/docker/Dockerfile.backend' file!"
-    exit 1
+    if ! [ -f "$LOCAL_ENV_FILE" ]; then
+        echo "Could not found '$LOCAL_ENV_FILE' file!";
+        exit 1;
+    fi
+
+    # Read each line of the .env file
+    while IFS='=' read -r key value; do
+      # Skip comments and empty lines
+      if [[ $key == \#* ]] || [[ -z $key ]]; then
+        continue;
+      fi
+      echo "Defining $key=$value";
+      export $key="$value";
+    done < "$LOCAL_ENV_FILE";
 fi
 
 docker build -D -t swdbapp-backend-image \
@@ -27,5 +38,5 @@ docker build -D -t swdbapp-backend-image \
     --build-arg PG_HOST="${PGHOST}" \
     --build-arg PG_PORT="${PGPORT}" \
     --build-arg PG_DATABASE="${PGDATABASE}" \
-    -f "$(pwd)/docker/Dockerfile.backend" \
-    "$(pwd)"
+    -f "${BACKEND_DOCKER_FILE}" \
+    .
