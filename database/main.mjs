@@ -6,16 +6,16 @@ import path from 'node:path';
 const generatorsFolderPath = path.resolve(process.cwd(), 'database', 'generators');
 
 (async () => {
-    if (!existsSync(generatorsFolderPath) || !statSync(generatorsFolderPath).isDirectory()) {
-        console.error('[@swdbapp/database] DB generators folder does not exists!');
-        process.exit(1);
-    }
+	if (!existsSync(generatorsFolderPath) || !statSync(generatorsFolderPath).isDirectory()) {
+		console.error('[@swdbapp/database] DB generators folder does not exists!');
+		process.exit(1);
+	}
 
-    const generators = readdirSync(generatorsFolderPath);
-    for (const generator of generators) {
-        const generatorFilePath = path.resolve(generatorsFolderPath, generator);
-        await import(generatorFilePath);
-    }
+	const generators = readdirSync(generatorsFolderPath);
+	for (const generator of generators) {
+		const generatorFilePath = path.resolve(generatorsFolderPath, generator);
+		await import(generatorFilePath);
+	}
 
-    process.exit(0);
+	process.exit(0);
 })();

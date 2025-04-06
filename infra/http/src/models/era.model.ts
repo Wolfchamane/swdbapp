@@ -5,11 +5,11 @@ export interface EraModel {
 	name: string;
 	image: string;
 	description: string;
-    titles: Nullable<EraModelTitle[]>;
+	titles: Nullable<EraModelTitle[]>;
 }
 
 export interface EraModelTitle {
-    id: number;
-    title: string;
-    logo: string;
+	id: number;
+	title: string;
+	logo: string;
 }

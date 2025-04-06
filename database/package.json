@@ -1,9 +1,9 @@
 {
 	"name": "@swdbapp/database",
-    "version": "1.0.0",
-    "license": "UNLICENSED",
-    "description": "Star Wars ® DB Explorer application solution to build DB content",
-    "author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
+	"version": "1.0.0",
+	"license": "UNLICENSED",
+	"description": "Star Wars ® DB Explorer application solution to build DB content",
+	"author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
 	"private": true,
 	"main": "main.mjs",
 	"type": "module",
@@ -11,7 +11,11 @@
 		"format:check": "prettier --check --config ../prettier.config.js .",
 		"format:fix": "prettier --write --config ../prettier.config.js .",
 		"lint:check": "npm run lint:js:check",
-		"lint:js:check": "eslint  --ext .mjs --config ../eslint.config.js",
-		"lint:js:fix": "eslint  --ext .mjs --fix --config ../eslint.config.js"
+		"lint:js:check": "eslint  --ext .mjs",
+		"lint:js:fix": "eslint  --ext .mjs --fix"
+	},
+	"devDependencies": {
+		"eslint": "^9.24.0",
+		"prettier": "^3.5.3"
 	}
 }

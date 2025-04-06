@@ -7,6 +7,6 @@
 	});
 </script>
 
-<template lang='pug'>
+<template lang="pug">
     .loading-bar(:class='{ "loading-bar--visible": isVisible }')
 </template>

@@ -2,8 +2,8 @@ import type { ListInput, ListOutput, DescribeInput, EraModel } from '@swdbapp/in
 import type { Era, EraDetails } from '../types';
 
 export interface ErasPorts {
-    list(input?: ErasListPortInput): Promise<ErasListPortOutput>;
-    describe(input: ErasDescribePortInput): Promise<ErasDescribePortOutput>;
+	list(input?: ErasListPortInput): Promise<ErasListPortOutput>;
+	describe(input: ErasDescribePortInput): Promise<ErasDescribePortOutput>;
 }
 
 export type ErasListPortInput = ListInput<EraModel>;

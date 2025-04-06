@@ -1,10 +1,22 @@
 {
-    "name": "@swdbapp/types",
-    "private": true,
-    "author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
-    "description": "Global TS types for SWDBApp project",
-    "license": "UNLICENSED",
-    "main": "index.ts",
-    "types": "index.d.ts",
-    "type": "module"
+	"name": "@swdbapp/types",
+	"private": true,
+	"author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
+	"description": "Global TS types for SWDBApp project",
+	"license": "UNLICENSED",
+	"main": "index.ts",
+	"types": "index.d.ts",
+	"type": "module",
+	"scripts": {
+		"format:check": "prettier --check --config ../prettier.config.js .",
+		"format:fix": "prettier --write --config ../prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .mjs --config ../eslint.config.js",
+		"lint:js:fix": "eslint  --ext .mjs --fix --config ../eslint.config.js"
+	},
+	"devDependencies": {
+		"eslint": "^9.24.0",
+		"prettier": "^3.5.3",
+		"typescript-eslint": "^8.29.0"
+	}
 }

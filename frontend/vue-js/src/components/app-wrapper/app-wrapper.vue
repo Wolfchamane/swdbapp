@@ -2,16 +2,16 @@
 	import { capitalize } from '@amjs/js-utils';
 	import { faCircleInfo, faCircleLeft, faCircleXmark, faGear } from '@fortawesome/free-solid-svg-icons';
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-	import { type ComputedRef, type Ref, computed, ref, provide } from 'vue';
+	import { type ComputedRef, type Ref, computed, provide, ref } from 'vue';
 	import { RouterView, useRoute, useRouter } from 'vue-router';
 	import LICENSE from '../../../../../LICENSE?raw';
 	import { AppMenu } from '../app-menu';
-    import { LoadingBar } from '../loading-bar';
+	import { LoadingBar } from '../loading-bar';
 
 	const ROUTER = useRouter();
 	const currentRoute = useRoute();
 	const showLicense: Ref<boolean> = ref(false);
-    const isLoading: Ref<boolean> = ref(false);
+	const isLoading: Ref<boolean> = ref(false);
 
 	const isHomeView: ComputedRef<boolean> = computed(() => {
 		return currentRoute.name === 'home-view';
@@ -27,9 +27,9 @@
 		ROUTER.back();
 	};
 
-    const toggleLoading = () => (isLoading.value = !isLoading.value);
+	const toggleLoading = () => (isLoading.value = !isLoading.value);
 
-    provide('toggleLoading', toggleLoading);
+	provide('toggleLoading', toggleLoading);
 </script>
 
 <template lang="pug">

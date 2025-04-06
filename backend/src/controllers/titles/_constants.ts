@@ -15,4 +15,3 @@ export const TITLES_TABLE_FIELD_PRODUCERS: string = 'producers';
 export const TITLES_TABLE_FIELD_ACTORS: string = 'actors';
 export const TITLES_TABLE_FIELD_PLOT: string = 'plot';
 export const TITLES_TABLE_FIELD_OPENING_CRAWL: string = 'opening_crawl';
-

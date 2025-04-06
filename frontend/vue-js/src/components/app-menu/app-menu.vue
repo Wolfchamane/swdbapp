@@ -19,7 +19,7 @@
 	};
 
 	const isActive = (route: RouteLocation): boolean => {
-		return (new RegExp(route.path)).test(currentRoute.path);
+		return new RegExp(route.path).test(currentRoute.path);
 	};
 </script>
 
