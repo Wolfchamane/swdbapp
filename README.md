@@ -49,20 +49,26 @@ _So I have decided to create this web application as kind of "portfolio" showcas
 I will try to create the same web application using different Frontend technologies, to know:
 
 |                        FE Solution                        |   Status    | E.T.A.  |
-| :-------------------------------------------------------: | :---------: | :-----: |
-| [VueJS](https://amartinez.dev/software/swdbapp/vue-js/#/) | In Progress |  2025   |
+| :-------------------------------------------------------: | :---------: |:-------:|
+| [VueJS](https://amartinez.dev/software/swdbapp/vue-js/#/) | In Progress | 2025 Q4 |
 |                          ReactJS                          |    ToDo     | Unknown |
 |                WebComponents (lit-element)                |    ToDo     | Unknown |
 |                           Other                           |     ---     |   ---   |
 
-The application will be a consultative web application of the project https://starwars-databank.vercel.app/,
-a public backend API based on Star Wars ® fictional universe.
+The application will be a consultative web application of a **private** backend API based on Star Wars ® fictional universe.
+
+> [!IMPORTANT]
+> **I don't have any purpose on making the API public**.
+>
+> Please, don't ask for API keys or similar.
 
 ## Technologies
 
 This project has been developed using the following technologies:
 
-- [Typescript](https://www.typescriptlang.org/) for developing each ES6+ code.
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) as primary syntax.
+- [Typescript](https://www.typescriptlang.org/) for developing each enriched Javascript code.
+- [Pug/Jade](https://pugjs.org/) for developing HTML templates.
 - [SaSS](https://sass-lang.com/) for developing the CSS styles.
 - [ViteJS](https://vite.dev/) as bundler utility.
 - [Vitest](https://vitest.dev/) for unitary testing.
@@ -70,15 +76,17 @@ This project has been developed using the following technologies:
 - [prettier](https://prettier.io/) to format code.
 - ?? for e2e testing.
 
-For the specific VueJS application solution:
+For the specific **VueJS** application solution:
 
 - [VueJS](https://vuejs.org/)
 - [vue-router](https://router.vuejs.org/)
 
 ## Architecture
 
-The main architecture follows [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-and [Atomic Design](https://atomicdesign.bradfrost.com/).
+The main architecture follows a "_custom_" variation of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and the principles/patterns of
+- [Atomic Design](https://atomicdesign.bradfrost.com/).
+- [KiSS](https://en.wikipedia.org/wiki/KISS_principle)
+- [SOLID](https://en.wikipedia.org/wiki/SOLID)
 
 ## Database
 
