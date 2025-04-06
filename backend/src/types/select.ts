@@ -7,6 +7,6 @@ export interface SelectAllInput {
 	search?: string;
 }
 
-export interface SelectOneInput {
+export interface SelectOneInput extends SelectAllInput {
 	id: string;
 }

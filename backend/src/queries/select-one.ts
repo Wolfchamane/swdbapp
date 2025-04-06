@@ -1,11 +1,12 @@
-import type { SelectOneInput } from '../types';
+import type { SelectOneInput, SelectAllInput } from '../types';
 import type { QueryConfig } from 'pg';
-import format from '../utils/pg-format-importer';
+import { selectAllQuery } from './select-all';
 
-export const selectOneQuery = async ({ id }: SelectOneInput, tableName: string): Promise<QueryConfig> => {
-	const formatter = await format();
+export const selectOneQuery = async ({ id, ...rest }: SelectOneInput, tableName: string, tableProps?: string[]): Promise<QueryConfig> => {
+	const selectAllInput: SelectAllInput = {
+        ...rest,
+        search: id,
+    };
 
-	return {
-		text: formatter('SELECT * FROM %I WHERE id = %s;', tableName, id),
-	};
+    return await selectAllQuery(selectAllInput, tableName, (tableProps || ['*']));
 };
