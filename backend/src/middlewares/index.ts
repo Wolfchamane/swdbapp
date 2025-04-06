@@ -1,4 +1,4 @@
 export * from './auth';
-export * from './cors';
+export { default as cors } from './cors';
 export * from './end-handler';
 export * from './json';
