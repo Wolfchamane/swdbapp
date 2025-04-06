@@ -1,4 +1,4 @@
-import baseConfig from '../prettier.config.js';
+import baseConfig from '../../prettier.config.js';
 
 export default {
 	...baseConfig,
@@ -6,4 +6,5 @@ export default {
 	importOrder: ['^.+/(.*).(sa|sc|c)ss$', '^@?(vue|react).+', '^@swdbapp/(.*)$', '^@/(.*)', '^../(.*)', '^./'],
 	importOrderSeparation: false,
 	importOrderSortSpecifiers: true,
+	vueIndentScriptAndStyle: true,
 };

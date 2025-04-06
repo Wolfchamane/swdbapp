@@ -1,0 +1,55 @@
+@use '@/styles/lib/colors'
+$component:'app-menu-item'
+
+.app-menu-item
+    transition: all .2s ease-in-out
+
+    &__title
+        color: colors.color('background', 1)
+        text-decoration: none
+        text-transform: none
+
+    &:hover
+        border-color: var(--color-grey-300)
+
+        &__title
+            color: var(--color-grey-300)
+
+    &--disabled
+        cursor: none
+        pointer-events: none
+
+    &__icon
+        margin: .5em 0
+        color: colors.color('background', 1)
+        font-size: 2em
+        fill: colors.color('background', 1)
+
+    &--active
+        border-color: colors.color('primary', 1) !important
+
+        .#{$component}__icon
+            color: colors.color('primary', 1) !important
+            fill: colors.color('primary', 1) !important
+
+        .#{$component}__title
+            color: colors.color('primary', 1) !important
+
+    &--expanded
+        .#{$component}__title
+            display: block
+            text-transform: uppercase
+            color: var(--color-grey-900)
+
+        .#{$component}--not-available
+            color: colors.color('white', 1)
+            background-color: colors.color('secondary', .5)
+
+    &:not(&--expanded)
+        border-color: colors.color('foreground', 1)
+
+        .#{$component}__title
+            border: 0
+            font-size: .75em
+
+
