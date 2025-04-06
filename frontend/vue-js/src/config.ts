@@ -4,8 +4,9 @@ export const setWindowConfiguration = (): void => {
 	const w = window as SWDBAppConfig;
 	if (w) {
         // @ts-ignore
-        const { VITE_API_HOST, VITE_API_PORT, VITE_API_PROTOCOL, VITE_API_KEY } = import.meta.env;
+        const { VITE_API_HOST, VITE_API_PORT, VITE_API_PROTOCOL, VITE_API_KEY, VITE_ASSETS_PATH } = import.meta.env;
 		w.swDBAppConfig = Object.freeze({
+            assetsPath: VITE_ASSETS_PATH,
             hostname: VITE_API_HOST,
             port: VITE_API_PORT,
             secure: VITE_API_PROTOCOL === 'https',
