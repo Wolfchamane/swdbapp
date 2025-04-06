@@ -16,6 +16,7 @@
 		"lint:js:fix": "eslint  --ext .mjs --fix --config ../../eslint.config.js"
 	},
 	"devDependencies": {
+		"@swdbapp/types": "file:../../types",
 		"eslint": "~9.23.0",
 		"prettier": "~3.5.3",
 		"typescript": "~5.4.5",
