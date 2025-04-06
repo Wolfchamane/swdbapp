@@ -24,6 +24,7 @@
 		"@swdbapp/core-feature": "file:../../features/core",
 		"@swdbapp/eras-feature": "file:../../features/eras",
 		"@swdbapp/infra-http": "file:../../infra/http",
+		"@swdbapp/types": "file:../../types",
 		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
 		"@tsconfig/node22": "^22.0.0",
 		"@types/jsdom": "^21.1.6",
