@@ -76,6 +76,16 @@ This project has been developed using the following technologies:
 - [prettier](https://prettier.io/) to format code.
 - ?? for e2e testing.
 
+For the database solution I am using:
+
+- [PostgresSQL](https://www.postgresql.org/)
+
+Backend solution will be developed using:
+
+- [NodeJS](https://nodejs.org/)
+- [ExpressJS](https://expressjs.com/)
+- [node-postgres](https://node-postgres.com/)
+
 For the specific **VueJS** application solution:
 
 - [VueJS](https://vuejs.org/)
