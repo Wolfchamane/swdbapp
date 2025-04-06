@@ -1,0 +1,10 @@
+{
+    "name": "@swdbapp/types",
+    "private": true,
+    "author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
+    "description": "Global TS types for SWDBApp project",
+    "license": "UNLICENSED",
+    "main": "index.ts",
+    "types": "index.d.ts",
+    "type": "module"
+}
