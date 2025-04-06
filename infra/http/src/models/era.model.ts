@@ -1,5 +1,6 @@
 export interface EraModel {
-    name: string;
-    image: string;
-    description: string;
+	id: number;
+	name: string;
+	image: string;
+	description: string;
 }

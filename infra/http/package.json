@@ -1,22 +1,28 @@
 {
-    "name": "@swdbapp/infra-http",
-    "version": "1.0.0",
-    "author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
-    "description": "HTTP Infra solution for Star Wars ® DB Explorer application",
-    "license": "UNLICENSED",
-    "private": true,
-    "type": "module",
-    "main": "index.ts",
-    "types": "index.d.ts",
-    "scripts": {
-        "format:check": "prettier --check --config ../../prettier.config.js .",
-        "format:fix": "prettier --write --config ../../prettier.config.js .",
-        "lint:check": "npm run lint:js:check",
-        "lint:js:check": "eslint  --ext .mjs --config ../../eslint.config.js",
-        "lint:js:fix": "eslint  --ext .mjs --fix --config ../../eslint.config.js"
-    },
-    "devDependencies": {
-        "eslint": "~9.23.0",
-        "prettier": "~3.5.3"
-    }
+	"name": "@swdbapp/infra-http",
+	"version": "1.0.0",
+	"author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
+	"description": "HTTP Infra solution for Star Wars ® DB Explorer application",
+	"license": "UNLICENSED",
+	"private": true,
+	"type": "module",
+	"main": "index.ts",
+	"types": "index.d.ts",
+	"scripts": {
+		"format:check": "prettier --check --config ../../prettier.config.js .",
+		"format:fix": "prettier --write --config ../../prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .mjs --config ../../eslint.config.js",
+		"lint:js:fix": "eslint  --ext .mjs --fix --config ../../eslint.config.js"
+	},
+	"devDependencies": {
+		"eslint": "~9.23.0",
+		"prettier": "~3.5.3",
+		"typescript": "~5.4.5",
+		"typescript-eslint": "~8.29.0"
+	},
+	"dependencies": {
+		"@amjs/js-utils": "^0.5.2",
+		"@swdbapp/core-feature": "file:../../features/core"
+	}
 }
