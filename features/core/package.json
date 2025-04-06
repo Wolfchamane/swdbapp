@@ -1,0 +1,21 @@
+{
+	"name": "@swdbapp/core-feature",
+	"private": true,
+	"main": "index.ts",
+	"types": "index.d.ts",
+	"type": "module",
+	"scripts": {
+		"format:check": "prettier --check --config ../../../prettier.config.js .",
+		"format:fix": "prettier --write --config ../../../prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .vue,.ts --config eslint.config.js",
+		"lint:js:fix": "eslint  --ext .vue,.ts --fix --config eslint.config.js"
+	},
+	"devDependencies": {
+		"@types/node": "~22.14.0",
+		"eslint": "~9.24.0",
+		"prettier": "~3.5.3",
+		"typescript": "~5.8.3",
+		"typescript-eslint": "~8.29.0"
+	}
+}
