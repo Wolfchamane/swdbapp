@@ -1,4 +1,4 @@
-import type { ErasHttpClient, EraModel, ListOutput, ListInput } from '@swdbapp/infra-http';
+import type { ErasHttpClient, EraModel, ListOutput, EraModelTitle} from '@swdbapp/infra-http';
 import type {
     ErasDescribePortInput,
     ErasDescribePortOutput,
@@ -6,22 +6,34 @@ import type {
     ErasListPortOutput,
     ErasPorts
 } from '../../application';
-import type { Era } from '../../types';
+import type { EraDetails, EraTitle } from '../../types';
+import type { Nullable } from '@swdbapp/types';
+import { provideAssetURL } from '@swdbapp/core-feature';
 
 export class ErasHttpAdapter
     implements ErasPorts {
 
     constructor(private readonly httpClient: ErasHttpClient) {}
 
-    private _mapEraModelFromInfraToApplication(era: EraModel): Era {
+    private _mapEraTitleModelFromInfraToApplication(titles: Nullable<EraModelTitle[]>): Nullable<EraTitle[]> {
+        return Array.isArray(titles)
+            ? titles.map((title: EraModelTitle) => ({
+                $id: title.id,
+                title: title.title,
+                logo: provideAssetURL(title.logo),
+            }))
+            : null;
+    }
+
+    private _mapEraModelFromInfraToApplication(era: EraModel): EraDetails {
         return {
             $id: era.id,
             name: era.name,
             description: era.description,
             logo: new URL(era.image),
+            titles: this._mapEraTitleModelFromInfraToApplication(era.titles),
         };
     }
-
 
     async list(input?: ErasListPortInput): Promise<ErasListPortOutput> {
         const response: ListOutput<EraModel> | Error = await this.httpClient.list(input);

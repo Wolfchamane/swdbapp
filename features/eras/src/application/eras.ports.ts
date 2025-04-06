@@ -1,5 +1,5 @@
 import type { ListInput, ListOutput, DescribeInput, EraModel } from '@swdbapp/infra-http';
-import type { Era } from '../types';
+import type { Era, EraDetails } from '../types';
 
 export interface ErasPorts {
     list(input?: ErasListPortInput): Promise<ErasListPortOutput>;
@@ -9,4 +9,4 @@ export interface ErasPorts {
 export type ErasListPortInput = ListInput<EraModel>;
 export type ErasListPortOutput = ListOutput<Era>;
 export type ErasDescribePortInput = DescribeInput;
-export type ErasDescribePortOutput = Era;
+export type ErasDescribePortOutput = EraDetails;
