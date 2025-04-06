@@ -5,6 +5,5 @@ export interface AppMenuItemProperties {
 	icon?: IconDefinition;
 	query?: Record<string, string | number>;
 	disabled?: boolean;
-	expanded: boolean;
 	active: boolean;
 }

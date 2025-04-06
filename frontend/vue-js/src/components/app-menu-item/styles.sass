@@ -35,21 +35,4 @@ $component:'app-menu-item'
         .#{$component}__title
             color: colors.color('primary', 1) !important
 
-    &--expanded
-        .#{$component}__title
-            display: block
-            text-transform: uppercase
-            color: var(--color-grey-900)
-
-        .#{$component}--not-available
-            color: colors.color('white', 1)
-            background-color: colors.color('secondary', .5)
-
-    &:not(&--expanded)
-        border-color: colors.color('foreground', 1)
-
-        .#{$component}__title
-            border: 0
-            font-size: .75em
-
 

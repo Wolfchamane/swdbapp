@@ -6,22 +6,28 @@
 
 	const ROUTER = useRouter();
 	const currentRoute = useRoute();
-	const menuItems: Ref<RouteLocation[]> = ref(routes.filter((route: RouteLocation) => route.path !== '/'));
+	const menuItems: Ref<RouteLocation[]> = ref(
+		routes
+			.filter((route: RouteLocation) => route.path !== '/')
+			.filter((route: RouteLocation) => {
+				return route.meta?.menuItem;
+			})
+	);
 
 	const navigateTo = (route: RouteLocation) => {
 		ROUTER.push({ ...route });
 	};
 
-	const isCurrentRoute = (route: RouteLocation): boolean => {
-		return route.name === currentRoute.name;
+	const isActive = (route: RouteLocation): boolean => {
+		return (new RegExp(route.path)).test(currentRoute.path);
 	};
 </script>
 
 <template lang="pug">
     aside.app-menu.mx-1
         app-menu-item(v-for="route in menuItems",
-            :key='`route-${route.name}`', :title='route.name' :icon='route.meta.icon', :expanded='isHomeView',
-            :active='isCurrentRoute(route)'
+            :key='`route-${route.name}`', :title='route.name' :icon='route.meta.icon',
+            :active='isActive(route)'
             @click='navigateTo(route)')/
 </template>
 

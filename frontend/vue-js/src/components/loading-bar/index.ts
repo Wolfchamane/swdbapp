@@ -1,2 +1,2 @@
-export * from './loading-bar.types';
+export * from './types';
 export { default as LoadingBar } from './loading-bar.vue';

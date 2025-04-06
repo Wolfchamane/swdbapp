@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-	import type { LoadingBarProperties } from './loading-bar.types';
+	import type { LoadingBarProperties } from './types';
 
 	withDefaults(defineProps<LoadingBarProperties>(), { isVisible: false });
 	defineOptions({
@@ -7,6 +7,6 @@
 	});
 </script>
 
-<template>
-	<div :class="['loading-bar', { 'loading-bar--visible': isVisible }]"></div>
+<template lang='pug'>
+    .loading-bar(:class='{ "loading-bar--visible": isVisible }')
 </template>

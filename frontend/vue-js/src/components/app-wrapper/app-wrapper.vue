@@ -2,14 +2,16 @@
 	import { capitalize } from '@amjs/js-utils';
 	import { faCircleInfo, faCircleLeft, faCircleXmark, faGear } from '@fortawesome/free-solid-svg-icons';
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-	import { type ComputedRef, type Ref, computed, ref } from 'vue';
+	import { type ComputedRef, type Ref, computed, ref, provide } from 'vue';
 	import { RouterView, useRoute, useRouter } from 'vue-router';
 	import LICENSE from '../../../../../LICENSE?raw';
 	import { AppMenu } from '../app-menu';
+    import { LoadingBar } from '../loading-bar';
 
 	const ROUTER = useRouter();
 	const currentRoute = useRoute();
 	const showLicense: Ref<boolean> = ref(false);
+    const isLoading: Ref<boolean> = ref(false);
 
 	const isHomeView: ComputedRef<boolean> = computed(() => {
 		return currentRoute.name === 'home-view';
@@ -24,6 +26,10 @@
 	const navigateBack = () => {
 		ROUTER.back();
 	};
+
+    const toggleLoading = () => (isLoading.value = !isLoading.value);
+
+    provide('toggleLoading', toggleLoading);
 </script>
 
 <template lang="pug">
@@ -37,10 +43,11 @@
             font-awesome-icon.mr-1.cursor-pointer(:icon='faCircleInfo', @click='toggleLicense')/
             font-awesome-icon.disabled(v-if='!isHomeView', :icon='faGear')
 
-    main.app-main.grow.overflow-y-auto.d-flex
+    loading-bar(:is-visible='isLoading')/
+    main.app-main.grow.d-flex.h-100.overflow-hidden
         app-menu/
 
-        .p-1.grow
+        .p-1.grow.overflow-y-auto
             router-view(v-slot='{ Component }')
                 transition(name='fade')
                     component(:is='Component')
