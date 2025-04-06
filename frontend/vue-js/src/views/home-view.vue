@@ -1,5 +1,5 @@
 <script lang="ts" setup></script>
 
 <template lang="pug">
-    h1 Home View
+    h1 Welcome!
 </template>
