@@ -1,5 +1,10 @@
 $text-alignment: start, end, center, justify
+$text-modifiers: uppercase, lowercase, capitalize, underline
 
 @each $alignment in $text-alignment
     .ta-#{$alignment}
         text-align: #{$alignment}
+
+@each $modifier in $text-modifiers
+    .text-#{$modifier}
+        text-transform: #{$modifier}
