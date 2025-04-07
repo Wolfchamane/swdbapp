@@ -16,4 +16,5 @@ npm*
 **/dist
 **/.env*
 database-data/
+www/**/assets/
 www/**/vue-js
