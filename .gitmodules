@@ -2,3 +2,8 @@
 	path = database-data
 	url = git@github.com:Wolfchamane/swdbapp-database-data.git
 	branch = master
+
+[submodule "swdbapp-assets"]
+	path = www/software/swdbapp/assets
+	url = git@github.com:Wolfchamane/swdbapp-assets.git
+	branch = master
