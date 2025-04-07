@@ -16,13 +16,21 @@ ENV PGUSER=${PG_USER}
 ENV PGPASSWORD=${PG_PASSWORD}
 ENV PGDATABASE=${PG_DATABASE}
 
+WORKDIR /usr/src/types
+COPY ./types ./
+RUN npm i
+
+WORKDIR /usr/src/features/core
+COPY ./features/core ./
+RUN npm i
+
 WORKDIR /usr/src/infra/http
 COPY ./infra/http ./
-RUN npm ci
+RUN npm i
 
 WORKDIR /usr/src/app
 COPY ./backend ./
-RUN npm ci
+RUN npm i
 
 EXPOSE 3000
 

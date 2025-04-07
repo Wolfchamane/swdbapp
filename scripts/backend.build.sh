@@ -1,21 +1,19 @@
 #!/usr/bin/env bash
 
-CI_FLAG=$1;
-LOCAL_ENV_FILE="$(pwd)/environments/.env.local";
+ENV=$1
+ENVIRONMENT_FILE="$(pwd)/environments/.env.${ENV}";
 BACKEND_DOCKER_FILE="$(pwd)/backend/Dockerfile";
-
-echo "CI_FLAG=$CI_FLAG";
 
 if ! [ -f "$BACKEND_DOCKER_FILE" ]; then
     echo "Could not found '$BACKEND_DOCKER_FILE' file!";
     exit 1;
 fi
 
-if [ -z "$CI_FLAG" ]; then
-    echo "Loading local environment variables";
+if [ "${ENV}" == "development" ] || [ "${ENV}" == "local" ]; then
+    echo "Loading environment variables";
 
-    if ! [ -f "$LOCAL_ENV_FILE" ]; then
-        echo "Could not found '$LOCAL_ENV_FILE' file!";
+    if ! [ -f "$ENVIRONMENT_FILE" ]; then
+        echo "Could not found '$ENVIRONMENT_FILE' file!";
         exit 1;
     fi
 
@@ -25,12 +23,12 @@ if [ -z "$CI_FLAG" ]; then
       if [[ $key == \#* ]] || [[ -z $key ]]; then
         continue;
       fi
-      echo "Defining $key=$value";
       export $key="$value";
-    done < "$LOCAL_ENV_FILE";
+    done < "$ENVIRONMENT_FILE";
 fi
 
 docker build -D -t swdbapp-backend-image \
+    --platform=linux/amd64 \
     --build-arg BACKEND_ACCEPT_ORIGIN="${BACKEND_ACCEPT_ORIGIN}" \
     --build-arg BACKEND_PORT="${BACKEND_PORT}" \
     --build-arg PG_USER="${PGUSER}" \

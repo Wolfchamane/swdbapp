@@ -8,8 +8,8 @@
 	"scripts": {
 		"build": "tsc",
 		"start": "node dist/server.js",
-		"dev:env:local": "dotenvx run -f ../environments/.env.local -- 'ts-node' src/server.ts",
-		"dev": "nodemon --watch 'src/**/*.ts' --exec npm run dev:env:local",
+		"dev:env:development": "dotenvx run -f ../environments/.env.development -- 'ts-node' src/server.ts",
+		"dev": "nodemon --watch 'src/**/*.ts' --exec npm run dev:env:development",
 		"prestart": "npm run build",
 		"format:check": "prettier --check --config ../prettier.config.js .",
 		"format:fix": "prettier --write --config ../prettier.config.js .",
@@ -27,6 +27,7 @@
 		"express": "~5.1.0",
 		"pg": "~8.14.1",
 		"pg-format": "~1.0.4",
-		"nodemon": "~3.1.9"
-	}
+		"nodemon": "~3.1.9",
+        "typescript": "~5.8.3"
+    }
 }
