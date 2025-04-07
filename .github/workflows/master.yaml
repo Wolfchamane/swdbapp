@@ -5,18 +5,18 @@ on:
         branches:
             - master
 
-environment:
-    PGUSER: ${{ secrets.POSTGRES_USER }}
-    PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-    PGHOST: ${{ secrets.PG_HOST }}
-    PGPORT: 5432
-    PGDATABASE: ${{ secrets.POSTGRES_DB }}
-    BACKEND_ACCEPT_ORIGIN: https://wolfchamane.com
-    BACKEND_PORT: 3000
-    VITE_API_KEY: ${{ secrets.API_KEY }}
-    FTP_SERVER: ${{ secrets.FTP_SERVER }}
-    FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-    FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+# environment:
+#     PGUSER: ${{ secrets.POSTGRES_USER }}
+#     PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+#     PGHOST: ${{ secrets.PG_HOST }}
+#     PGPORT: 5432
+#     PGDATABASE: ${{ secrets.POSTGRES_DB }}
+#     BACKEND_ACCEPT_ORIGIN: https://wolfchamane.com
+#     BACKEND_PORT: 3000
+#     VITE_API_KEY: ${{ secrets.API_KEY }}
+#     FTP_SERVER: ${{ secrets.FTP_SERVER }}
+#     FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+#     FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
 
 jobs:
     lint:
@@ -60,27 +60,4 @@ jobs:
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run test:check:coverage
             # - name: Check types integrity
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run type:check
-    create_env_file:
-        runs-on: ubuntu-latest
-        needs: lint
-        steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v4
-              with:
-                  token: ${{ secrets.SWDBAPP_SSH_PAT }}
-                  submodules: 'recursive'
-
-            - name: Create environment file
-              run: |
-                echo "PGUSER=${PGUSER}" >> ./environments/.env
-                echo "PGPASSWORD=${PGPASSWORD}" >> ./environments/.env
-                echo "PGHOST=${PGHOST}" >> ./environments/.env
-                echo "PGPORT=${PGPORT}" >> ./environments/.env
-                echo "PGDATABASE=${PGDATABASE}" >> ./environments/.env
-                echo "BACKEND_ACCEPT_ORIGIN=${BACKEND_ACCEPT_ORIGIN}" >> ./environments/.env
-                echo "BACKEND_PORT=${BACKEND_PORT}" >> ./environments/.env
-                echo "VITE_API_KEY=${VITE_API_KEY}" >> ./environments/.env
-                echo "FTP_SERVER=${FTP_SERVER}" >> ./environments/.env
-                echo "FTP_USERNAME=${FTP_USERNAME}" >> ./environments/.env
-                echo "FTP_PASSWORD=${FTP_PASSWORD}" >> ./environments/.env
 
