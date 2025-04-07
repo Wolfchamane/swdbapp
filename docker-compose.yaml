@@ -5,7 +5,7 @@ services:
         attach: false
         restart: 'always'
         env_file:
-            -   ./environments/.env.development
+            -   ./environments/.env
         ports:
             - 5432:5432
         platform: linux/arm64
@@ -18,7 +18,7 @@ services:
         depends_on:
             -   swdbapp-database
         env_file:
-            -   ./environments/.env.development
+            -   ./environments/.env
         platform: linux/arm64
         build:
             context: .
