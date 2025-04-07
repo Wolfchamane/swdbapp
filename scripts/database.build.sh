@@ -9,7 +9,7 @@ if ! [ -f "$DATABASE_DOCKER_FILE" ]; then
     exit 1;
 fi
 
-if [ "${ENV}" == "development" ] || [ "${ENV}" == "local" ]; then
+if [ "${ENV}" != "production" ]; then
     echo "Loading environment variables";
 
     if ! [ -f "$ENVIRONMENT_FILE" ]; then
@@ -28,5 +28,6 @@ if [ "${ENV}" == "development" ] || [ "${ENV}" == "local" ]; then
 fi
 
 docker build -D -t wolfchamane/swdbapp:swdbapp-database \
+    --platform=linux/amd64,linux/arm64 \
     -f "${DATABASE_DOCKER_FILE}" \
     .

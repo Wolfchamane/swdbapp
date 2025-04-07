@@ -9,7 +9,7 @@ if ! [ -f "$DATABASE_DOCKER_FILE" ]; then
     exit 1;
 fi
 
-if [ "${ENV}" == "development" ] || [ "${ENV}" == "local" ]; then
+if [ "${ENV}" != "production" ]; then
     echo "Loading environment variables";
 
     if ! [ -f "$ENVIRONMENT_FILE" ]; then

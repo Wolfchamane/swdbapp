@@ -28,7 +28,7 @@ if [ "${ENV}" == "development" ] || [ "${ENV}" == "local" ]; then
 fi
 
 docker build -D -t wolfchamane/swdbapp:swdbapp-backend \
-    --platform=linux/amd64 \
+    --platform=linux/amd64,linux/arm64 \
     --build-arg BACKEND_ACCEPT_ORIGIN="${BACKEND_ACCEPT_ORIGIN}" \
     --build-arg BACKEND_PORT="${BACKEND_PORT}" \
     --build-arg PG_USER="${PGUSER}" \
