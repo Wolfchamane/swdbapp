@@ -15,6 +15,4 @@ npm*
 ## Project files & folders
 **/dist
 **/.env*
-database-data/
-www/**/assets/
 www/**/vue-js
