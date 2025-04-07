@@ -13,9 +13,5 @@
 		"lint:check": "npm run lint:js:check",
 		"lint:js:check": "eslint  --ext .mjs",
 		"lint:js:fix": "eslint  --ext .mjs --fix"
-	},
-	"devDependencies": {
-		"eslint": "^9.24.0",
-		"prettier": "^3.5.3"
 	}
 }

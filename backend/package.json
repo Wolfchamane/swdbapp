@@ -17,21 +17,16 @@
 		"lint:js:check": "eslint  --ext .mjs --config ../eslint.config.js",
 		"lint:js:fix": "eslint  --ext .mjs --fix --config ../eslint.config.js"
 	},
-	"devDependencies": {
+	"dependencies": {
 		"@dotenvx/dotenvx": "~1.39.0",
 		"@swdbapp/infra-http": "file:../infra/http",
-		"@types/cors": "^2.8.17",
+		"@types/cors": "~2.8.17",
 		"@types/express": "~5.0.1",
-		"@types/node": "~22.13.17",
 		"@types/pg": "~8.11.11",
-		"cors": "^2.8.5",
-		"eslint": "~9.23.0",
+		"cors": "~2.8.5",
 		"express": "~5.1.0",
-		"nodemon": "~3.1.9",
 		"pg": "~8.14.1",
 		"pg-format": "~1.0.4",
-		"prettier": "~3.5.3",
-		"ts-node": "~10.9.2",
-		"typescript": "~5.8.2"
+		"nodemon": "~3.1.9"
 	}
 }

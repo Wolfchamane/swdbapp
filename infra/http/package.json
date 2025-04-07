@@ -15,15 +15,9 @@
 		"lint:js:check": "eslint  --ext .mjs --config ../../eslint.config.js",
 		"lint:js:fix": "eslint  --ext .mjs --fix --config ../../eslint.config.js"
 	},
-	"devDependencies": {
-		"@swdbapp/types": "file:../../types",
-		"eslint": "~9.23.0",
-		"prettier": "~3.5.3",
-		"typescript": "~5.4.5",
-		"typescript-eslint": "~8.29.0"
-	},
 	"dependencies": {
 		"@amjs/js-utils": "^0.5.2",
-		"@swdbapp/core-feature": "file:../../features/core"
+		"@swdbapp/core-feature": "file:../../features/core",
+		"@swdbapp/types": "file:../../types"
 	}
 }
