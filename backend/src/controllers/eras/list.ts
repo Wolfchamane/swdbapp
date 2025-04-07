@@ -5,9 +5,10 @@ import { selectAll, count } from './_queries';
 import type { QueryResult, QueryConfig } from 'pg';
 import { DEFAULT_LIMIT, DEFAULT_ORDER_BY, DEFAULT_ORDER_DIR, DEFAULT_OFFSET } from '../../constants';
 import type { AppResponse, AppError, SelectAllInput } from '../../types';
+import { log, debug, error } from '../../log';
 
 export default async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-	// console.log('[DEBUG] Request to: %s', req.url);
+	log('<-- Handling: [%s] %s', req.method, req.url);
 
 	const limit: string = `${req.query?.limit || DEFAULT_LIMIT}`;
 	const offset: string = `${req.query?.offset || DEFAULT_OFFSET}`;
@@ -17,18 +18,18 @@ export default async (req: Request, res: Response, next: NextFunction): Promise<
 	const search: string = `${req.query?.search || ''}`;
 
 	const selectAllInput: SelectAllInput = { limit, orderBy, orderDir, searchBy, search, offset };
-	// console.log('[DEBUG] select input: %s', JSON.stringify(selectAllInput));
+	debug('select all input: %s', JSON.stringify(selectAllInput));
 
 	try {
 		const querySelectAllConfig: QueryConfig = await selectAll(selectAllInput);
-		// console.log('[DEBUG] query select all: %s', JSON.stringify(querySelectAllConfig));
+		debug('querySelectAllConfig: %s', JSON.stringify(querySelectAllConfig));
 		const selectResponse: QueryResult<EraModel> = await query(querySelectAllConfig);
-		// console.log('[DEBUG] select query performed!');
+		debug('select query performed!');
 
 		const queryCountConfig: QueryConfig = await count();
-		// console.log('[DEBUG] query count: %s', JSON.stringify(queryCountConfig));
+		debug('queryCountConfig: %s', JSON.stringify(queryCountConfig));
 		const countResponse: QueryResult = await query(queryCountConfig);
-		// console.log('[DEBUG] count performed!');
+		debug('count performed!');
 
 		const items = selectResponse.rows.slice();
 		const total = Number(countResponse.rows[0].count);
@@ -40,14 +41,16 @@ export default async (req: Request, res: Response, next: NextFunction): Promise<
 			items,
 		};
 
-		// console.log('[DEBUG] Response: %s', JSON.stringify(listOutput));
+        if (!total) {
+            error('No items found!');
+        }
 
 		next({
 			status: 200,
 			message: JSON.stringify(listOutput),
 		} as AppResponse);
 	} catch (e: unknown) {
-		// console.error(`[ERROR]\n${e}`);
+        error((e as Error).message);
 		next(e as AppError);
 	}
 };
