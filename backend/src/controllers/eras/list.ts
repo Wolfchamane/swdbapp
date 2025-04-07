@@ -41,16 +41,16 @@ export default async (req: Request, res: Response, next: NextFunction): Promise<
 			items,
 		};
 
-        if (!total) {
-            error('No items found!');
-        }
+		if (!total) {
+			error('No items found!');
+		}
 
 		next({
 			status: 200,
 			message: JSON.stringify(listOutput),
 		} as AppResponse);
 	} catch (e: unknown) {
-        error((e as Error).message);
+		error((e as Error).message);
 		next(e as AppError);
 	}
 };

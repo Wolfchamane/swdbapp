@@ -10,7 +10,7 @@ export const auth =
 			res.statusCode = 200;
 			next();
 		} else {
-            log('<-- [Middleware: Auth] %s: %s', req.method, req.url);
+			log('<-- [Middleware: Auth] %s: %s', req.method, req.url);
 			const apiKeyHeaderName: string = 'x-api-key';
 			const apiKeyValue: string = `${config.apiKey}`;
 
@@ -19,7 +19,7 @@ export const auth =
 				error('NOT AUTHORIZED!');
 				next({ status: 401, message: 'Unauthorized' } as AppError);
 			} else {
-                log('<-- Authorized');
+				log('<-- Authorized');
 				next();
 			}
 		}
