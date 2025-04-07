@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ENV=$1
-ENVIRONMENT_FILE="$(pwd)/environments/.env.${ENV}";
+ENVIRONMENT_FILE="$(pwd)/environments/.env${ENV}";
 DATABASE_DOCKER_FILE="$(pwd)/database/Dockerfile";
 
 if ! [ -f "$DATABASE_DOCKER_FILE" ]; then
@@ -27,6 +27,6 @@ if [ "${ENV}" == "development" ] || [ "${ENV}" == "local" ]; then
     done < "$ENVIRONMENT_FILE";
 fi
 
-docker build -D -t swdbapp-database-image \
+docker build -D -t wolfchamane/swdbapp:swdbapp-database \
     -f "${DATABASE_DOCKER_FILE}" \
     .

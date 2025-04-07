@@ -1,7 +1,7 @@
-name: swdbapp
+name: 'star-wars-db-app'
 
 services:
-    swdbapp-database:
+    database:
         attach: false
         restart: 'always'
         env_file:
@@ -12,11 +12,11 @@ services:
         build:
             context: .
             dockerfile: ./database/Dockerfile
-    swdbapp-backend:
+    backend:
         attach: false
         restart: 'always'
         depends_on:
-            -   swdbapp-database
+            -   database
         env_file:
             -   ./environments/.env
         platform: linux/arm64
@@ -25,7 +25,7 @@ services:
             dockerfile: ./backend/Dockerfile
         ports:
             - 3000:3000
-    swdbap-assets:
+    assets:
         attach: false
         restart: 'always'
         build: ./www/software/swdbapp/assets

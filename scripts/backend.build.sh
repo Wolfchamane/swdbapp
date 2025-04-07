@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ENV=$1
-ENVIRONMENT_FILE="$(pwd)/environments/.env.${ENV}";
+ENVIRONMENT_FILE="$(pwd)/environments/.env${ENV}";
 BACKEND_DOCKER_FILE="$(pwd)/backend/Dockerfile";
 
 if ! [ -f "$BACKEND_DOCKER_FILE" ]; then
@@ -27,7 +27,7 @@ if [ "${ENV}" == "development" ] || [ "${ENV}" == "local" ]; then
     done < "$ENVIRONMENT_FILE";
 fi
 
-docker build -D -t swdbapp-backend-image \
+docker build -D -t wolfchamane/swdbapp:swdbapp-backend \
     --platform=linux/amd64 \
     --build-arg BACKEND_ACCEPT_ORIGIN="${BACKEND_ACCEPT_ORIGIN}" \
     --build-arg BACKEND_PORT="${BACKEND_PORT}" \
