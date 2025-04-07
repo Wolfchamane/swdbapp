@@ -116,3 +116,20 @@ will be a really large impossible epic for just solo it. I think the best approa
 is to first build a solution of ones, to know: one title, one character, one vehicle, etc.
 Build the relationships among all the entities with the frontend navigation and solution,
 and later on just fill the database with remaining information.
+
+The next target is to deploy different Docker containers to a hosting solution, if possible, _free_.
+So far I've tested [Heroku](https://www.heroku.com/), but it doesn't provide a solution to deploy
+using [docker-compose](https://docs.docker.com/compose/). Also, I have tested [Render](https://render.com), and it
+was working smoothly ... until the moment I've tried to deploy the PostgresSQL database container.
+
+Hosting the images for free can be done using either
+[GitHub](https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/publishing-docker-images)
+or [DockerHub](https://hub.docker.com/), so no problem with that.
+
+Meanwhile, I've reverted the solution to a mono-repo solution and have limited the dependencies,
+specially `devDependencies`. I have also fixed multiple issues with the `/scripts/*.sh`.
+
+Eventually I have found that GitHub can't fetch submodules if they are private repositories, well, it works
+for companies solutions. But for personal solutions you are force to create a PTA and properly configure the GHA job.
+
+I will continue on exploring the Internet in the search for a free Docker container hosting ...
