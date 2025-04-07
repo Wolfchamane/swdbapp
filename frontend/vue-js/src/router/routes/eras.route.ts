@@ -5,7 +5,6 @@ export const ERA_ROUTE = {
 	path: '/eras',
 	component: async () => await import('@/views/eras-view.vue'),
 	meta: {
-		menuItem: true,
 		icon: faGalacticRepublic,
 	},
 };
@@ -13,5 +12,5 @@ export const ERA_ROUTE = {
 export const ERA_DETAILS_ROUTE = {
 	name: 'era-details-view',
 	path: '/eras/:id',
-	component: async () => await import('@/views/era-details-view.vue'),
+	component: async () => await import('@/views/era-details/era-details-view.vue'),
 };

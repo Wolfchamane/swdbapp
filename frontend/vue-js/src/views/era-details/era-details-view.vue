@@ -40,8 +40,4 @@
                 img(v-for='title in era?.titles', :key='`era-title-${title.$id}`', :src='title.logo.href', :alt='title.name')/
 </template>
 
-<style lang="sass">
-	.era-details-view
-	    &__header
-	        top: -0.75em
-</style>
+<style lang="sass" src='./styles.sass'></style>
