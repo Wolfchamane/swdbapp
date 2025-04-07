@@ -3,7 +3,7 @@ import { SWDBAppConfig } from '@swdbapp/types';
 export const setWindowConfiguration = (): void => {
 	const w = window as SWDBAppConfig;
 	if (w) {
-		// @ts-ignore
+		// @ts-expect-error import.meta.env
 		const { VITE_API_HOST, VITE_API_PORT, VITE_API_PROTOCOL, VITE_API_KEY, VITE_ASSETS_PATH } = import.meta.env;
 		w.swDBAppConfig = Object.freeze({
 			assetsPath: VITE_ASSETS_PATH,
