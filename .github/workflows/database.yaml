@@ -3,6 +3,7 @@ name: Deploy SWDBApp Database to DockerHub
 on:
     push:
         paths:
+            - .github/workflows/database.yaml
             - database/*
         branch:
             - master
