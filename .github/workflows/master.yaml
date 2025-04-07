@@ -45,13 +45,19 @@ jobs:
                     echo "Unable to determine package manager"
                     exit 1
                   fi
+
             - name: Setup Node
               uses: actions/setup-node@v4
               with:
                   node-version: '22'
                   cache: ${{ steps.detect-package-manager.outputs.manager }}
+
+            - name: Update NPM
+              run: npm i -g npm
+
             - name: Install dependencies
               run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
             - name: Check code format
               run: ${{ steps.detect-package-manager.outputs.runner }} npm run format:check
             # - name: Check linting rules
