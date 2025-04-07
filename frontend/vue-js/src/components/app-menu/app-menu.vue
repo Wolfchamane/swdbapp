@@ -10,7 +10,7 @@
 		routes
 			.filter((route: RouteLocation) => route.path !== '/')
 			.filter((route: RouteLocation) => {
-				return route.meta?.menuItem;
+				return !!route.meta?.icon;
 			})
 	);
 
