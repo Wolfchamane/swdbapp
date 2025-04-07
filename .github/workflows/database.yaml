@@ -42,11 +42,10 @@ jobs:
             - name: Generate database content
               run: ./scripts/database.generate.sh
 
-            - name: Build database image
-              run: docker build -D -f ./database/Dockerfile -t ${{ env.LATEST_TAG }} .
-
-            - name: Push image
-              run: docker push ${{ env.LASTEST_TAG }}
+            - name: Build & Push
+              run: |
+                docker build -D -f ./database/Dockerfile -t ${{ env.LATEST_TAG }} .
+                docker push ${{ env.REGISTRY }}/${{ env.LATEST_TAG }}
 
             - name: Inspect
               run: |
