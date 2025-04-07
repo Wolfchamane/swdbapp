@@ -3,7 +3,7 @@ import { Pool, type PoolConfig, type QueryConfig, type QueryResult } from 'pg';
 const config: PoolConfig = {
 	user: process.env.PGUSER,
 	host: process.env.PGHOST,
-	database: process.env.DATABASE_ORIG,
+	database: process.env.PGDATABASE,
 	password: process.env.PGPASSWORD,
 	port: Number(process.env.PGPORT),
 	connectionString: `postgres://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:5432/${process.env.PGDATABASE}`,
