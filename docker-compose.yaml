@@ -5,7 +5,7 @@ services:
         attach: false
         restart: 'always'
         env_file:
-            -   ./environments/.env
+            - ./environments/.env
         ports:
             - 5432:5432
         platform: linux/arm64
@@ -16,9 +16,9 @@ services:
         attach: false
         restart: 'always'
         depends_on:
-            -   database
+            - database
         env_file:
-            -   ./environments/.env
+            - ./environments/.env
         platform: linux/arm64
         build:
             context: .

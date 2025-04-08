@@ -7,27 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [ Unreleased ]
 
-- [X.0.0] VueJS Web Application
-- [X.0.0] ReactJS Web Application
-- [X.0.0] LitElement Web Application
+-   [X.0.0] VueJS Web Application
+-   [X.0.0] ReactJS Web Application
+-   [X.0.0] LitElement Web Application
 
 ## 0.4.0 - 2025-04-07
 
 _...After complete solution refactor..._
 
 **Features**:
-+ Eras navigation & details
+
+-   Eras navigation & details
 
 ## 0.3.0 - 2025-03-28
 
 **Features**:
-+ Characters' page is now using mixed API sources.
-+ Character base details on selecting a character.
+
+-   Characters' page is now using mixed API sources.
+-   Character base details on selecting a character.
 
 ## 0.2.0 - 2025-03-20
 
 **Features**:
-+ Pagination at characters page.
+
+-   Pagination at characters page.
 
 ## 0.1.0 - 2025-03-15
 

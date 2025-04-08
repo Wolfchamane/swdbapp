@@ -17,7 +17,7 @@
 			v-if="disabled">
 			Not Available
 		</div>
-		<font-awesome-icon class="app-menu-item__icon" :icon="icon"/>
+		<font-awesome-icon class="app-menu-item__icon" :icon="icon" />
 		<div class="app-menu-item__title center py-05 border-top-1">{{ parsedTitle }}</div>
 	</div>
 </template>

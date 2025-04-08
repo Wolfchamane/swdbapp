@@ -37,7 +37,7 @@ I know from a very good stable API based on SW fictional universe: https://swapi
 I think I could use it for the portfolio application.
 
 I would build the application with three \(3\) different frontend libraries, to know:
-VueJS, ReactJS & lit-element. I hope this serves as enough knowledge for those f*cking recruiters!
+VueJS, ReactJS & lit-element. I hope this serves as enough knowledge for those f\*cking recruiters!
 
 ## 2025-03-17
 
@@ -66,8 +66,9 @@ has not much time to dedicate into his own project. I have been talking
 with him through email about some technical requirements and issues.
 
 I think I am going to mix up both sources:
-- https://starwars-databank.vercel.app/
-- https://swapi.dev
+
+-   https://starwars-databank.vercel.app/
+-   https://swapi.dev
 
 ## 2025-03-31
 
@@ -96,10 +97,10 @@ I have to remodel everything from the ground, from zero, from scratch.
 
 Ok. Got a basic draft solution with the following items
 
-- [x] Functional SQL database solution for PostgresSQL.
-- [x] Functional API backend with NodeJS, expressJS and node-postgres.
-- [x] Complete refactor of frontend VueJS solution
-- [x] Got eras list and details!
+-   [x] Functional SQL database solution for PostgresSQL.
+-   [x] Functional API backend with NodeJS, expressJS and node-postgres.
+-   [x] Complete refactor of frontend VueJS solution
+-   [x] Got eras list and details!
 
 ## 2025-04-07
 

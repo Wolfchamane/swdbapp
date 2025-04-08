@@ -5,7 +5,7 @@
 	import { type ComputedRef, type Ref, computed, provide, ref } from 'vue';
 	import { RouterView, useRoute, useRouter } from 'vue-router';
 	// @ts-expect-error import
-    import LICENSE from '../../../../../LICENSE?raw';
+	import LICENSE from '../../../../../LICENSE?raw';
 	import { AppMenu } from '../app-menu';
 	import { LoadingBar } from '../loading-bar';
 
@@ -52,7 +52,7 @@
 		<div class="grow overflow-y-auto">
 			<router-view v-slot="{ Component }">
 				<transition name="fade">
-					<component :is="Component"/>
+					<component :is="Component" />
 				</transition>
 			</router-view>
 		</div>

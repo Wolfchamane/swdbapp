@@ -4,7 +4,7 @@ import { log } from '../log';
 
 export const endHandler =
 	() =>
-	(err: AppError | AppResponse, req: Request, res: Response, next: NextFunction): void => {
+	(err: AppError | AppResponse, req: Request, res: Response, _: NextFunction): void => {
 		// console.log('[DEBUG] Request processed!');
 		let message: string = err.message || 'Internal Server Error';
 		res.statusCode = err.status || 500;

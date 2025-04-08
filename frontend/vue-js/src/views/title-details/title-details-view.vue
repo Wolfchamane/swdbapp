@@ -107,9 +107,7 @@
 			<p class="ta-right">{{ title?.actors.join(', ') }}</p>
 			<p class="text-uppercase border-bottom-1 pb-05 mt-2 d-flex cursor-pointer" @click="toggleShowPlow">
 				<span class="grow">Plot</span>
-				<font-awesome-icon
-					class="color-foreground fs-1"
-					:icon="showPlot ? faChevronUp : faChevronDown"/>
+				<font-awesome-icon class="color-foreground fs-1" :icon="showPlot ? faChevronUp : faChevronDown" />
 			</p>
 			<transition>
 				<p class="ta-justify" v-show="showPlot" v-html="title?.plot"></p>
