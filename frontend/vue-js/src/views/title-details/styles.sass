@@ -1,0 +1,23 @@
+@keyframes crawl
+    0%
+        transform: translateY(100%)
+    100%
+        transform: translateY(0)
+
+.title-details-view
+    &__opening-crawl-wrapper
+        height: auto
+        color: var(--color-primary)
+        background-color: var(--color-background)
+        box-shadow: 0 .5em 1em rgba(var(--color-black), .5)
+        overflow: hidden
+        animation-name: crawl
+        animation-duration: 20s
+        animation-timing-function: linear
+        animation-fill-mode: forwards
+
+        h1
+            text-transform: uppercase
+
+        p
+            text-align: justify
