@@ -26,27 +26,30 @@
 
 			return `${readHours}h ${readMinutes}min`;
 		} else {
-            return 'N/A';
-        }
+			return 'N/A';
+		}
 	});
 
-    const starWarsLink: ComputedRef<Nullable<string>> = computed(() => {
-        const { type } = title.value || {};
-        const name = title.value?.title || '';
-        if (name && type) {
-            return `https://starwars.com/${type}/${name.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase()}`;
-        }
+	const starWarsLink: ComputedRef<Nullable<string>> = computed(() => {
+		const { type } = title.value || {};
+		const name = title.value?.title || '';
+		if (name && type) {
+			return `https://starwars.com/${type}/${name
+				.replace(/\s/g, '-')
+				.replace(/[^a-zA-Z0-9-]/g, '')
+				.toLowerCase()}`;
+		}
 
-        return null;
-    });
+		return null;
+	});
 
-    const episode: ComputedRef<string> = computed(() => {
-        return title.value?.title.replace(/^(.+):.+$/, '$1').replace(':', '');
-    });
+	const episode: ComputedRef<string> = computed(() => {
+		return title.value?.title.replace(/^(.+):.+$/, '$1').replace(':', '');
+	});
 
-    const mainTitle: ComputedRef<string> = computed(() => {
-        return title.value?.title.replace(/^.+:(.+)$/, '$1');
-    });
+	const mainTitle: ComputedRef<string> = computed(() => {
+		return title.value?.title.replace(/^.+:(.+)$/, '$1');
+	});
 
 	const fetchTitleDetails = async (id: string): Promise<void> => {
 		toggleLoading();

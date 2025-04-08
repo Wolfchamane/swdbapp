@@ -4,7 +4,7 @@
 	import { type EraDetails, type EraTitle, type ErasUseCases, provideErasUseCases } from '@swdbapp/eras-feature';
 	import type { Nullable } from '@swdbapp/types';
 
-    const ROUTER = useRouter();
+	const ROUTER = useRouter();
 	const useCases: ErasUseCases = provideErasUseCases();
 	const currentRoute: RouteLocation = useRoute();
 	const toggleLoading: () => void = inject('toggleLoading');
@@ -18,13 +18,13 @@
 		toggleLoading();
 	};
 
-    const navigateToTitle = (id: number): void => {
-        ROUTER.push({ name: 'title-details-view', params: { id: `${id}` }});
-    };
+	const navigateToTitle = (id: number): void => {
+		ROUTER.push({ name: 'title-details-view', params: { id: `${id}` } });
+	};
 
-    const isTitleClickable = (title: EraTitle): boolean => {
-        return [33].includes(title.$id);
-    };
+	const isTitleClickable = (title: EraTitle): boolean => {
+		return [33].includes(title.$id);
+	};
 
 	watch(
 		() => currentRoute.params.id,
@@ -51,4 +51,4 @@
                 @click='navigateToTitle(title.$id)')/
 </template>
 
-<style lang='sass' src='./styles.sass'></style>
+<style lang="sass" src="./styles.sass"></style>

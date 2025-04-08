@@ -5,6 +5,6 @@ import provideTitlesRoutes from './titles';
 export default (): Router => {
 	const router = Router();
 	provideErasRoutes(router);
-    provideTitlesRoutes(router);
+	provideTitlesRoutes(router);
 	return router;
 };
