@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template lang="pug">
-    .home-view.d-flex.flex-column.h-100.overflow-hidden
+    .home-view.d-flex.flex-column.h-100.overflow-hidden.p-1
         h1 Welcome!
         .grow
             p Use the icons on the left side to navigate between sections.

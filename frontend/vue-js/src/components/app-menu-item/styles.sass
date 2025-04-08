@@ -1,6 +1,12 @@
 @use '@/styles/lib/colors'
 $component: 'app-menu-item'
 
+@keyframes spin
+    from
+        transform: rotate(0deg)
+    to
+        transform: rotate(360deg)
+
 .app-menu-item
     transition: all .2s ease-in-out
 
@@ -10,10 +16,19 @@ $component: 'app-menu-item'
         text-transform: none
 
     &:hover
-        border-color: var(--color-grey-300)
+        border-color: var(--color-primary)
 
-        &__title
-            color: var(--color-grey-300)
+        .#{$component}__title,
+        .#{$component}__icon
+            color: var(--color-primary)
+            fill: var(--color-primary)
+
+        .#{$component}__icon
+            animation-name: spin
+            animation-duration: 5000ms
+            animation-iteration-count: infinite
+            animation-timing-function: linear
+
 
     &--disabled
         cursor: none

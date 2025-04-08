@@ -47,7 +47,7 @@
     main.app-main.grow.d-flex.h-100.overflow-hidden
         app-menu/
 
-        .p-1.grow.overflow-y-auto
+        .grow.overflow-y-auto
             router-view(v-slot='{ Component }')
                 transition(name='fade')
                     component(:is='Component')
