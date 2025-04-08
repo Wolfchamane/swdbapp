@@ -1,8 +1,10 @@
+export type TitleModelType = 'films' | 'games-apps' | 'series';
+
 export interface TitleModel {
 	id: number;
 	title: string;
 	logo: string;
-	type: string;
+	type: TitleModelType;
 	poster: string;
 	rating: string;
 	duration: string;
