@@ -1,0 +1,19 @@
+{
+	"name": "@swdbapp/titles-feature",
+	"private": true,
+	"main": "index.ts",
+	"types": "index.d.ts",
+	"type": "module",
+	"scripts": {
+		"format:check": "prettier --check --config ../../prettier.config.js .",
+		"format:fix": "prettier --write --config ../../prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .vue,.ts --config ../../eslint.config.js",
+		"lint:js:fix": "eslint  --ext .vue,.ts --fix --config ../../eslint.config.js"
+	},
+	"dependencies": {
+		"@swdbapp/types": "file:../../types",
+		"@swdbapp/core-feature": "file:../core",
+		"@swdbapp/infra-http": "file:../../infra/http"
+	}
+}
