@@ -18,6 +18,7 @@
 	"dependencies": {
 		"@swdbapp/core-feature": "file:../../features/core",
 		"@swdbapp/eras-feature": "file:../../features/eras",
+		"@swdbapp/titles-feature": "file:../../features/titles",
 		"@swdbapp/infra-http": "file:../../infra/http",
 		"@swdbapp/types": "file:../../types",
 		"@fortawesome/vue-fontawesome": "~3.0.8",
