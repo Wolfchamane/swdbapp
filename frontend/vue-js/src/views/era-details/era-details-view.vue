@@ -33,22 +33,28 @@
 	);
 </script>
 
-<template lang="pug">
-    .era-details-view.p-relative.p-1
-        h1.era-details-view__header.d-flex.align-center.border-bottom-1.p-sticky.mt-0.bg-color-background.top-0
-            img.w-2.h-2.mb-05.mr-1(:src='era?.logo.href', :alt='era?.name')/
-            span {{ era?.name }}
-
-        p.mt-2.ta-justify
-            | {{ era?.description }}
-
-        template(v-if='era?.titles')
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Titles
-
-            .d-flex.flex-column.center
-                img.era-details-view__title-logo(v-for='title in era?.titles', :key='`era-title-${title.$id}`', :src='title.logo.href', :alt='title.name',
-                :class='{ "cursor-pointer": isTitleClickable(title) }'
-                @click='navigateToTitle(title.$id)')/
+<template>
+	<div class="era-details-view p-relative p-1">
+		<h1
+			class="era-details-view__header d-flex align-center border-bottom-1 p-sticky mt-0 bg-color-background top-0">
+			<img class="w-2 h-2 mb-05 mr-1" :src="era?.logo.href" :alt="era?.name" />
+			<span>{{ era?.name }}</span>
+		</h1>
+		<p class="mt-2 ta-justify">{{ era?.description }}</p>
+		<template v-if="era?.titles">
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Titles</p>
+			<div class="d-flex flex-column center">
+				<img
+					class="era-details-view__title-logo"
+					v-for="title in era?.titles"
+					:key="`era-title-${title.$id}`"
+					:src="title.logo.href"
+					:alt="title.title"
+					:class="{ 'cursor-pointer': isTitleClickable(title) }"
+					@click="navigateToTitle(title.$id)" />
+			</div>
+		</template>
+	</div>
 </template>
 
 <style lang="sass" src="./styles.sass"></style>

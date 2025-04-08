@@ -75,55 +75,51 @@
 	});
 </script>
 
-<template lang="pug">
-    .title-details-view.p-relative.p-1.h-100.overflow-hidden.d-flex.flex-column
-        .title-details-view__header.mt-0.border-bottom-1.top-0.p-1.d-flex.flex-column.center
-            span(v-if='episode') {{ episode }}
-            h1.color-primary {{ mainTitle }}
-
-        .px-1.grow(ref='content')
-            .title-details-view__opening-crawl-wrapper
-               .title-details-view__opening-crawl.d-flex.flex-column.center.px-2(v-html='title?.openingCrawl')
-
-            .w-100
-                img.w-100(:src='title?.poster', :alt='title?.title')/
-
-            p.mt-2.ta-justify
-                | {{ title?.resume }}
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Release Date
-            p.ta-right {{ title?.releaseDate.toLocaleDateString() }}
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Rating
-            p.ta-right {{ title?.rating }}
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Genre/s
-            p.ta-right {{ title?.genre.join(', ') }}
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Duration
-            p.ta-right {{ readableDuration }}
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Director
-            p.ta-right {{ title?.director }}
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Music Composser
-            p.ta-right {{ title?.musicDirector }}
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Producers
-            p.ta-right {{ title?.producers.join(', ') }}
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Actors
-            p.ta-right {{ title?.actors.join(', ') }}
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2.d-flex.cursor-pointer(@click='toggleShowPlow')
-                .grow Plot
-                font-awesome-icon.color-foreground.fs-1(:icon="showPlot ? faChevronUp : faChevronDown")
-            transition
-                p.ta-justify(v-show='showPlot', v-html='title?.plot')
-
-            p.text-uppercase.border-bottom-1.pb-05.mt-2 Links
-            p.ta-left
-                a(v-if='starWarsLink', :href='starWarsLink', target='_blank') {{ starWarsLink }}
+<template>
+	<div class="title-details-view p-relative p-1 h-100 overflow-hidden d-flex flex-column">
+		<div class="title-details-view__header mt-0 border-bottom-1 top-0 p-1 d-flex flex-column center">
+			<span v-if="episode">{{ episode }}</span>
+			<h1 class="color-primary">{{ mainTitle }}</h1>
+		</div>
+		<div class="px-1 grow" ref="content">
+			<div class="title-details-view__opening-crawl-wrapper">
+				<div
+					class="title-details-view__opening-crawl d-flex flex-column center px-2"
+					v-html="title?.openingCrawl"></div>
+			</div>
+			<div class="w-100"><img class="w-100" :src="title?.poster" :alt="title?.title" /></div>
+			<p class="mt-2 ta-justify">{{ title?.resume }}</p>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Release Date</p>
+			<p class="ta-right">{{ title?.releaseDate.toLocaleDateString() }}</p>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Rating</p>
+			<p class="ta-right">{{ title?.rating }}</p>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Genre/s</p>
+			<p class="ta-right">{{ title?.genre.join(', ') }}</p>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Duration</p>
+			<p class="ta-right">{{ readableDuration }}</p>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Director</p>
+			<p class="ta-right">{{ title?.director }}</p>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Music Composser</p>
+			<p class="ta-right">{{ title?.musicDirector }}</p>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Producers</p>
+			<p class="ta-right">{{ title?.producers.join(', ') }}</p>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Actors</p>
+			<p class="ta-right">{{ title?.actors.join(', ') }}</p>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2 d-flex cursor-pointer" @click="toggleShowPlow">
+				<span class="grow">Plot</span>
+				<font-awesome-icon
+					class="color-foreground fs-1"
+					:icon="showPlot ? faChevronUp : faChevronDown"/>
+			</p>
+			<transition>
+				<p class="ta-justify" v-show="showPlot" v-html="title?.plot"></p>
+			</transition>
+			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Links</p>
+			<p class="ta-left">
+				<a v-if="starWarsLink" :href="starWarsLink" target="_blank">{{ starWarsLink }}</a>
+			</p>
+		</div>
+	</div>
 </template>
 
 <style lang="sass" src="./styles.sass"></style>

@@ -26,7 +26,8 @@
 	onMounted(async () => await fetchEras());
 </script>
 
-<template lang="pug">
-    .eras-view.p-1
-        era-item(v-for='era in eras', :key='`era-${era.$id}`', :era='era', @click='navigateTo(era)')/
+<template>
+	<div class="eras-view p-1">
+		<era-item v-for="era in eras" :key="`era-${era.$id}`" :era="era" @click="navigateTo(era)" />
+	</div>
 </template>

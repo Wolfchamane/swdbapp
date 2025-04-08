@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 	import { type Ref, ref } from 'vue';
 	import { type RouteLocation, useRoute, useRouter } from 'vue-router';
+	// @ts-expect-error import
 	import routes from '@/router/routes';
 	import { AppMenuItem } from '../app-menu-item';
 
@@ -23,12 +24,16 @@
 	};
 </script>
 
-<template lang="pug">
-    aside.app-menu.mx-1
-        app-menu-item(v-for="route in menuItems",
-            :key='`route-${route.name}`', :title='route.name' :icon='route.meta.icon',
-            :active='isActive(route)'
-            @click='navigateTo(route)')/
+<template>
+	<aside class="app-menu mx-1">
+		<app-menu-item
+			v-for="route in menuItems"
+			:key="`route-${String(route.name)}`"
+			:title="String(route.name)"
+			:icon="route.meta.icon"
+			:active="isActive(route)"
+			@click="navigateTo(route)" />
+	</aside>
 </template>
 
 <style lang="sass" src="./styles.sass"></style>
