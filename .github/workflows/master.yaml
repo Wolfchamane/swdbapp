@@ -60,10 +60,10 @@ jobs:
 
             - name: Check code format
               run: ${{ steps.detect-package-manager.outputs.runner }} npm run format:check
-            # - name: Check linting rules
-            #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run lint:check
+
+            - name: Check linting rules
+              run: ${{ steps.detect-package-manager.outputs.runner }} npm run lint:check
             # - name: Check unit tests
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run test:check:coverage
             # - name: Check types integrity
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run type:check
-
