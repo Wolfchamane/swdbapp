@@ -27,7 +27,7 @@ if [ "${ENV}" != "production" ]; then
     done < "$ENVIRONMENT_FILE";
 fi
 
-docker build -D -t wolfchamane/swdbapp:swdbapp-database \
+docker build -D -t wolfchamane/swdbapp:database \
     --platform=linux/amd64,linux/arm64 \
     -f "${DATABASE_DOCKER_FILE}" \
     .

@@ -31,4 +31,4 @@ docker run --name swdbapp-database \
     -e POSTGRES_USER="${POSTGRES_USER}" \
     -e POSTGRES_PASSWORD="${POSTGRES_PASSWORD}" \
     -p 5432:5432 \
-    -d wolfchamane/swdbapp:swdbapp-database
+    -d wolfchamane/swdbapp:database
