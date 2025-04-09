@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   [X.0.0] ReactJS Web Application
 -   [X.0.0] LitElement Web Application
 
+## 0.4.1 - 2025-04-08
+
+**Features**:
+
+-   Connected one movie title with its era \(w/out database connection\).
+-   Enabled code lint check at CI.
+
+**Refactors**:
+
+-   Removed `lang="pug"` as it is not compatible with Eslint and Typescript.
+
+
 ## 0.4.0 - 2025-04-07
 
 _...After complete solution refactor..._
