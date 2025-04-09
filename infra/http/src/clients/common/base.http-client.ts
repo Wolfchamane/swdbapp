@@ -45,7 +45,10 @@ export class BaseHttpClient extends JSONAdapter {
 	/**
 	 * @override
 	 */
-	protected _serialize(headers?: Record<string, string>, body?: any): Promise<void | Error> {
+	protected _serialize(
+		headers?: Record<string, string>,
+		body?: object | number | string | boolean | null
+	): Promise<void | Error> {
 		return super._serialize(
 			{
 				...(headers || {}),
