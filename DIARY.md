@@ -134,3 +134,18 @@ Eventually I have found that GitHub can't fetch submodules if they are private r
 for companies solutions. But for personal solutions you are force to create a PTA and properly configure the GHA job.
 
 I will continue on exploring the Internet in the search for a free Docker container hosting ...
+
+## 2025-04-08
+
+What a pity, Pug/Jade + Eslint + Typescript is a bad combination.
+I must rework all `lang="pug"` templates into plain HTML.
+
+About the Docker issue thing I've thinking to follow this "_architecture_":
+
+1. Deploy images to Docker Hub.
+2. Run assets & backend containers at Render.
+3. Run database container at Heroku.
+4. Deploy static website content into my host provider.
+
+I know is not the best architecture ever, and maybe it will imply some handicaps. But I'll try it out
+at least once in order to explore if its possible.

@@ -68,7 +68,7 @@ This project has been developed using the following technologies:
 
 -   [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) as primary syntax.
 -   [Typescript](https://www.typescriptlang.org/) for developing each enriched Javascript code.
--   [Pug/Jade](https://pugjs.org/) for developing HTML templates.
+-   ~~[Pug/Jade](https://pugjs.org/) for developing HTML templates.~~ (1)
 -   [SaSS](https://sass-lang.com/) for developing the CSS styles.
 -   [ViteJS](https://vite.dev/) as bundler utility.
 -   [Vitest](https://vitest.dev/) for unitary testing.
@@ -91,37 +91,19 @@ For the specific **VueJS** application solution:
 -   [VueJS](https://vuejs.org/)
 -   [vue-router](https://router.vuejs.org/)
 
+Notes:
+
+1. Sadly, Pug/Jade, eslint & typescript are not compatibles.
+
 ## Architecture
 
-The main architecture follows a "_custom_" variation of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and the principles/patterns of
+The main architecture follows a "_custom_" interpretation of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and the principles/patterns of
 
 -   [Atomic Design](https://atomicdesign.bradfrost.com/).
 -   [KiSS](https://en.wikipedia.org/wiki/KISS_principle)
 -   [SOLID](https://en.wikipedia.org/wiki/SOLID)
 
-## Database
+## Diary Notes
 
-I am going to use data and information obtained from https://swapi.dev.
-
-> [!NOTE]
->
-> **2025-03-21**
->
-> After a long research through the Internet, seems that the source of information above is a
-> deprecated project no longer maintained by their authors. Therefore, I have decided that I am going to use
-> additional sources of information, to know:
->
-> -   https://starwars-databank.vercel.app/
-
-> [!NOTE]
->
-> **2025-03-31**
->
-> Is **impossible** to obtain fine information merging two (2) different APIs:
-> - https://swapi.dev is deprecated and the data is quite outdated.
-> - https://starwars-databank.vercel.app/ contains an updated version of data, but is missing
-> some very basics for any operational API (full pagination control, searches, etc.).
->
-> Therefore, it seems that I will need to create a DB of my own.
-> Is quite frustrating that LucasFilms Ltd. or Disney haven't published an API for this content.
-> My big concern so far is how to obtain reliable information and keep it updated "_easily_".
+Check the diary notes of the decisions I've been taking through the development
+of this project at [DIARY](./DIARY.md) file.
