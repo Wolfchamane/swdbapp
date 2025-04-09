@@ -1,5 +1,6 @@
 {
 	"name": "@swdbapp/vue-js",
+	"version": "0.4.1",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -16,12 +17,17 @@
 		"type:check": "vue-tsc --build --force"
 	},
 	"dependencies": {
+		"@amjs/js-utils": "~0.5.2",
 		"@swdbapp/core-feature": "file:../../features/core",
 		"@swdbapp/eras-feature": "file:../../features/eras",
 		"@swdbapp/titles-feature": "file:../../features/titles",
 		"@swdbapp/infra-http": "file:../../infra/http",
 		"@swdbapp/types": "file:../../types",
 		"@fortawesome/vue-fontawesome": "~3.0.8",
+		"vue": "~3.5.13",
+		"vue-router": "~4.5.0"
+	},
+	"devDependencies": {
 		"@vitejs/plugin-vue": "~5.2.3",
 		"@vue/eslint-config-prettier": "~10.2.0",
 		"@vue/eslint-config-typescript": "~14.5.0",
@@ -29,8 +35,6 @@
 		"@vue/tsconfig": "~0.7.0",
 		"eslint-plugin-vue": "~10.0.0",
 		"vite-plugin-vue-devtools": "~7.7.2",
-		"vue": "~3.5.13",
-		"vue-router": "~4.5.0",
 		"vue-tsc": "~2.2.8"
 	}
 }
