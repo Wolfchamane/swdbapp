@@ -1,4 +1,5 @@
 import { JSONAdapter, type XHRConfiguration, type XHRFetchOptions, XHR_DEBUG_LEVELS } from '@amjs/js-utils';
+import { provideAPIHeaders } from '@swdbapp/core-feature';
 
 export class BaseHttpClient extends JSONAdapter {
 	private cacheExpiration: number | undefined;
@@ -39,6 +40,19 @@ export class BaseHttpClient extends JSONAdapter {
 	private _setCacheExpiration(): void {
 		const A_DAY: number = Number(1000 * 60 * 60 * 24);
 		this.cacheExpiration = new Date(Number(Date.now() + A_DAY)).getTime();
+	}
+
+	/**
+	 * @override
+	 */
+	protected _serialize(headers?: Record<string, string>, body?: any): Promise<void | Error> {
+		return super._serialize(
+			{
+				...(headers || {}),
+				...provideAPIHeaders(),
+			},
+			body
+		);
 	}
 
 	/**
