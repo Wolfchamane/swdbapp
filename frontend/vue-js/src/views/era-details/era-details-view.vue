@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 	import { type Ref, inject, ref, watch } from 'vue';
 	import { type RouteLocation, useRoute, useRouter } from 'vue-router';
-	import { type EraDetails, type EraTitle, type ErasUseCases, provideErasUseCases } from '@swdbapp/eras-feature';
+	import { type EraDetails, type ErasUseCases, provideErasUseCases } from '@swdbapp/eras-feature';
 	import type { Nullable } from '@swdbapp/types';
 
 	const ROUTER = useRouter();

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 	import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-	import { type ComputedRef, type Ref, computed, inject, nextTick, onMounted, ref, watch } from 'vue';
+	import { type ComputedRef, type Ref, computed, inject, nextTick, ref, watch } from 'vue';
 	import { type RouteLocation, useRoute } from 'vue-router';
 	import { type TitleDetails, type TitlesUseCases, provideTitlesUseCases } from '@swdbapp/titles-feature';
 	import type { Nullable } from '@swdbapp/types';
