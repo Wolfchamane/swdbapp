@@ -2,7 +2,7 @@ import type { ListInput, ListOutput, DescribeInput } from '@swdbapp/infra-http';
 import type { Title, TitleDetails } from '../types';
 
 export interface TitlesPorts {
-	list(input: TitlesListPortInput): Promise<TitlesListPortOutput>;
+	list(input?: TitlesListPortInput): Promise<TitlesListPortOutput>;
 	detail(input: TitleDetailPortInput): Promise<TitleDetailPortOutput>;
 }
 

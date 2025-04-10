@@ -5,9 +5,10 @@ import type {
 	TitlesListPortOutput,
 	TitlesPorts,
 } from '../../application';
-import type { TitlesHttpClient, ListInput, TitleModel, ListOutput } from '@swdbapp/infra-http';
+import type { TitlesHttpClient, TitleModel, ListOutput, ListInput } from '@swdbapp/infra-http';
 import type { Title, TitleDetails } from '../../types';
 import { provideAssetURL } from '@swdbapp/core-feature';
+import { strToDate } from '@swdbapp/utils';
 
 export class TitlesHttpAdapter implements TitlesPorts {
 	constructor(private readonly httpClient: TitlesHttpClient) {}
@@ -25,19 +26,19 @@ export class TitlesHttpAdapter implements TitlesPorts {
 
 		if (addDetails) {
 			mapItem = Object.assign(mapItem, {
-				actors: title.actors.split(/,/g),
-				director: title.director,
+				actors: title.actors ? title.actors.split(/,/g) : null,
+				director: title.director ? title.director : null,
 				duration: Number(title.duration),
-				genre: title.genre.split(/,/g),
-				musicDirector: title.music_director,
-				openingCrawl: title.opening_crawl,
-				plot: title.plot,
-				poster: provideAssetURL(title.poster),
-				producers: title.producers.split(/,/g),
-				rating: title.rating,
-				releaseDate: new Date(Date.parse(title.release_date)),
-				resume: title.resume,
-				type: title.type,
+				genre: title.genre ? title.genre.split(/,/g) : null,
+				musicDirector: title.music_director || null,
+				openingCrawl: title.opening_crawl || null,
+				plot: title.plot || null,
+				poster: title.poster ? provideAssetURL(title.poster) : null,
+				producers: title.producers ? title.producers.split(/,/g) : null,
+				rating: title.rating || null,
+				releaseDate: title.release_date ? strToDate(title.release_date) : null,
+				resume: title.resume || null,
+				type: title.type || null,
 			});
 		}
 
@@ -48,17 +49,39 @@ export class TitlesHttpAdapter implements TitlesPorts {
 		return this._mapTitleInfraToApplication<TitleDetails>(await this.httpClient.describe(input), true);
 	}
 
-	async list(input: TitlesListPortInput): Promise<TitlesListPortOutput> {
-		const httpClientListInput: ListInput<TitleModel> = {
-			offset: input.offset,
-			limit: input.limit,
-			orderBy: input.orderBy as keyof TitleModel,
-			orderDir: input.orderDir,
-			searchBy: input.searchBy as keyof TitleModel,
-			search: input.search,
-		};
+	private _mapPortToHttpClientInput(input?: TitlesListPortInput): ListInput<TitleModel> | undefined {
+		let httpClientListInput: ListInput<TitleModel> | undefined = undefined;
 
-		const response: ListOutput<TitleModel> | Error = await this.httpClient.list(httpClientListInput);
+		if (input && Object.values(input).some(value => value !== undefined)) {
+			httpClientListInput = {};
+			if (input.offset !== undefined) {
+				httpClientListInput.offset = input.offset;
+			}
+			if (input.limit !== undefined) {
+				httpClientListInput.limit = input.limit;
+			}
+			if (input.orderBy !== undefined) {
+				httpClientListInput.orderBy = input.orderBy as keyof TitleModel;
+			}
+			if (input.orderDir !== undefined) {
+				httpClientListInput.orderDir = input.orderDir;
+			}
+			if (input.searchBy !== undefined) {
+				httpClientListInput.searchBy = input.searchBy as keyof TitleModel;
+			}
+			if (input.search !== undefined) {
+				httpClientListInput.search = input.search;
+			}
+		}
+
+		return httpClientListInput;
+	}
+
+	async list(input?: TitlesListPortInput): Promise<TitlesListPortOutput> {
+		const response: ListOutput<TitleModel> | Error = await this.httpClient.list(
+			this._mapPortToHttpClientInput(input)
+		);
+
 		if (response instanceof Error) {
 			throw response;
 		}

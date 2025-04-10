@@ -1,3 +1,5 @@
+import type { Nullable } from '@swdbapp/types';
+
 export type TitleType = 'films' | 'series' | 'game-apps';
 export const TITLE_TYPES: Record<string, TitleType> = {
 	FILMS: 'films',
@@ -12,17 +14,17 @@ export interface Title {
 }
 
 export interface TitleDetails extends Title {
-	type: TitleType;
-	poster: URL;
-	rating: string;
-	duration: number;
-	releaseDate: Date;
-	genre: string[];
-	resume: string;
-	director: string;
-	musicDirector: string;
-	producers: string[];
-	actors: string[];
-	plot: string;
-	openingCrawl: string;
+	type: Nullable<TitleType>;
+	poster: Nullable<URL>;
+	rating: Nullable<string>;
+	duration: Nullable<number>;
+	releaseDate: Nullable<Date>;
+	genre: Nullable<string[]>;
+	resume: Nullable<string>;
+	director: Nullable<string>;
+	musicDirector: Nullable<string>;
+	producers: Nullable<string[]>;
+	actors: Nullable<string[]>;
+	plot: Nullable<string>;
+	openingCrawl: Nullable<string>;
 }

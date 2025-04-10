@@ -1,5 +1,5 @@
-import type { TitlesUseCases } from './application';
+import type { TitlesUseCases, TitlesListAllUseCaseInput } from './application';
 
-export { TitlesUseCases };
+export { TitlesUseCases, TitlesListAllUseCaseInput };
 export * from './graph';
 export * from './types';
