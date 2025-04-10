@@ -24,3 +24,19 @@ export const numberToRoman = (num: number): string => {
 
 	return result;
 };
+
+export const numberToReadableTime = (value: number): string => {
+	if (value) {
+		const HOUR: number = Number(60 * 60 * 1000);
+		const MIN: number = Number(60 * 1000);
+
+		const durationHours: number = Number(value / HOUR);
+		const hours: number = Math.trunc(durationHours);
+		const durationMinutes: number = value - Number(hours * HOUR);
+		const minutes: number = Number(durationMinutes / MIN);
+
+		return `${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}min`;
+	}
+
+	return '';
+};
