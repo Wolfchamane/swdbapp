@@ -16,7 +16,9 @@
 	);
 
 	const navigateTo = (route: RouteLocation) => {
-		ROUTER.push({ ...route });
+		const { meta, name } = route;
+		const query = meta?.query || null;
+		ROUTER.push({ name, query });
 	};
 
 	const isActive = (route: RouteLocation): boolean => {
