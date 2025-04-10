@@ -4,3 +4,4 @@ export * from './app-wrapper';
 export * from './era-item';
 export * from './loading-bar';
 export * from './pagination-control';
+export * from './title-item';

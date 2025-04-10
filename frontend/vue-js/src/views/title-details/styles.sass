@@ -1,3 +1,5 @@
+$component: 'title-details-view'
+
 @keyframes crawl
     0%
         transform: translateY(100%)
@@ -21,3 +23,14 @@
 
         p
             text-align: justify
+
+    &__info-wrapper
+        flex-direction: column
+
+@media screen and (min-width: 1024px)
+    .title-details-view
+        &__info-wrapper
+            flex-direction: row
+
+            .#{$component}__poster
+                margin-right: 1em
