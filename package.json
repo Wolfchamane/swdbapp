@@ -18,7 +18,8 @@
 		"./features/titles",
 		"./frontend/vue-js",
 		"./infra/http",
-		"./types"
+		"./types",
+		"./utils"
 	],
 	"scripts": {
 		"format:check": "npm run format:check --workspaces --if-present",
