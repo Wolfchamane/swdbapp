@@ -14,16 +14,11 @@
 		toggleLoading();
 		await useCases.detail({ id });
 		era.value = useCases.eraDetail;
-		console.log(era.value);
 		toggleLoading();
 	};
 
 	const navigateToTitle = (id: number): void => {
 		ROUTER.push({ name: 'title-details-view', params: { id: `${id}` } });
-	};
-
-	const isTitleClickable = (title: EraTitle): boolean => {
-		return [33].includes(title.$id);
 	};
 
 	watch(
@@ -45,12 +40,11 @@
 			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Titles</p>
 			<div class="d-flex flex-column center">
 				<img
-					class="era-details-view__title-logo"
+					class="era-details-view__title-logo cursor-pointer"
 					v-for="title in era?.titles"
 					:key="`era-title-${title.$id}`"
 					:src="title.logo.href"
 					:alt="title.title"
-					:class="{ 'cursor-pointer': isTitleClickable(title) }"
 					@click="navigateToTitle(title.$id)" />
 			</div>
 		</template>
