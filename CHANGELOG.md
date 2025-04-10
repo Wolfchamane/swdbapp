@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   [X.0.0] ReactJS Web Application
 -   [X.0.0] LitElement Web Application
 
+## 0.5.0 - 2025-04-10
+
+**Features**:
+
+-   Titles list & details.
+
 ## 0.4.1 - 2025-04-08
 
 **Features**:
