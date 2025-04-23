@@ -26,18 +26,18 @@ all savings.
 ## 2025-03-10
 
 I am being declined from many job applies because in their words, after fifteen \(15\) years
-of career experience I am not "_experienced_" to face a development with \< insert here whatever library \>.
+of career experience I am not "_experienced_" enough to face a development with \< insert here whatever library \>.
 
-I am going to create a "_portfolio_" showcase application to demo all those b\*st\*rds what
-I am able to do!
+I am going to create a "_portfolio_" showcase application to demo all those \< insert here bad word of your choice \>
+what I am able to do!
 
 ## 2025-03-11
 
 I know from a very good stable API based on SW fictional universe: https://swapi.dev.
 I think I could use it for the portfolio application.
 
-I would build the application with three \(3\) different frontend libraries, to know:
-VueJS, ReactJS & lit-element. I hope this serves as enough knowledge for those f\*cking recruiters!
+I would build the application with three \(3\) different frontend libraries, to know: VueJS, ReactJS & lit-element.
+I hope this serves as enough knowledge for those \< insert here bad word of your choice \> recruiters!
 
 ## 2025-03-17
 
@@ -148,4 +148,14 @@ About the Docker issue thing I've thinking to follow this "_architecture_":
 4. Deploy static website content into my host provider.
 
 I know is not the best architecture ever, and maybe it will imply some handicaps. But I'll try it out
-at least once in order to explore if its possible.
+at least once in order to explore if it's possible.
+
+## 2025-04-23
+
+I have been reading a lot about where to deploy the Docker containers. My original plan to use Render & Heroku is not
+going to be a long term solution, due to the limits that Render applies to the free plan. Therefore, I think I will go
+with all at Heroku.
+
+Meanwhile, I have been improving a bit the code of some specific views & contents.
+
+I have also though on creating a kind of admin site in order to help to CRUD the database ...
