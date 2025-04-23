@@ -67,3 +67,22 @@ jobs:
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run test:check:coverage
             # - name: Check types integrity
             #   run: ${{ steps.detect-package-manager.outputs.runner }} npm run type:check
+    # deploy_assets:
+    #     runs-on: ubuntu-latest
+    #     needs: lint
+    #     steps:
+    #         - name: Checkout Repository
+    #           uses: actions/checkout@v4
+    #           with:
+    #               token: ${{ secrets.SWDBAPP_SSH_PAT }}
+    #               submodules: 'recursive'
+    #         - name: Install Heroku CLI
+    #           run: |
+    #             curl https://cli-assets.heroku.com/install.sh | sh
+    #         - uses: akhileshns/heroku-deploy@v3.14.15
+    #           with:
+    #             appdir: './www/software/swdbapp/assets'
+    #             usedocker: true
+    #             heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+    #             heroku_app_name: swdbapp-assets
+    #             heroku_email: arturo.martinez@amartinez.dev
