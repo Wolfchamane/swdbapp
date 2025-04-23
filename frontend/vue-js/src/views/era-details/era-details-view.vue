@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-	import { type Ref, inject, ref, watch } from 'vue';
+	import { type ComputedRef, type Ref, computed, inject, ref, watch } from 'vue';
 	import { type RouteLocation, useRoute, useRouter } from 'vue-router';
 	import { type EraDetails, type ErasUseCases, provideErasUseCases } from '@swdbapp/eras-feature';
 	import type { Nullable } from '@swdbapp/types';
@@ -9,6 +9,10 @@
 	const currentRoute: RouteLocation = useRoute();
 	const toggleLoading: () => void = inject('toggleLoading');
 	const era: Ref<Nullable<EraDetails>> = ref(null);
+
+	const isEmpty: ComputedRef<boolean> = computed(() => {
+		return !era.value || (!era.value.description && !era.value.titles?.length);
+	});
 
 	const fetchEraDetails = async (id: string): Promise<void> => {
 		toggleLoading();
@@ -38,15 +42,16 @@
 		<p class="mt-2 ta-justify">{{ era?.description }}</p>
 		<template v-if="era?.titles">
 			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Titles</p>
-			<div class="d-flex flex-column center">
-				<img
-					class="era-details-view__title-logo cursor-pointer"
-					v-for="title in era?.titles"
-					:key="`era-title-${title.$id}`"
-					:src="title.logo.href"
-					:alt="title.title"
-					@click="navigateToTitle(title.$id)" />
+			<div class="era-details-view__grid">
+				<template v-for="title in era?.titles" :key="`era-title-${title.$id}`">
+					<div class="d-flex flex-column center era-details-view__title-logo cursor-pointer">
+						<img :src="title.logo.href" :alt="title.title" @click="navigateToTitle(title.$id)" />
+					</div>
+				</template>
 			</div>
+		</template>
+		<template v-if="isEmpty">
+			<p class="mt-2 center">This is not the era you are looking for</p>
 		</template>
 	</div>
 </template>

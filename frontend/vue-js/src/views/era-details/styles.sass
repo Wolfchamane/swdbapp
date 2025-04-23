@@ -1,7 +1,18 @@
-.era-details-view__title-logo
-    border: 1px solid var(--color-background)
-    border-radius: 4px
-    transition: all .2s ease-in-out
+.era-details-view
+    &__title-logo
+        border: 1px solid var(--color-background)
+        border-radius: 4px
+        transition: all .2s ease-in-out
 
-    &:hover
-        border-color: var(--color-primary)
+        &:hover
+            border-color: var(--color-primary)
+
+    &__grid
+        display: grid
+        grid-template-columns: repeat(1, 1fr)
+        grid-column-gap: 1em
+        grid-row-gap: 1em
+
+@media screen and (min-width: 618px)
+    .era-details-view__grid
+        grid-template-columns: repeat(2, 1fr)
