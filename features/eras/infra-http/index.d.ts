@@ -1,2 +1,2 @@
-export * from './clients/eras.http-client';
-export * from './models/era.model';
+export * from './src/clients/eras.http-client';
+export * from './src/models/era.model';

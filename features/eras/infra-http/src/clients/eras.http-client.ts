@@ -1,7 +1,7 @@
 import { BaseHttpClient, type ListInput, type ListOutput, type DescribeInput } from '@swdbapp/types';
 import type { EraModel } from '../models/era.model';
 import { XHR_FETCH_METHODS } from '@amjs/js-utils';
-import { provideAPIHeaders } from '@swdbapp/core-feature';
+import { provideAPIHeaders } from 'features/core';
 
 export interface ErasHttpClient {
 	list(input?: ListInput<EraModel>): Promise<ListOutput<EraModel> | Error>;
