@@ -14,8 +14,8 @@
 		"lint:js:fix": "eslint --ext .ts --fix --config ../../../eslint.config.js"
 	},
 	"dependencies": {
+		"@amjs/js-utils": "~0.5.2",
 		"@swdbapp/core-feature": "file:../../core",
-		"@swdbapp/types": "file:../../../types",
-		"@amjs/js-utils": "~0.5.2"
+		"@swdbapp/types": "file:../../../types"
 	}
 }
