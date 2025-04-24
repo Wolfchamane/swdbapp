@@ -1,6 +1,6 @@
 import { provideAssetURL } from '@swdbapp/core-feature';
-import type { EraModel, EraModelTitle, ErasHttpClient, ListOutput } from '@swdbapp/infra-http';
-import type { Nullable } from '@swdbapp/types';
+import type { EraModel, EraModelTitle, ErasHttpClient } from '@swdbapp/feature-eras-infra-http';
+import type { Nullable, ListOutput } from '@swdbapp/types';
 import type {
 	ErasDescribePortInput,
 	ErasDescribePortOutput,

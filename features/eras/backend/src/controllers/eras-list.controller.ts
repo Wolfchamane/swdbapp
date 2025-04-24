@@ -1,4 +1,4 @@
-import type { EraModel } from '@swdbapp/infra-http';
+import type { EraModel } from '@swdbapp/feature-eras-infra-http';
 import type { Request, Response, NextFunction } from 'express';
 import { selectAll, count } from './queries';
 import { listController, type Logger, type SelectAllInput, query } from '@swdbapp/utils-backend';

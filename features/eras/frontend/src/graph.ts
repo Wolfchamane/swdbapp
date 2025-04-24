@@ -1,5 +1,5 @@
 import { provideAPIHostname, provideAPIPort, provideAPISecure } from '@swdbapp/core-feature';
-import { DefaultErasHttpClient, type ErasHttpClient } from '@swdbapp/infra-http';
+import { DefaultErasHttpClient, type ErasHttpClient } from '@swdbapp/feature-eras-infra-http';
 import { ErasHttpAdapter } from './adapters/output/eras.http-adapter';
 import { DefaultErasUseCases, type ErasPorts, type ErasUseCases } from './application';
 
