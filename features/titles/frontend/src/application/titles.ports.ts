@@ -1,4 +1,4 @@
-import type { DescribeInput, ListInput, ListOutput } from '@swdbapp/infra-http';
+import type { DescribeInput, ListInput, ListOutput } from '@swdbapp/types';
 import type { Title, TitleDetails } from '../types';
 
 export interface TitlesPorts {
