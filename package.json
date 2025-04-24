@@ -18,6 +18,7 @@
 		"./features/eras/frontend",
 		"./features/titles/backend",
 		"./features/titles/frontend",
+        "./frontend/components/vue-js",
 		"./frontend/vue-js",
 		"./infra/http",
 		"./types",

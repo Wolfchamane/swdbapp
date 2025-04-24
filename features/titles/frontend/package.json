@@ -1,5 +1,5 @@
 {
-	"name": "@swdbapp/feature-eras-frontend",
+	"name": "@swdbapp/feature-titles-frontend",
 	"version": "1.0.0",
 	"private": true,
 	"main": "index.ts",
@@ -13,10 +13,13 @@
 		"lint:js:fix": "eslint  --ext .vue,.ts --fix --config ../../../eslint.config.js"
 	},
 	"dependencies": {
+        "@swdbapp/frontend-vue-components": "file:../../../frontend/components/vue-js",
 		"@swdbapp/types": "file:../../../types",
+		"@swdbapp/utils-frontend": "file:../../../utils/frontend",
 		"@swdbapp/core-feature": "file:../../core",
 		"@swdbapp/infra-http": "file:../../../infra/http",
         "@fortawesome/free-brands-svg-icons": "~6.7.2",
+        "@fortawesome/vue-fontawesome": "~3.0.8",
         "vue": "~3.5.13",
         "vue-router": "~4.5.0"
 	}

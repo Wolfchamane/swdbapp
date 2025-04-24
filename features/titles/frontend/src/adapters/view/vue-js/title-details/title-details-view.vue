@@ -3,10 +3,11 @@
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 	import { type ComputedRef, type Ref, computed, inject, nextTick, ref, watch } from 'vue';
 	import { type RouteLocation, useRoute } from 'vue-router';
-	import { type TitleDetails, type TitlesUseCases, provideTitlesUseCases } from '@swdbapp/feature-titles-frontend';
+	import { provideTitlesUseCases } from '../../../../graph';
+	import type { TitleDetails  } from '../../../../types';
+	import type { TitlesUseCases } from '../../../../application';
 	import type { Nullable } from '@swdbapp/types';
-	import { dateToStr, getCurrentLocale } from '@swdbapp/utils';
-	import { notAvailableString, numberToReadableTime } from '@/utils';
+	import { dateToStr, getCurrentLocale, notAvailableString, numberToReadableTime } from '@swdbapp/utils-frontend';
 
 	const currentRoute: RouteLocation = useRoute();
 	const toggleLoading: () => void | undefined = inject('toggleLoading');

@@ -1,7 +1,6 @@
 import config from '../config';
 import type { Request, Response, NextFunction } from 'express';
-import { AppError } from '../types';
-import type { Logger } from '@swdbapp/utils-backend';
+import type { Logger, AppError } from '@swdbapp/utils-backend';
 
 export const auth =
 	(logger: Logger) =>

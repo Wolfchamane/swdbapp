@@ -1,6 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
-import type { AppError, AppResponse } from '../types/';
-import type { Logger } from '@swdbapp/utils-backend';
+import type { Logger, AppError, AppResponse } from '@swdbapp/utils-backend';
 
 export const endHandler =
 	(logger: Logger) =>

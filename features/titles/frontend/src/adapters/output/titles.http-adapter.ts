@@ -8,7 +8,7 @@ import type {
 import type { TitlesHttpClient, TitleModel, ListOutput, ListInput } from '@swdbapp/infra-http';
 import type { Title, TitleDetails } from '../../types';
 import { provideAssetURL } from '@swdbapp/core-feature';
-import { strToDate } from '@swdbapp/utils';
+import { strToDate } from '@swdbapp/utils-frontend';
 
 export class TitlesHttpAdapter implements TitlesPorts {
 	constructor(private readonly httpClient: TitlesHttpClient) {}

@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 	import { type Ref, inject, nextTick, ref, watch } from 'vue';
 	import { useRoute, useRouter } from 'vue-router';
-	import {
-		type Title,
-		type TitlesListAllUseCaseInput,
-		type TitlesUseCases,
-		provideTitlesUseCases,
-	} from '@swdbapp/feature-titles-frontend';
+	import type {
+		 Title,
+	} from '../../../../types';
+	import { provideTitlesUseCases } from '../../../../graph';
+	import type {TitlesListAllUseCaseInput,
+		TitlesUseCases } from '../../../../application';
 	import type { Nullable } from '@swdbapp/types';
-	import { PaginationControl, TitleItem } from '@/components';
+	import { TitleItem } from '../components/title-item';
+	import { PaginationControl } from '@swdbapp/frontend-vue-components';
 
 	const ROUTER = useRouter();
 	const CURRENT_ROUTE = useRoute();
