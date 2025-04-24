@@ -1,37 +1,37 @@
 <script lang="ts" setup>
-	import { type ComputedRef, type Ref, computed, inject, ref, watch } from 'vue';
-	import { type RouteLocation, useRoute, useRouter } from 'vue-router';
-	import { provideErasUseCases } from '../../../../graph';
-	import type { EraDetails } from '../../../../types';
-	import type { ErasUseCases } from '../../../../application';
-	import type { Nullable } from '@swdbapp/types';
+import { type ComputedRef, type Ref, computed, inject, ref, watch } from 'vue';
+import { type RouteLocation, useRoute, useRouter } from 'vue-router';
+import { provideErasUseCases } from '../../../../graph';
+import type { EraDetails } from '../../../../types';
+import type { ErasUseCases } from '../../../../application';
+import type { Nullable } from '@swdbapp/types';
 
-	const ROUTER = useRouter();
-	const useCases: ErasUseCases = provideErasUseCases();
-	const currentRoute: RouteLocation = useRoute();
-	const toggleLoading: () => void = inject('toggleLoading');
-	const era: Ref<Nullable<EraDetails>> = ref(null);
+const ROUTER = useRouter();
+const useCases: ErasUseCases = provideErasUseCases();
+const currentRoute: RouteLocation = useRoute();
+const toggleLoading: () => void = inject('toggleLoading');
+const era: Ref<Nullable<EraDetails>> = ref(null);
 
-	const isEmpty: ComputedRef<boolean> = computed(() => {
-		return !era.value || (!era.value.description && !era.value.titles?.length);
-	});
+const isEmpty: ComputedRef<boolean> = computed(() => {
+	return !era.value || (!era.value.description && !era.value.titles?.length);
+});
 
-	const fetchEraDetails = async (id: string): Promise<void> => {
-		toggleLoading();
-		await useCases.detail({ id });
-		era.value = useCases.eraDetail;
-		toggleLoading();
-	};
+const fetchEraDetails = async (id: string): Promise<void> => {
+	toggleLoading();
+	await useCases.detail({ id });
+	era.value = useCases.eraDetail;
+	toggleLoading();
+};
 
-	const navigateToTitle = (id: number): void => {
-		ROUTER.push({ name: 'title-details-view', params: { id: `${id}` } });
-	};
+const navigateToTitle = (id: number): void => {
+	ROUTER.push({ name: 'title-details-view', params: { id: `${id}` } });
+};
 
-	watch(
-		() => currentRoute.params.id,
-		eraId => fetchEraDetails(eraId as string),
-		{ immediate: true }
-	);
+watch(
+	() => currentRoute.params.id,
+	eraId => fetchEraDetails(eraId as string),
+	{ immediate: true }
+);
 </script>
 
 <template>

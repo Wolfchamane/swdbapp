@@ -16,8 +16,8 @@
 		"@swdbapp/types": "file:../../../types",
 		"@swdbapp/core-feature": "file:../../core",
 		"@swdbapp/infra-http": "file:../../../infra/http",
-        "@fortawesome/free-brands-svg-icons": "~6.7.2",
-        "vue": "~3.5.13",
-        "vue-router": "~4.5.0"
+		"@fortawesome/free-brands-svg-icons": "~6.7.2",
+		"vue": "~3.5.13",
+		"vue-router": "~4.5.0"
 	}
 }

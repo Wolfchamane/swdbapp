@@ -1,83 +1,83 @@
 <script lang="ts" setup>
-	import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-	import { type ComputedRef, type Ref, computed, inject, nextTick, ref, watch } from 'vue';
-	import { type RouteLocation, useRoute } from 'vue-router';
-	import { provideTitlesUseCases } from '../../../../graph';
-	import type { TitleDetails  } from '../../../../types';
-	import type { TitlesUseCases } from '../../../../application';
-	import type { Nullable } from '@swdbapp/types';
-	import { dateToStr, getCurrentLocale, notAvailableString, numberToReadableTime } from '@swdbapp/utils-frontend';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { type ComputedRef, type Ref, computed, inject, nextTick, ref, watch } from 'vue';
+import { type RouteLocation, useRoute } from 'vue-router';
+import { provideTitlesUseCases } from '../../../../graph';
+import type { TitleDetails } from '../../../../types';
+import type { TitlesUseCases } from '../../../../application';
+import type { Nullable } from '@swdbapp/types';
+import { dateToStr, getCurrentLocale, notAvailableString, numberToReadableTime } from '@swdbapp/utils-frontend';
 
-	const currentRoute: RouteLocation = useRoute();
-	const toggleLoading: () => void | undefined = inject('toggleLoading');
-	const useCases: TitlesUseCases = provideTitlesUseCases();
-	const title: Ref<Nullable<TitleDetails>> = ref(null);
-	const content: Ref<Nullable<HTMLElement>> = ref(null);
-	const openingCrawl: Ref<Nullable<HTMLElement>> = ref(null);
-	const showPlot: Ref<boolean> = ref(false);
-	const episodeTitle: Ref<Nullable<string>> = ref(null);
-	const mainTitle: Ref<Nullable<string>> = ref(null);
-	const isNotEmpty: Ref<boolean> = ref(false);
+const currentRoute: RouteLocation = useRoute();
+const toggleLoading: () => void | undefined = inject('toggleLoading');
+const useCases: TitlesUseCases = provideTitlesUseCases();
+const title: Ref<Nullable<TitleDetails>> = ref(null);
+const content: Ref<Nullable<HTMLElement>> = ref(null);
+const openingCrawl: Ref<Nullable<HTMLElement>> = ref(null);
+const showPlot: Ref<boolean> = ref(false);
+const episodeTitle: Ref<Nullable<string>> = ref(null);
+const mainTitle: Ref<Nullable<string>> = ref(null);
+const isNotEmpty: Ref<boolean> = ref(false);
 
-	const starWarsLink: ComputedRef<Nullable<string>> = computed(() => {
-		const { type } = title.value || {};
-		const name = title.value?.title || '';
-		if (name && type) {
-			return `https://starwars.com/${type}/${name
-				.replace(/\s/g, '-')
-				.replace(/[^a-zA-Z0-9-]/g, '')
-				.toLowerCase()}`;
+const starWarsLink: ComputedRef<Nullable<string>> = computed(() => {
+	const { type } = title.value || {};
+	const name = title.value?.title || '';
+	if (name && type) {
+		return `https://starwars.com/${type}/${name
+			.replace(/\s/g, '-')
+			.replace(/[^a-zA-Z0-9-]/g, '')
+			.toLowerCase()}`;
+	}
+
+	return null;
+});
+
+const setOpeningCrawlMaxWidth = (): void => {
+	if (openingCrawl.value instanceof HTMLElement) {
+		const header: HTMLHeadingElement | null = openingCrawl.value.querySelector('h1');
+		if (header) {
+			const fixedPadding: number = Number(4 * 16);
+			openingCrawl.value.style.width = `${Number(header.getBoundingClientRect().width + fixedPadding)}px`;
 		}
+	}
+};
 
-		return null;
-	});
+const enableScroll = (): void => {
+	if (content.value instanceof HTMLElement) {
+		setTimeout(() => {
+			content.value.classList.add('overflow-y-auto');
+		}, 1000);
+	}
+};
 
-	const setOpeningCrawlMaxWidth = (): void => {
-		if (openingCrawl.value instanceof HTMLElement) {
-			const header: HTMLHeadingElement | null = openingCrawl.value.querySelector('h1');
-			if (header) {
-				const fixedPadding: number = Number(4 * 16);
-				openingCrawl.value.style.width = `${Number(header.getBoundingClientRect().width + fixedPadding)}px`;
-			}
+const fetchTitleDetails = async (id: string): Promise<void> => {
+	toggleLoading();
+	await useCases.detail({ id });
+	title.value = useCases.titleDetail;
+	await nextTick(async () => {
+		episodeTitle.value = title.value?.title.replace(/(\w+):.+/, '$1') || '';
+		mainTitle.value = title.value?.title.replace(/.+\:(.+)/, '$1').trim() || 'Unknown';
+		isNotEmpty.value = Object.keys(title.value)
+			.filter(key => !['title', 'logo', 'type', '$id'].includes(key))
+			.some(key => !!title.value[key]);
+		if (isNotEmpty.value) {
+			await nextTick(() => {
+				setOpeningCrawlMaxWidth();
+				enableScroll();
+			});
 		}
-	};
-
-	const enableScroll = (): void => {
-		if (content.value instanceof HTMLElement) {
-			setTimeout(() => {
-				content.value.classList.add('overflow-y-auto');
-			}, 1000);
-		}
-	};
-
-	const fetchTitleDetails = async (id: string): Promise<void> => {
 		toggleLoading();
-		await useCases.detail({ id });
-		title.value = useCases.titleDetail;
-		await nextTick(async () => {
-			episodeTitle.value = title.value?.title.replace(/(\w+):.+/, '$1') || '';
-			mainTitle.value = title.value?.title.replace(/.+\:(.+)/, '$1').trim() || 'Unknown';
-			isNotEmpty.value = Object.keys(title.value)
-				.filter(key => !['title', 'logo', 'type', '$id'].includes(key))
-				.some(key => !!title.value[key]);
-			if (isNotEmpty.value) {
-				await nextTick(() => {
-					setOpeningCrawlMaxWidth();
-					enableScroll();
-				});
-			}
-			toggleLoading();
-		});
-	};
+	});
+};
 
-	const toggleShowPlow = () => (showPlot.value = !showPlot.value);
+const toggleShowPlow = () => (showPlot.value = !showPlot.value);
 
-	watch(
-		() => currentRoute.params.id,
-		async id => await fetchTitleDetails(id as string),
-		{ immediate: true }
-	);
+watch(
+	() => currentRoute.params.id,
+	async id => await fetchTitleDetails(id as string),
+	{ immediate: true }
+);
 </script>
 
 <template>

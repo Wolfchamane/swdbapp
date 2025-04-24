@@ -14,7 +14,7 @@ interface RoutesMap {
 interface AppRoutesMap {
 	'vue-js': RoutesMap | null;
 	'react-js': RoutesMap | null;
-	'wc': RoutesMap | null;
+	wc: RoutesMap | null;
 }
 
 const appRoutesMap: AppRoutesMap = {
@@ -23,7 +23,7 @@ const appRoutesMap: AppRoutesMap = {
 		TITLE_DETAILS_ROUTE: VUE_TITLE_DETAILS_ROUTE,
 	} satisfies RoutesMap,
 	'react-js': null,
-	'wc': null,
+	wc: null,
 };
 
 export const provideTitlesFrontendRoutes = (kind: AppKind): RoutesMap => {
