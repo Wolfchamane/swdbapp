@@ -11,11 +11,11 @@
 		"dev:env:development": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
 		"dev": "dotenvx run -f ../environments/.env -- npm run dev:env:development",
 		"prestart": "npm run build",
-		"format:check": "prettier --check --config ../prettier.config.js .",
-		"format:fix": "prettier --write --config ../prettier.config.js .",
+		"format:check": "prettier --check --config ../../prettier.config.js .",
+		"format:fix": "prettier --write --config ../../prettier.config.js .",
 		"lint:check": "npm run lint:js:check",
-		"lint:js:check": "eslint  --ext .mjs --config ../eslint.config.js",
-		"lint:js:fix": "eslint  --ext .mjs --fix --config ../eslint.config.js"
+		"lint:js:check": "eslint  --ext .mjs --config ../../eslint.config.js",
+		"lint:js:fix": "eslint  --ext .mjs --fix --config ../../eslint.config.js"
 	},
 	"dependencies": {
 		"@swdbapp/infra-http": "file:../infra/http",
