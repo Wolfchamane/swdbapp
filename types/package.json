@@ -14,5 +14,8 @@
 		"lint:check": "npm run lint:js:check",
 		"lint:js:check": "eslint  --ext .mjs --config ../eslint.config.js",
 		"lint:js:fix": "eslint  --ext .mjs --fix --config ../eslint.config.js"
-	}
+	},
+    "dependencies": {
+        "@amjs/js-utils": "~0.5.2"
+    }
 }
