@@ -18,7 +18,6 @@
 		"./features/titles/*",
 		"./frontend/components/vue-js",
 		"./frontend/vue-js",
-		"./infra/http",
 		"./types",
 		"./utils/*"
 	],
