@@ -1,4 +1,4 @@
-import type { ListInput, ListOutput, DescribeInput, EraModel } from '@swdbapp/infra-http';
+import type { DescribeInput, EraModel, ListInput, ListOutput } from '@swdbapp/infra-http';
 import type { Era, EraDetails } from '../types';
 
 export interface ErasPorts {

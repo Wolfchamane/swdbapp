@@ -1,4 +1,4 @@
-import type { ErasUseCases, ErasListAllUseCaseInput } from './application';
+import type { ErasListAllUseCaseInput, ErasUseCases } from './application';
 import { VUE_ERAS_ROUTE, VUE_ERA_DETAILS_ROUTE } from './routes/vue-js/eras.routes';
 
 export { ErasUseCases, ErasListAllUseCaseInput };

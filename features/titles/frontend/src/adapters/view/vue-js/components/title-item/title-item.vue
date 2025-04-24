@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { TitleItemProperties } from './types';
+	import type { TitleItemProperties } from './types';
 
-defineProps<TitleItemProperties>();
+	defineProps<TitleItemProperties>();
 </script>
 
 <template>

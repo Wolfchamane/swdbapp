@@ -1,7 +1,7 @@
-import { type ErasHttpClient, DefaultErasHttpClient } from '@swdbapp/infra-http';
-import { ErasHttpAdapter } from './adapters/output/eras.http-adapter';
 import { provideAPIHostname, provideAPIPort, provideAPISecure } from '@swdbapp/core-feature';
-import { type ErasPorts, type ErasUseCases, DefaultErasUseCases } from './application';
+import { DefaultErasHttpClient, type ErasHttpClient } from '@swdbapp/infra-http';
+import { ErasHttpAdapter } from './adapters/output/eras.http-adapter';
+import { DefaultErasUseCases, type ErasPorts, type ErasUseCases } from './application';
 
 const hostname: string = provideAPIHostname();
 const port: string = provideAPIPort();

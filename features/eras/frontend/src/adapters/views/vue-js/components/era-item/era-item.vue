@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { EraItemProperties } from './types';
+	import type { EraItemProperties } from './types';
 
-defineProps<EraItemProperties>();
+	defineProps<EraItemProperties>();
 </script>
 
 <template>

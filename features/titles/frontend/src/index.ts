@@ -1,4 +1,4 @@
-import type { TitlesUseCases, TitlesListAllUseCaseInput } from './application';
+import type { TitlesListAllUseCaseInput, TitlesUseCases } from './application';
 import { VUE_TITLES_ROUTE, VUE_TITLE_DETAILS_ROUTE } from './routes/vue-js/titles.routes';
 
 export { TitlesUseCases, TitlesListAllUseCaseInput };

@@ -1,6 +1,6 @@
-import type { TitleDetailPortInput, TitlesListPortInput, TitlesPorts } from './titles.ports';
 import type { Nullable } from '@swdbapp/types';
 import type { Title, TitleDetails } from '../types';
+import type { TitleDetailPortInput, TitlesListPortInput, TitlesPorts } from './titles.ports';
 
 export type TitlesListAllUseCaseInput = TitlesListPortInput;
 export type TitleDetailUseCaseInput = TitleDetailPortInput;

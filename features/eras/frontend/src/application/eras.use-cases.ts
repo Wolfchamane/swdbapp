@@ -1,6 +1,6 @@
-import { ErasPorts, ErasListPortInput, ErasListPortOutput, ErasDescribePortInput } from './eras.ports';
-import type { Era, EraDetails } from '../types';
 import type { Nullable } from '@swdbapp/types';
+import type { Era, EraDetails } from '../types';
+import { ErasDescribePortInput, ErasListPortInput, ErasListPortOutput, ErasPorts } from './eras.ports';
 
 export type ErasDetailUseCaseInput = ErasDescribePortInput;
 

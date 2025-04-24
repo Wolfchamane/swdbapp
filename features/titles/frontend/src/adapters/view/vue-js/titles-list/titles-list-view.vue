@@ -1,72 +1,72 @@
 <script lang="ts" setup>
-import { type Ref, inject, nextTick, ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import type { Title } from '../../../../types';
-import { provideTitlesUseCases } from '../../../../graph';
-import type { TitlesListAllUseCaseInput, TitlesUseCases } from '../../../../application';
-import type { Nullable } from '@swdbapp/types';
-import { TitleItem } from '../components/title-item';
-import { PaginationControl } from '@swdbapp/frontend-vue-components';
+	import { type Ref, inject, nextTick, ref, watch } from 'vue';
+	import { useRoute, useRouter } from 'vue-router';
+	import { PaginationControl } from '@swdbapp/frontend-vue-components';
+	import type { Nullable } from '@swdbapp/types';
+	import type { TitlesListAllUseCaseInput, TitlesUseCases } from '../../../../application';
+	import { provideTitlesUseCases } from '../../../../graph';
+	import type { Title } from '../../../../types';
+	import { TitleItem } from '../components/title-item';
 
-const ROUTER = useRouter();
-const CURRENT_ROUTE = useRoute();
-const toggleLoading: () => void = inject('toggleLoading');
-const useCases: TitlesUseCases = provideTitlesUseCases();
-const titles: Ref<Title[]> = ref([]);
-const pagination: Ref<{ offset: number; limit: number; total: number }> = ref({});
-const currentPage: Ref<number> = ref(NaN);
-const totalPages: Ref<number> = ref(NaN);
-const titlesList: Ref<Nullable<HTMLElement>> = ref(null);
+	const ROUTER = useRouter();
+	const CURRENT_ROUTE = useRoute();
+	const toggleLoading: () => void = inject('toggleLoading');
+	const useCases: TitlesUseCases = provideTitlesUseCases();
+	const titles: Ref<Title[]> = ref([]);
+	const pagination: Ref<{ offset: number; limit: number; total: number }> = ref({});
+	const currentPage: Ref<number> = ref(NaN);
+	const totalPages: Ref<number> = ref(NaN);
+	const titlesList: Ref<Nullable<HTMLElement>> = ref(null);
 
-const fetchTitles = async (input?: TitlesListAllUseCaseInput): Promise<void> => {
-	toggleLoading();
-	await useCases.listAll(input);
-	await nextTick(() => {
-		pagination.value = {
-			...useCases.pagination,
-		};
-		window.requestAnimationFrame(() => {
-			titlesList.value?.scroll({ top: 0, behavior: 'smooth' });
+	const fetchTitles = async (input?: TitlesListAllUseCaseInput): Promise<void> => {
+		toggleLoading();
+		await useCases.listAll(input);
+		await nextTick(() => {
+			pagination.value = {
+				...useCases.pagination,
+			};
+			window.requestAnimationFrame(() => {
+				titlesList.value?.scroll({ top: 0, behavior: 'smooth' });
+			});
 		});
-	});
-	titles.value = useCases.titles;
-	toggleLoading();
-};
-
-const onPaginate = async (offset: number) => {
-	const query: TitlesListAllUseCaseInput = {
-		offset: Number(offset - 1),
-		limit: useCases.pagination.limit,
+		titles.value = useCases.titles;
+		toggleLoading();
 	};
 
-	await ROUTER.push({ ...CURRENT_ROUTE, query });
-};
+	const onPaginate = async (offset: number) => {
+		const query: TitlesListAllUseCaseInput = {
+			offset: Number(offset - 1),
+			limit: useCases.pagination.limit,
+		};
 
-const navigateToTitleDetail = (id: number): void => {
-	ROUTER.push({ name: 'title-details-view', params: { id } });
-};
+		await ROUTER.push({ ...CURRENT_ROUTE, query });
+	};
 
-watch(
-	() => pagination.value.offset,
-	(offset: number) => {
-		currentPage.value = offset ? Number(Math.trunc(Number(offset / pagination.value.limit)) + 1) : 1;
-	}
-);
+	const navigateToTitleDetail = (id: number): void => {
+		ROUTER.push({ name: 'title-details-view', params: { id } });
+	};
 
-watch(
-	() => pagination.value.total,
-	(total: number) => {
-		totalPages.value = Number(Math.trunc(total / pagination.value.limit) + 1);
-	}
-);
+	watch(
+		() => pagination.value.offset,
+		(offset: number) => {
+			currentPage.value = offset ? Number(Math.trunc(Number(offset / pagination.value.limit)) + 1) : 1;
+		}
+	);
 
-watch(
-	() => CURRENT_ROUTE.query,
-	async query => {
-		await fetchTitles(query);
-	},
-	{ immediate: true }
-);
+	watch(
+		() => pagination.value.total,
+		(total: number) => {
+			totalPages.value = Number(Math.trunc(total / pagination.value.limit) + 1);
+		}
+	);
+
+	watch(
+		() => CURRENT_ROUTE.query,
+		async query => {
+			await fetchTitles(query);
+		},
+		{ immediate: true }
+	);
 </script>
 
 <template>
