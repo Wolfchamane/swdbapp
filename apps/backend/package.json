@@ -19,7 +19,7 @@
 	},
 	"dependencies": {
 		"@swdbapp/feature-eras-backend": "file:../../features/eras/backend",
-        "@swdbapp/feature-titles-backend": "file:../../features/titles/backend",
+		"@swdbapp/feature-titles-backend": "file:../../features/titles/backend",
 		"@swdbapp/utils-backend": "file:../../utils/backend",
 		"chalk": "~5.4.1",
 		"cors": "~2.8.5",
