@@ -1,2 +1,1 @@
-export * from './src/nullable';
-export * from './src/swdbapp-config';
+export * from './src';
