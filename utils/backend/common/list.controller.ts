@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
-import type { Logger } from '../logger';
+import type { Logger } from '../utils/logger';
 import { DEFAULT_LIMIT, DEFAULT_ORDER_BY, DEFAULT_ORDER_DIR, DEFAULT_OFFSET } from '../constants';
 import type { AppError, AppResponse, SelectAllInput } from '../types';
 import type { ListOutput } from '@swdbapp/infra-http';
