@@ -14,11 +14,17 @@ export class DefaultErasHttpClient extends BaseHttpClient implements ErasHttpCli
 	/**
 	 * @override
 	 */
-	protected _serialize(headers?: Record<string, string>, body?: object | number | string | boolean | null): Promise<void | Error> {
-	    return super._serialize({
-			...(headers || {}),
-			...provideAPIHeaders(),
-		}, body);
+	protected _serialize(
+		headers?: Record<string, string>,
+		body?: object | number | string | boolean | null
+	): Promise<void | Error> {
+		return super._serialize(
+			{
+				...(headers || {}),
+				...provideAPIHeaders(),
+			},
+			body
+		);
 	}
 
 	list(params?: ListInput<EraModel>): Promise<ListOutput<EraModel> | Error> {

@@ -15,7 +15,7 @@
 		"@swdbapp/feature-titles-backend": "file:../../titles/backend",
 		"@swdbapp/infra-http": "file:../../../infra/http",
 		"@swdbapp/utils-backend": "file:../../../utils/backend",
-        "@swdbapp/feature-eras-infra-http": "file:../infra-http",
+		"@swdbapp/feature-eras-infra-http": "file:../infra-http",
 		"express": "~5.1.0",
 		"pg": "~8.14.1"
 	},
