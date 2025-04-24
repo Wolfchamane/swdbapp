@@ -15,6 +15,7 @@
 		"lint:js:fix": "eslint  --ext .mjs --fix --config ../../eslint.config.js"
 	},
 	"dependencies": {
+        "@swdbapp/types": "file:../types",
 		"chalk": "~5.4.1",
 		"pg": "~8.14.1",
 		"pg-format": "~1.0.4"
