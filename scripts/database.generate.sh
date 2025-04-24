@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DATABASE_SOLUTION_FOLDER="$(pwd)/database"
-DATABASE_DATA_FOLDER="$(pwd)/database-data";
+DATABASE_DATA_FOLDER="$DATABASE_SOLUTION_FOLDER/data";
 NODE_PATH="$(which node)";
 
 if ! [ -d "${DATABASE_SOLUTION_FOLDER}" ]; then

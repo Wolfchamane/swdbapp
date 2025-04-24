@@ -1,4 +1,4 @@
-import source from '../../database-data/titles.json' with { type: 'json' };
+import source from '../data/titles.json' with { type: 'json' };
 import generator from '../utils/generator.mjs';
 import scapeSingleQuotes from '../utils/scape-single-quotes.mjs';
 import nullableValue from '../utils/nullable-value.mjs';

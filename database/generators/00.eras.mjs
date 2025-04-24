@@ -1,4 +1,4 @@
-import source from '../../database-data/eras.json' with { type: 'json' };
+import source from '../data/eras.json' with { type: 'json' };
 import generator from '../utils/generator.mjs';
 import nullableValue from '../utils/nullable-value.mjs';
 
