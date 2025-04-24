@@ -13,7 +13,7 @@
 	},
 	"dependencies": {
 		"@swdbapp/utils-backend": "file:../../../utils/backend",
-        "@swdbapp/feature-titles-infra-http": "file:../infra-http",
+		"@swdbapp/feature-titles-infra-http": "file:../infra-http",
 		"express": "~5.1.0",
 		"pg": "~8.14.1"
 	},

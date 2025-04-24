@@ -1,6 +1,6 @@
 import { provideAssetURL } from '@swdbapp/core-feature';
-import type { ListInput, ListOutput } from '@swdbapp/types';
 import type { TitleModel, TitlesHttpClient } from '@swdbapp/feature-titles-infra-http';
+import type { ListInput, ListOutput } from '@swdbapp/types';
 import { strToDate } from '@swdbapp/utils-frontend';
 import type {
 	TitleDetailPortInput,

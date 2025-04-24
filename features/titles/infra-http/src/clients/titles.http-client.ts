@@ -18,10 +18,13 @@ export class DefaultTitlesHttpClient extends BaseHttpClient implements TitlesHtt
 		headers?: Record<string, string>,
 		body?: object | number | string | boolean | null
 	): Promise<void | Error> {
-		return super._serialize({
-			...(headers || {}),
-			...provideAPIHeaders()
-		}, body);
+		return super._serialize(
+			{
+				...(headers || {}),
+				...provideAPIHeaders(),
+			},
+			body
+		);
 	}
 
 	list(params?: ListInput<TitleModel>): Promise<ListOutput<TitleModel> | Error> {
