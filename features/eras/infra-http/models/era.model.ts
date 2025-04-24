@@ -1,4 +1,4 @@
-import type { Nullable } from '@swdbapp/types';
+import type { Nullable } from 'types';
 
 export interface EraModel {
 	id: number;
