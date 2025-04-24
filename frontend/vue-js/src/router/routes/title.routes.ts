@@ -1,6 +1,6 @@
 import { faOldRepublic } from '@fortawesome/free-brands-svg-icons';
 import { type ListInput } from '@swdbapp/infra-http';
-import { type Title } from '@swdbapp/titles-feature';
+import { type Title } from '@swdbapp/feature-titles-frontend';
 
 export type TitlesListViewQuery = ListInput<Title>;
 

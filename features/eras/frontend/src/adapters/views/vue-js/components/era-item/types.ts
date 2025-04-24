@@ -1,4 +1,4 @@
-import type { Era } from '@swdbapp/eras-feature';
+import type { Era } from '../../../../../types';
 
 export interface EraItemProperties {
 	era: Era;

@@ -3,7 +3,7 @@
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 	import { type ComputedRef, type Ref, computed, inject, nextTick, ref, watch } from 'vue';
 	import { type RouteLocation, useRoute } from 'vue-router';
-	import { type TitleDetails, type TitlesUseCases, provideTitlesUseCases } from '@swdbapp/titles-feature';
+	import { type TitleDetails, type TitlesUseCases, provideTitlesUseCases } from '@swdbapp/feature-titles-frontend';
 	import type { Nullable } from '@swdbapp/types';
 	import { dateToStr, getCurrentLocale } from '@swdbapp/utils';
 	import { notAvailableString, numberToReadableTime } from '@/utils';

@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 	import { type ComputedRef, type Ref, computed, inject, ref, watch } from 'vue';
 	import { type RouteLocation, useRoute, useRouter } from 'vue-router';
-	import { type EraDetails, type ErasUseCases, provideErasUseCases } from '@swdbapp/eras-feature';
+	import { provideErasUseCases } from '../../../../graph';
+	import type { EraDetails } from '../../../../types';
+	import type { ErasUseCases } from '../../../../application';
 	import type { Nullable } from '@swdbapp/types';
 
 	const ROUTER = useRouter();

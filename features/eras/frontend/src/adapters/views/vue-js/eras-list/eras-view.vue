@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 	import { type Ref, inject, nextTick, onMounted, ref } from 'vue';
 	import { useRouter } from 'vue-router';
-	import { type Era, type ErasUseCases, provideErasUseCases } from '@swdbapp/eras-feature';
-	import { EraItem } from '@/components';
+	import { provideErasUseCases } from '../../../../graph';
+	import type { Era } from '../../../../types';
+	import type { ErasUseCases } from '../../../../application';
+	import { EraItem } from '../components/era-item';
 
 	const ROUTER = useRouter();
 	const useCases: ErasUseCases = provideErasUseCases();

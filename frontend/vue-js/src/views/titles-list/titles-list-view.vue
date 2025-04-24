@@ -6,7 +6,7 @@
 		type TitlesListAllUseCaseInput,
 		type TitlesUseCases,
 		provideTitlesUseCases,
-	} from '@swdbapp/titles-feature';
+	} from '@swdbapp/feature-titles-frontend';
 	import type { Nullable } from '@swdbapp/types';
 	import { PaginationControl, TitleItem } from '@/components';
 

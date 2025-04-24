@@ -1,4 +1,4 @@
-import type { Title } from '@swdbapp/titles-feature';
+import type { Title } from '@swdbapp/feature-titles-frontend';
 
 export interface TitleItemProperties {
 	title: Title;
