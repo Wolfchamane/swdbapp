@@ -1,0 +1,25 @@
+{
+	"name": "@swdbapp/feature-eras-backend",
+	"private": true,
+	"license": "UNLICENSED",
+	"version": "1.0.0",
+	"main": "index.ts",
+	"scripts": {
+		"format:check": "prettier --check --config ../../../prettier.config.js .",
+		"format:fix": "prettier --write --config ../../../prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .vue,.ts --config ../../../eslint.config.js",
+		"lint:js:fix": "eslint  --ext .vue,.ts --fix --config ../../../eslint.config.js"
+	},
+	"dependencies": {
+		"@swdbapp/feature-titles-backend": "file:../../titles/backend",
+		"@swdbapp/infra-http": "file:../../../infra/http",
+		"@swdbapp/utils-backend": "file:../../../utils/backend",
+		"express": "~5.1.0",
+		"pg": "~8.14.1"
+	},
+	"devDependencies": {
+		"@types/express": "~5.0.1",
+		"@types/pg": "~8.11.11"
+	}
+}

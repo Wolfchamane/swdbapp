@@ -9,7 +9,7 @@
 		"build": "tsc",
 		"start": "node dist/server.js",
 		"dev:env:development": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
-		"dev": "dotenvx run -f ../environments/.env -- npm run dev:env:development",
+		"dev": "dotenvx run -f ../../environments/.env -- npm run dev:env:development",
 		"prestart": "npm run build",
 		"format:check": "prettier --check --config ../../prettier.config.js .",
 		"format:fix": "prettier --write --config ../../prettier.config.js .",
@@ -18,7 +18,9 @@
 		"lint:js:fix": "eslint  --ext .mjs --fix --config ../../eslint.config.js"
 	},
 	"dependencies": {
-		"@swdbapp/infra-http": "file:../infra/http",
+		"@swdbapp/infra-http": "file:../../infra/http",
+		"@swdbapp/feature-eras-backend": "file:../../features/eras/backend",
+		"@swdbapp/utils-backend": "file:../../utils/backend",
 		"chalk": "~5.4.1",
 		"cors": "~2.8.5",
 		"express": "~5.1.0",

@@ -1,0 +1,25 @@
+{
+	"name": "@swdbapp/utils-backend",
+	"version": "1.0.0",
+	"private": true,
+	"author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
+	"description": "Set of TS utilities for SW DB App backend solution",
+	"license": "UNLICENSED",
+	"main": "index.ts",
+	"types": "index.d.ts",
+	"scripts": {
+		"format:check": "prettier --check --config ../../prettier.config.js .",
+		"format:fix": "prettier --write --config ../../prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .mjs --config ../../eslint.config.js",
+		"lint:js:fix": "eslint  --ext .mjs --fix --config ../../eslint.config.js"
+	},
+	"dependencies": {
+		"chalk": "~5.4.1",
+		"pg": "~8.14.1",
+		"pg-format": "~1.0.4"
+	},
+	"devDependencies": {
+		"@types/pg": "~8.11.11"
+	}
+}

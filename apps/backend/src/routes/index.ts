@@ -1,10 +1,11 @@
 import { Router } from 'express';
-import provideErasRoutes from './eras';
-import provideTitlesRoutes from './titles';
+import { provideErasBackendRoutes } from '@swdbapp/feature-eras-backend';
+import { provideTitlesBackendRoutes } from '@swdbapp/feature-titles-backend';
+import type { Logger } from '@swdbapp/utils-backend';
 
-export default (): Router => {
+export default (logger: Logger): Router => {
 	const router = Router();
-	provideErasRoutes(router);
-	provideTitlesRoutes(router);
+	provideErasBackendRoutes(router, logger);
+	provideTitlesBackendRoutes(router, logger);
 	return router;
 };

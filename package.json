@@ -14,12 +14,15 @@
 		"./apps/backend",
 		"./database",
 		"./features/core",
-		"./features/eras",
-		"./features/titles",
+		"./features/eras/backend",
+		"./features/eras/frontend",
+		"./features/titles/backend",
+		"./features/titles/frontend",
 		"./frontend/vue-js",
 		"./infra/http",
 		"./types",
-		"./utils"
+		"./utils/backend",
+		"./utils/frontend"
 	],
 	"scripts": {
 		"format:check": "npm run format:check --workspaces --if-present",
