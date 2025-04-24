@@ -16,7 +16,6 @@
 		"@amjs/js-utils": "~0.5.2",
 		"@swdbapp/types": "file:../../../types",
 		"@swdbapp/core-feature": "file:../../core",
-		"@swdbapp/infra-http": "file:../../../infra/http",
 		"@fortawesome/free-brands-svg-icons": "~6.7.2",
 		"@swdbapp/feature-eras-infra-http": "file:../infra-http",
 		"vue": "~3.5.13",

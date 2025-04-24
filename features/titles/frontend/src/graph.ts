@@ -1,5 +1,5 @@
 import { provideAPIConfig } from '@swdbapp/core-feature';
-import { DefaultTitlesHttpClient, type TitlesHttpClient } from '@swdbapp/infra-http';
+import { DefaultTitlesHttpClient, type TitlesHttpClient } from '@swdbapp/feature-titles-infra-http';
 import { TitlesHttpAdapter } from './adapters/output/titles.http-adapter';
 import { DefaultTitleUseCases, type TitlesPorts, TitlesUseCases } from './application';
 

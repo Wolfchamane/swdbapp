@@ -1,4 +1,4 @@
-import type { TitleModel } from '@swdbapp/infra-http';
+import type { TitleModel } from '@swdbapp/feature-titles-infra-http';
 import type { Request, Response, NextFunction } from 'express';
 import { query, type AppResponse, type AppError, type Logger } from '@swdbapp/utils-backend';
 import type { QueryResult, QueryConfig } from 'pg';

@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"@swdbapp/core-feature": "file:../../core",
-		"@swdbapp/types": "file:../../types",
+        "@swdbapp/types": "file:../../../types",
 		"@amjs/js-utils": "~0.5.2"
 	}
 }

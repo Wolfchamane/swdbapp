@@ -1,5 +1,5 @@
 import type { QueryConfig, QueryResult } from 'pg';
-import type { TitleModel } from '@swdbapp/infra-http';
+import type { TitleModel } from '@swdbapp/feature-titles-infra-http';
 import { listController, query, type Logger, type SelectAllInput } from '@swdbapp/utils-backend';
 import { selectAll, count } from './queries';
 

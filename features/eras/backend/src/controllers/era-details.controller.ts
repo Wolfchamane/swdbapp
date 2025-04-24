@@ -1,4 +1,4 @@
-import type { TitleModel } from '@swdbapp/infra-http';
+import type { TitleModel } from '@swdbapp/feature-titles-infra-http';
 import type { EraModel, EraModelTitle } from '@swdbapp/feature-eras-infra-http';
 import type { Request, Response, NextFunction } from 'express';
 import type { QueryResult, QueryConfig } from 'pg';
