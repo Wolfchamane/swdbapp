@@ -2,20 +2,18 @@
 
 ENV=$1
 ENVIRONMENT_FILE="$(pwd)/environments/.env${ENV}";
-BACKEND_DOCKER_FILE="$(pwd)/backend/Dockerfile";
+BACKEND_DOCKER_FILE="$(pwd)/apps/backend/Dockerfile";
 
 if ! [ -f "$BACKEND_DOCKER_FILE" ]; then
     echo "Could not found '$BACKEND_DOCKER_FILE' file!";
     exit 1;
 fi
 
-if [ "${ENV}" == "development" ] || [ "${ENV}" == "local" ]; then
+if ! [ -f "$ENVIRONMENT_FILE" ]; then
+    echo "Could not found '$ENVIRONMENT_FILE' file!";
+    exit 1;
+else
     echo "Loading environment variables";
-
-    if ! [ -f "$ENVIRONMENT_FILE" ]; then
-        echo "Could not found '$ENVIRONMENT_FILE' file!";
-        exit 1;
-    fi
 
     # Read each line of the .env file
     while IFS='=' read -r key value; do

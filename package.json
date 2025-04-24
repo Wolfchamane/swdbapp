@@ -11,7 +11,7 @@
 		"npm": "^11.2.0"
 	},
 	"workspaces": [
-		"./backend",
+		"./apps/backend",
 		"./database",
 		"./features/core",
 		"./features/eras",

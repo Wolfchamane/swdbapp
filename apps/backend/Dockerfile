@@ -29,7 +29,7 @@ COPY ./infra/http ./
 RUN npm i
 
 WORKDIR /usr/src/app
-COPY ./backend ./
+COPY ./apps/backend ./
 RUN npm i
 
 EXPOSE 3000
