@@ -1,4 +1,4 @@
-FROM node:22-alpine
+FROM node:22-alpine AS build_stage
 
 ARG BACKEND_ACCEPT_ORIGIN
 ARG BACKEND_PORT
@@ -7,6 +7,7 @@ ARG PG_HOST
 ARG PG_USER
 ARG PG_PASSWORD
 ARG PG_DATABASE
+ARG API_KEY
 
 ENV BACKEND_ACCEPT_ORIGIN=${BACKEND_ACCEPT_ORIGIN}
 ENV BACKEND_PORT=${BACKEND_PORT}
@@ -15,6 +16,7 @@ ENV PGHOST=${PG_HOST}
 ENV PGUSER=${PG_USER}
 ENV PGPASSWORD=${PG_PASSWORD}
 ENV PGDATABASE=${PG_DATABASE}
+ENV VITE_API_KEY=${API_KEY}
 
 WORKDIR /usr/src/types
 COPY ./types ./
@@ -46,5 +48,13 @@ RUN npm i -g npm
 RUN npm ci
 
 WORKDIR /usr/src/apps/backend
+RUN npm run build
+
+FROM node:22-alpine AS run_stage
+
+WORKDIR /app
+COPY --from=build_stage /usr/src/apps/backend/dist ./dist
+
 EXPOSE 3000
-CMD ["npm", "start"]
+
+CMD ["node", "dist/index.js"]
