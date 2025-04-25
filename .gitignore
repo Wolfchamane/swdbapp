@@ -16,3 +16,4 @@ npm*
 **/dist
 **/.env*
 www/**/vue-js
+.tsbuildinfo
