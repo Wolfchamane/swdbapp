@@ -13,7 +13,7 @@
 		"lint:js:fix": "eslint  --ext .vue,.ts --fix --config ./eslint.config.js"
 	},
 	"dependencies": {
-		"@swdbapp/frontend-vue-components": "file:../../../frontend/components/vue-js",
+		"@swdbapp/frontend-vue-components": "file:../../../libs/frontend/components/vue-js",
 		"@swdbapp/types": "file:../../../types",
 		"@swdbapp/utils-frontend": "file:../../../utils/frontend",
 		"@swdbapp/core-feature": "file:../../core",

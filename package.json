@@ -11,13 +11,9 @@
 		"npm": "^11.2.0"
 	},
 	"workspaces": [
-		"./apps/backend",
-		"./database",
-		"./features/core",
-		"./features/eras/*",
-		"./features/titles/*",
-		"./frontend/components/vue-js",
-		"./frontend/vue-js",
+		"./apps/**/*",
+		"./features/**/*",
+		"./libs/**/*",
 		"./types",
 		"./utils/*"
 	],
