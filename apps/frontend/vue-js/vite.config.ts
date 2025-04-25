@@ -5,15 +5,11 @@ import { defineConfig } from 'vite';
 import vueDevTools from 'vite-plugin-vue-devtools';
 import svg from 'vite-svg-loader';
 
-const envDir: string = path.resolve(...[fileURLToPath(new URL('./', import.meta.url)), '..', '..', 'environments']);
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
-const publicDir: string = path.resolve(
-	...[fileURLToPath(new URL('./', import.meta.url)), '..', '..', 'www', 'software', 'swdbapp', 'assets']
-);
+const envDir: string = path.resolve(__dirname, '..', '..', '..', 'environments');
 
-const outDir: string = path.resolve(
-	...[fileURLToPath(new URL('./', import.meta.url)), '..', '..', 'www', 'software', 'swdbapp', 'vuejs']
-);
+const publicDir: string = path.resolve(__dirname, '..', '..', 'assets');
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -29,7 +25,7 @@ export default defineConfig(({ mode }) => {
 		envDir,
 		publicDir: isPro ? false : publicDir,
 		build: {
-			outDir,
+			outDir: '/dist',
 			emptyOutDir: true,
 		},
 	};
