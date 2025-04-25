@@ -1,7 +1,10 @@
 import path from 'node:path';
 import { existsSync, writeFileSync } from 'node:fs';
+import * as url from 'node:url';
 
-const OUTPUT_PATH = path.resolve(process.cwd(), 'database', 'output');
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
+const OUTPUT_PATH = path.resolve(__dirname, '..', 'output');
 
 export default ({ output = '', source = null, valueLine = () => '', fileTemplate = () => '' }) => {
 	if (!Array.isArray(source)) {
