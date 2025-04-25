@@ -1,5 +1,5 @@
-[submodule "www/software/swdbapp/assets"]
-	path = www/software/swdbapp/assets
+[submodule "assets"]
+	path = apps/assets
 	url = git@github.com:Wolfchamane/swdbapp-assets.git
 [submodule "database-data"]
 	path = apps/database/data
