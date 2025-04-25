@@ -5,13 +5,11 @@
 	"author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
 	"description": "Backend solution for Star Wars ® DB Explorer application",
 	"private": true,
-	"type": "module",
 	"scripts": {
-		"build": "tsc",
-		"start": "node --import tsx dist/server.js",
-		"dev:env:development": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+		"build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --format=cjs",
+		"start": "node dist/index.js",
+		"dev:env:development": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
 		"dev": "dotenvx run -f ../../environments/.env -- npm run dev:env:development",
-		"prestart": "npm run build",
 		"format:check": "prettier --check --config ../../prettier.config.js .",
 		"format:fix": "prettier --write --config ../../prettier.config.js .",
 		"lint:check": "npm run lint:js:check",
@@ -26,7 +24,6 @@
 		"cors": "~2.8.5",
 		"express": "~5.1.0",
 		"pg": "~8.14.1",
-		"pg-format": "~1.0.4",
 		"nodemon": "~3.1.9",
 		"tsx": "~4.19.3"
 	},
@@ -36,6 +33,8 @@
 		"@types/express": "~5.0.1",
 		"@types/pg": "~8.11.11",
 		"ts-node": "~10.9.2",
-		"typescript": "~5.8.3"
+		"typescript": "~5.8.3",
+		"esbuild": "~0.25.3",
+		"esbuild-plugin-tsc": "~0.5.0"
 	}
 }
