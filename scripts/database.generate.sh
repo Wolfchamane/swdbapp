@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DATABASE_SOLUTION_FOLDER="$(pwd)/database"
+DATABASE_SOLUTION_FOLDER="$(pwd)/apps/database"
 DATABASE_DATA_FOLDER="$DATABASE_SOLUTION_FOLDER/data";
 NODE_PATH="$(which node)";
 
