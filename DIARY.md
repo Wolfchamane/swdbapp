@@ -180,4 +180,7 @@ happily I have found a solution (in StackOverflow of course) here:
 
 - https://stackoverflow.com/questions/64449464/error-err-unsupported-dir-import-directory-import-when-attempting-to-start-no
 
-Anyway, I still have problems with the Docker solution for the FrontEnd app, ;-(
+However, the dependency [pg-format](https://www.npmjs.com/package/pg-format) was creating a really hard and though
+difficult stop, so I have decided to re-do it for an ESM solution with TS.
+
+Eventually, I still have problems with the Docker solution for the FrontEnd app, ;-(
