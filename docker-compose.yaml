@@ -25,7 +25,7 @@ services:
             - 3000:3000
     assets:
         restart: 'always'
-        build: ./www/software/swdbapp/assets
+        build: ./apps/assets
         platform: linux/arm64
         ports:
             - 4000:4000
