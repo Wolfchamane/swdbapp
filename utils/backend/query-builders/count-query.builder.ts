@@ -1,10 +1,8 @@
 import type { QueryConfig } from 'pg';
-import format from '../utils/pg-format-importer';
+import { format } from '../vendor/pg-format';
 
 export const countQueryBuilder = async (tableName: string): Promise<QueryConfig> => {
-	const formatter = await format();
-
 	return {
-		text: formatter(`SELECT COUNT(*) FROM %I;`, tableName),
+		text: format(`SELECT COUNT(*) FROM %I;`, tableName),
 	};
 };

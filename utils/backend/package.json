@@ -17,8 +17,7 @@
 	"dependencies": {
 		"@swdbapp/types": "file:../../types",
 		"chalk": "~5.4.1",
-		"pg": "~8.14.1",
-		"pg-format": "~1.0.4"
+		"pg": "~8.14.1"
 	},
 	"devDependencies": {
 		"@types/pg": "~8.11.11"

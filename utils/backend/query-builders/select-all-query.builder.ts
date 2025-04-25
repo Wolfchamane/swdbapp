@@ -1,14 +1,12 @@
 import type { SelectAllInput } from '../types';
 import type { QueryConfig } from 'pg';
-import format from '../utils/pg-format-importer';
+import { format } from '../vendor/pg-format';
 
 export const selectAllQueryBuilder = async (
 	input: SelectAllInput,
 	tableName: string,
 	tableProps: string[]
 ): Promise<QueryConfig> => {
-	const formatter = await format();
-
 	const { limit, orderBy, orderDir, searchBy, search, offset } = input;
 	const values: string[] = [tableName];
 	let text: string = `SELECT ${tableProps.join(', ')} FROM %I`;
@@ -37,7 +35,7 @@ export const selectAllQueryBuilder = async (
 
 	text += ';';
 
-	text = formatter(text, ...values);
+	text = format(text, ...values);
 
 	return {
 		text,

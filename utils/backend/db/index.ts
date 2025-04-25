@@ -9,7 +9,7 @@ const config: PoolConfig = {
 	connectionString: `postgres://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:5432/${process.env.PGDATABASE}`,
 };
 
-// console.log('[DEBUG] DB pool configuration: %s', JSON.stringify(config));
+console.log('[@swdbapp/backend] DB pool configuration: %s', JSON.stringify(config));
 
 const pool: Pool = new Pool(config);
 
