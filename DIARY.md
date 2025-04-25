@@ -159,3 +159,25 @@ with all at Heroku.
 Meanwhile, I have been improving a bit the code of some specific views & contents.
 
 I have also though on creating a kind of admin site in order to help to CRUD the database ...
+
+## 2025-04-25
+
+So I have decided that the former repository folders structure was a bit of ... invalid architecture.
+Taking that in mind, I have reorder all the solution in order to have a better tree folder structure.
+
+Starting today, each `feature` will contain the following sub-folders:
+
+- `backend`: with all the resources related with backend for that specific feature
+- `frontend`: with all the resources related with frontend for that specific feature
+- `infra-http`: a unique infra HTTP sources for both feature's `backend` and `frontend`
+
+Also, I have moved all applications, to know `backend`, `database` and `frontend/vue-js` to `/apps` folder.
+And I have been "_forced_" to create a `/libs` folder in order to contain library content, such as components.
+
+As result of all this changes, I have been having troubles with all the local _dockerization_ stage, the most
+problematic was the NodeJS `ERR_UNSUPPORTED_DIR_IMPORT` error when trying to import CommonJS resources as ESM,
+happily I have found a solution (in StackOverflow of course) here:
+
+- https://stackoverflow.com/questions/64449464/error-err-unsupported-dir-import-directory-import-when-attempting-to-start-no
+
+Anyway, I still have problems with the Docker solution for the FrontEnd app, ;-(
