@@ -9,7 +9,7 @@
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"tsBuildInfoFile": ".tsbuildinfo",
-		"resolveJsonModule": true,
+		"resolveJsonModule": true
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules"]

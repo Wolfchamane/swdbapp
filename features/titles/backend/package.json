@@ -4,7 +4,7 @@
 	"private": true,
 	"main": "index.ts",
 	"types": "index.d.ts",
-    "type": "module",
+	"type": "module",
 	"scripts": {
 		"format:check": "prettier --check --config ../../../prettier.config.js .",
 		"format:fix": "prettier --write --config ../../../prettier.config.js .",
