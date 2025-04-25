@@ -10,4 +10,6 @@ const configuration: AppConfiguration = {
 	apiKey: `${process.env.VITE_API_KEY}`,
 };
 
+console.log(`[@swdbapp/backend] Configuration: ${JSON.stringify(configuration)}`);
+
 export default configuration;

@@ -2,33 +2,43 @@ name: 'star-wars-db-app'
 
 services:
     database:
-        attach: false
         restart: 'always'
         env_file:
-            - ./environments/.env
+            - ./environments/.env.docker
         ports:
             - 5432:5432
         platform: linux/arm64
         build:
             context: .
-            dockerfile: ./database/Dockerfile
+            dockerfile: ./apps/database/Dockerfile
     backend:
-        attach: false
         restart: 'always'
         depends_on:
             - database
         env_file:
-            - ./environments/.env
+            - ./environments/.env.docker
         platform: linux/arm64
         build:
             context: .
-            dockerfile: ./backend/Dockerfile
+            dockerfile: ./apps/backend/Dockerfile
         ports:
             - 3000:3000
     assets:
-        attach: false
         restart: 'always'
         build: ./www/software/swdbapp/assets
         platform: linux/arm64
         ports:
-            - 4000:80
+            - 4000:4000
+    # web:
+    #     restart: 'always'
+    #     depends_on:
+    #         - database
+    #         - backend
+    #         - assets
+    #     env_file:
+    #         - ./environments/.env.docker
+    #     build:
+    #         context: .
+    #         dockerfile: ./apps/frontend/vue-js
+    #     ports:
+    #         - 8080:80

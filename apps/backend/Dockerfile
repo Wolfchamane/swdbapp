@@ -18,20 +18,33 @@ ENV PGDATABASE=${PG_DATABASE}
 
 WORKDIR /usr/src/types
 COPY ./types ./
-RUN npm i
+
+WORKDIR /usr/src/utils/backend
+COPY ./utils/backend ./
 
 WORKDIR /usr/src/features/core
 COPY ./features/core ./
-RUN npm i
 
-WORKDIR /usr/src/infra/http
-COPY ./infra/http ./
-RUN npm i
+WORKDIR /usr/src/features/eras/infra-http
+COPY ./features/eras/infra-http ./
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/features/eras/backend
+COPY ./features/eras/backend ./
+
+WORKDIR /usr/src/features/titles/infra-http
+COPY ./features/titles/infra-http ./
+
+WORKDIR /usr/src/features/titles/backend
+COPY ./features/titles/backend ./
+
+WORKDIR /usr/src/apps/backend
 COPY ./apps/backend ./
-RUN npm i
 
+WORKDIR /usr/src
+COPY package*.json .
+RUN npm i -g npm
+RUN npm ci
+
+WORKDIR /usr/src/apps/backend
 EXPOSE 3000
-
 CMD ["npm", "start"]
