@@ -6,26 +6,32 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 import svg from 'vite-svg-loader';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
-
 const envDir: string = path.resolve(__dirname, '..', '..', '..', 'environments');
-
 const publicDir: string = path.resolve(__dirname, '..', '..', 'assets');
+const outDir: string = path.resolve(__dirname, 'dist');
+const srcDir: string = path.resolve(__dirname, 'src');
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
 	const isPro: boolean = /^pro/g.test(mode);
+	const plugins = [
+		vue(),
+		isPro ? null : vueDevTools(),
+		svg(),
+	].filter(Boolean);
+
 	return {
-		base: isPro ? '/software/swdbapp/vue-js' : './',
-		plugins: [vue(), vueDevTools(), svg()],
+		base: './',
+		plugins,
 		resolve: {
 			alias: {
-				'@': fileURLToPath(new URL('./src', import.meta.url)),
+				'@': srcDir,
 			},
 		},
 		envDir,
 		publicDir: isPro ? false : publicDir,
 		build: {
-			outDir: '/dist',
+			outDir,
 			emptyOutDir: true,
 		},
 	};
