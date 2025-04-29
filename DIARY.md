@@ -184,3 +184,11 @@ However, the dependency [pg-format](https://www.npmjs.com/package/pg-format) was
 difficult stop, so I have decided to re-do it for an ESM solution with TS.
 
 Eventually, I still have problems with the Docker solution for the FrontEnd app, ;-(
+
+## 2025-04-29
+
+I have been able to sort out the problem with Docker and the frontend application, now
+I am able to spin up the whole solution using just on simple command for `docker compose`.
+
+In order to achieve this, I have made some adjustments into `assets` submodule, and obviously,
+other configuration files.
