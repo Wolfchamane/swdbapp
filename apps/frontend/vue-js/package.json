@@ -18,15 +18,17 @@
 	},
 	"dependencies": {
 		"@amjs/js-utils": "~0.5.2",
+        "@fortawesome/free-brands-svg-icons": "~6.7.2",
+        "@fortawesome/free-solid-svg-icons": "~6.7.2",
+        "@fortawesome/vue-fontawesome": "~3.0.8",
 		"@swdbapp/core-feature": "file:../../../features/core",
 		"@swdbapp/feature-eras-frontend": "file:../../../features/eras/frontend",
 		"@swdbapp/feature-titles-frontend": "file:../../../features/titles/frontend",
 		"@swdbapp/types": "file:../../../types",
 		"@swdbapp/utils-frontend": "file:../../../utils/frontend",
-		"@fortawesome/vue-fontawesome": "~3.0.8",
 		"vue": "~3.5.13",
 		"vue-router": "~4.5.0"
-	},
+    },
 	"devDependencies": {
 		"@vitejs/plugin-vue": "~5.2.3",
 		"@vue/eslint-config-prettier": "~10.2.0",
@@ -35,6 +37,13 @@
 		"@vue/tsconfig": "~0.7.0",
 		"eslint-plugin-vue": "~10.0.0",
 		"vite-plugin-vue-devtools": "~7.7.2",
-		"vue-tsc": "~2.2.8"
-	}
+		"vue-tsc": "~2.2.8",
+        "@tsconfig/node22": "~22.0.1",
+        "pug": "~3.0.3",
+        "raw-loader": "~4.0.2",
+        "sass": "~1.86.3",
+        "typescript": "~5.8.3",
+        "vite": "~6.2.5",
+        "vite-svg-loader": "~5.1.0"
+    }
 }

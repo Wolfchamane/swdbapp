@@ -11,11 +11,19 @@
 		"npm": "^11.2.0"
 	},
 	"workspaces": [
-		"./apps/**/*",
-		"./features/**/*",
-		"./libs/**/*",
+		"./apps/backend",
+		"./apps/database",
+		"./apps/frontend/vue-js",
+		"./features/eras/backend",
+		"./features/eras/frontend",
+		"./features/eras/infra-http",
+		"./features/titles/backend",
+		"./features/titles/frontend",
+		"./features/titles/infra-http",
+		"./libs/frontend/components/vue-js",
 		"./types",
-		"./utils/*"
+		"./utils/backend",
+		"./utils/frontend"
 	],
 	"scripts": {
 		"format:check": "npm run format:check --workspaces --if-present",
