@@ -4,7 +4,7 @@ services:
     database:
         restart: 'always'
         env_file:
-            - ./environments/.env.docker
+            -   ./environments/.env.docker
         ports:
             - 5432:5432
         platform: linux/arm64
@@ -16,7 +16,7 @@ services:
         depends_on:
             - database
         env_file:
-            - ./environments/.env.docker
+            -   ./environments/.env.docker
         platform: linux/arm64
         build:
             context: .
@@ -28,17 +28,29 @@ services:
         build: ./apps/assets
         platform: linux/arm64
         ports:
-            - 4000:4000
-    # web:
-    #     restart: 'always'
-    #     depends_on:
-    #         - database
-    #         - backend
-    #         - assets
-    #     env_file:
-    #         - ./environments/.env.docker
-    #     build:
-    #         context: .
-    #         dockerfile: ./apps/frontend/vue-js
-    #     ports:
-    #         - 8080:80
+            - 4000:80
+    web:
+        restart: 'always'
+        depends_on:
+            - database
+            - backend
+            - assets
+        env_file:
+            -   ./environments/.env.docker
+        environment:
+            VITE_ASSETS_PATH: "${VITE_ASSETS_PATH}"
+            VITE_API_KEY: "${VITE_API_KEY}"
+            VITE_API_HOST: "${VITE_API_HOST}"
+            VITE_API_PORT: "${VITE_API_PORT}"
+            VITE_API_PROTOCOL: "${VITE_API_PROTOCOL}"
+        build:
+            context: .
+            dockerfile: ./apps/frontend/vue-js/Dockerfile
+            args:
+                VITE_ASSETS_PATH: "${VITE_ASSETS_PATH}"
+                VITE_API_KEY: "${VITE_API_KEY}"
+                VITE_API_HOST: "${VITE_API_HOST}"
+                VITE_API_PORT: "${VITE_API_PORT}"
+                VITE_API_PROTOCOL: "${VITE_API_PROTOCOL}"
+        ports:
+            - 8080:80
