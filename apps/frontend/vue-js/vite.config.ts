@@ -14,11 +14,7 @@ const srcDir: string = path.resolve(__dirname, 'src');
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
 	const isPro: boolean = /^pro/g.test(mode);
-	const plugins = [
-		vue(),
-		isPro ? null : vueDevTools(),
-		svg(),
-	].filter(Boolean);
+	const plugins = [vue(), isPro ? null : vueDevTools(), svg()].filter(Boolean);
 
 	return {
 		base: './',
