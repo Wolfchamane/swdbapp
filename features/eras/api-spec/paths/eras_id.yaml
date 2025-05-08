@@ -1,0 +1,14 @@
+get:
+    tags:
+        - eras
+    summary: Describe era
+    description: Returns details of an era
+    parameters:
+        - $ref: '../components/_index.yaml#/parameters/Id'
+    responses:
+        '200':
+            description: Returns era details
+            content:
+                application/json:
+                    schema:
+                        $ref: '../components/_index.yaml#/schemas/Era__detailResponse'

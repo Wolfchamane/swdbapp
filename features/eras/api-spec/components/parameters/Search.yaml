@@ -1,0 +1,6 @@
+name: search
+required: false
+description: Value to use as search criteria
+in: query
+schema:
+    type: string

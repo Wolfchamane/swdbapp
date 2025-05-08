@@ -1,0 +1,27 @@
+type: object
+required:
+    - limit
+    - offset
+    - total
+    - items
+properties:
+    limit:
+        type: integer
+        description: Limit of items returned
+        example: 10
+        x-required: mandatory
+    offset:
+        type: integer
+        description: Offset for current request
+        example: 0
+        x-required: mandatory
+    total:
+        type: integer
+        description: Total number of eras in database
+        example: 100
+        x-required: mandatory
+    items:
+        type: array
+        x-required: mandatory
+        items:
+            $ref: '../_index.yaml#/schemas/Era__item'
