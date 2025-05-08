@@ -12,8 +12,11 @@ npm*
 **/.dbdata
 *.insert.sql
 
-## Project files & folders
+## Generated project files & folders
+**/generated
 **/dist
-**/.env*
 www/**/vue-js
+
+## Environment files and other resource
+**/.env*
 .tsbuildinfo
