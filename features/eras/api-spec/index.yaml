@@ -1,0 +1,27 @@
+openapi: '3.0.0'
+
+info:
+    title: Eras Feature API Spec
+    description: |
+        API spec for Eras Feature.
+    version: 1.0.0
+
+servers:
+    - url: https://preview.local.fuf.me
+      description: Local preview cluster
+    - url: http://localhost:3000
+      description: Local host
+
+x-tagGroups:
+    - name:  Eras
+      tags:
+          - eras
+
+tags:
+    - name: eras
+      description: Eras API
+
+paths:
+    $ref: ./paths/_index.yaml
+components:
+    $ref: ./components/_index.yaml

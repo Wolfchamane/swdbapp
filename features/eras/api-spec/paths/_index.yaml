@@ -1,0 +1,4 @@
+'/eras':
+    $ref: './eras.yaml'
+'/eras/{id}':
+    $ref: './eras_id.yaml'

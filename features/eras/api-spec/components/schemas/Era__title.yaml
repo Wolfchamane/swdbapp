@@ -1,0 +1,23 @@
+type: object
+required:
+    - order
+    - title
+    - logo
+properties:
+    order:
+        type: integer
+        description: |
+            Order of the title within the era.
+            Starts in zero (0).
+        x-required: mandatory
+        example: 4
+    title:
+        type: string
+        description: Title
+        x-required: mandatory
+        example: 'Star Wars Episode IX: The Rise of Skywalker'
+    logo:
+        type: string
+        description: Partial URL of the title's logo asset
+        x-required: mandatory
+        example: 'images/titles/logos/the-rise-of-skywalker.png'

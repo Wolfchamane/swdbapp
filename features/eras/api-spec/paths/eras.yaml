@@ -1,0 +1,19 @@
+get:
+    tags:
+        - eras
+    summary: List eras
+    description: List all available eras
+    parameters:
+        - $ref: '../components/_index.yaml#/parameters/Limit'
+        - $ref: '../components/_index.yaml#/parameters/Offset'
+        - $ref: '../components/_index.yaml#/parameters/OrderBy'
+        - $ref: '../components/_index.yaml#/parameters/OrderDir'
+        - $ref: '../components/_index.yaml#/parameters/Search'
+        - $ref: '../components/_index.yaml#/parameters/SearchBy'
+    responses:
+        '200':
+            description: List of all available eras
+            content:
+                application/json:
+                    schema:
+                        $ref: '../components/_index.yaml#/schemas/Eras__listResponse'

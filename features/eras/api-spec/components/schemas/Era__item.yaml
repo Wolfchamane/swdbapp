@@ -1,0 +1,22 @@
+type: object
+description: Short detail of an era
+required:
+    - id
+    - name
+    - image
+properties:
+    id:
+        type: number
+        description: Unique era identifier
+        example: 8
+        x-required: mandatory
+    name:
+        type: string
+        description: Era name
+        example: 'Rise of the First Order'
+        x-required: mandatory
+    image:
+        type: string
+        description: URL path to era image
+        example: 'https://lumiere-a.akamaihd.net/v1/images/era8_f83e131b_2508094e.png'
+        x-required: mandatory

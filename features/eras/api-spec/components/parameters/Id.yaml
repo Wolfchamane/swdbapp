@@ -1,0 +1,6 @@
+name: id
+required: true
+description: Unique era identifier
+in: path
+schema:
+    type: string

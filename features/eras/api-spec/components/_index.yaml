@@ -1,0 +1,25 @@
+parameters:
+    Id:
+        $ref: './parameters/Id.yaml'
+    Limit:
+        $ref: './parameters/Limit.yaml'
+    Offset:
+        $ref: './parameters/Offset.yaml'
+    OrderBy:
+        $ref: './parameters/OrderBy.yaml'
+    OrderDir:
+        $ref: './parameters/OrderDir.yaml'
+    Search:
+        $ref: './parameters/Search.yaml'
+    SearchBy:
+        $ref: './parameters/SearchBy.yaml'
+
+schemas:
+    Era__title:
+        $ref: './schemas/Era__title.yaml'
+    Era__detailResponse:
+        $ref: './schemas/Era__detailResponse.yaml'
+    Era__item:
+        $ref: './schemas/Era__item.yaml'
+    Eras__listResponse:
+        $ref: './schemas/Eras__listResponse.yaml'

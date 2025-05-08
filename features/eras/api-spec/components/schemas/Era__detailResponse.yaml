@@ -1,0 +1,20 @@
+allOf:
+    - $ref: '../_index.yaml#/schemas/Era__item'
+    - type: object
+      required:
+          - description
+          - titles
+      properties:
+          description:
+              type: string
+              description: Description of the era
+              x-required: mandatory
+              example: |
+                  In secret, the legacy of the Empire transforms into the First Order and strikes a devastating blow
+                  against the New Republic. A fledgling Resistance and new generation of heroes are left to stand
+                  against a resurrected enemy.
+          titles:
+              type: array
+              x-required: mandatory
+              items:
+                  - $ref: '../_index.yaml#/schemas/Era__title'
