@@ -12,7 +12,11 @@ npm*
 **/.dbdata
 *.insert.sql
 
+## mvn output
+tools/swdbapp-http-infra-generator/target
+
 ## Generated project files & folders
+*.jar
 **/generated
 **/dist
 www/**/vue-js
