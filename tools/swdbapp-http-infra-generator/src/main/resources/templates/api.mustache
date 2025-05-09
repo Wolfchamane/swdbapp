@@ -1,0 +1,82 @@
+{{>common-header}}
+
+import { BaseHttpClient, type ListInput, type ListOutput, type DescribeInput } from '@swdbapp/types';
+import { XHR_FETCH_METHODS } from '@amjs/js-utils';
+import { provideAPIHeaders } from '@swdbapp/core-feature';
+
+{{#imports}}
+    import type { {{ classname }} } from '{{ filename }}';
+{{/imports}}
+
+{{#operations}}
+
+    {{#operation}}{{#hasParams}}
+        export interface {{#prefixParameterInterfaces}}{{classname}}{{/prefixParameterInterfaces}}{{operationIdCamelCase}}Input {
+        {{#pathParams}}
+            {{#description}}/** {{.}} */
+            {{/description}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#isNullable}} | null{{/isNullable}};
+        {{/pathParams}}{{#queryParams}}
+            {{#description}}/** {{.}} */
+            {{/description}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#isNullable}} | null{{/isNullable}};{{/queryParams}}
+        {{#hasBodyParam}}{{#bodyParam}}
+            {{#description}}/** {{.}} */
+            {{/description}}body{{^required}}?{{/required}}: {{{dataType}}}{{#isNullable}} | null{{/isNullable}};
+        {{/bodyParam}}{{/hasBodyParam}}
+        }
+
+    {{/hasParams}}{{/operation}}
+
+    {{#description}}
+        /**
+        * {{&description}}
+        */
+    {{/description}}
+    export interface {{classname}} {
+    {{#operation}}
+
+        /**
+        * {{notes}}
+        *
+        * @param input Request parameters
+        {{#isDeprecated}}
+            * @deprecated
+        {{/isDeprecated}}*/
+        {{nickname}}({{#hasParams}}input{{^hasRequiredParams}}?{{/hasRequiredParams}}: {{#prefixParameterInterfaces}}{{classname}}{{/prefixParameterInterfaces}}{{operationIdCamelCase}}Input{{/hasParams}}): Promise<{{{returnType}}}{{^returnType}}void{{/returnType}}>;
+
+    {{/operation}}
+        }
+
+        export class Default{{classname}} extends BaseHttpClient implements {{classname}} {
+
+        private readonly path = `{{path}}`;
+
+        /**
+        * @override
+        */
+        protected _serialize(
+        headers?: Record<string, string>,
+        body?: object | number | string | boolean | null
+        ): Promise<void | Error> {
+            return super._serialize(
+                {
+                    ...(headers || {}),
+                    ...provideAPIHeaders(),
+                },
+                body
+            );
+        }
+
+    {{#operation}}
+
+            async {{nickname}}({{#hasParams}}{ {{#allParams}}{{#isBodyParam}}body{{/isBodyParam}}{{^isBodyParam}}{{paramName}}{{/isBodyParam}}{{^-last}}, {{/-last}}{{/allParams}} }: {{#prefixParameterInterfaces}}{{classname}}{{/prefixParameterInterfaces}}{{operationIdCamelCase}}Input{{^hasRequiredParams}} = {}{{/hasRequiredParams}}{{/hasParams}}): Promise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
+            return this.fetch<{{#returnType}}{{{returnType}}}{{#isResponseTypeFile}}|undefined{{/isResponseTypeFile}}{{/returnType}}{{^returnType}}void{{/returnType}}>(this.oath, {
+                method: XHR_FETCH_METHODS.{{httpMethod}},
+                {{#hasQueryParams}}params: { {{#queryParams}}{{paramName}}{{^-last}}, {{/-last}} {{/queryParams}} },{{/hasQueryParams}}
+            });
+            }
+
+
+    {{/operation}}
+
+{{/operations}}
+    }
