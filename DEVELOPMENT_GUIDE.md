@@ -1,6 +1,10 @@
 > [!CAUTION]
 > This content is only for contributors of this project.
 
+> [!NOTE]
+> You will need access to some _private_ repositories as well.
+> Ask [Arturo Martínez Díaz](mailto:arturo.martinez@amartinez.dev) for required invitations.
+
 # Development Guide
 
 **Requirements**:
@@ -10,7 +14,6 @@
 - Any text editor or IDE of your choice, I highly suggest [WebStorm](https://www.jetbrains.com/es-es/webstorm/).
 - [Docker](https://www.docker.com/).
 - Java
-- [Maven](https://maven.apache.org/install.html)
 
 ## Environment Files
 
@@ -20,13 +23,10 @@ You will require to create three (3) files in your local copy of this project, t
 - `/enviroments/.env.docker`
 - `/enviroments/.env.production`
 
-Ask [Arturo Martínez Díaz](mailto:arturo.martinez@amartinez.dev) for details of the content of these files.
+> [!NOTE]
+> Ask [Arturo Martínez Díaz](mailto:arturo.martinez@amartinez.dev) for details of the content of these files.
 
 ## Installation
-
-> [!NOTE]
-> You will need access to some _private_ repositories as well.
-> Ask [Arturo Martínez Díaz](mailto:arturo.martinez@amartinez.dev) for required invitations.
 
 Do the following:
 
@@ -49,20 +49,17 @@ Will allow you to see the feature API spec at http://localhost:8000.
 
 ## HTTP Infra Generation
 
-**Firstly**, compile the SWDBApp OpenAPI custom generator by running the following:
+**Firstly**, compile the [SWDBApp OpenAPI custom generator](https://github.com/Wolfchamane/swdbapp-infra-generator).
 
-```shell
-cd /tools/swdbapp-http-infra-generator
-mvn clean package -DskipTest
-```
+**Secondly**, copy the resultant `*.jar` file at `/tools/swdbapp-api-generator` folder.
 
-**Secondly**, compile the Docker `swdbapp-infra-generator` image by running:
+**Thirdly**, compile the Docker `swdbapp-infra-generator` image by running:
 
 ```shell
 docker build \
   --build-arg ARG_OPENAPI_GENERATOR_VERSION="7.1.0" \
   -t swdbapp-infra-generator \
-  -f .dockerfiles/api-generator/Dockerfile .
+  -f /tools/swdbapp-api-generator/Dockerfile .
 ```
 
 **Eventually**, run the following at any `/feature/*/api-spec` folder:
