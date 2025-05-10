@@ -9,6 +9,8 @@
 - [NodeJS@v22.14.0](https://nodejs.org/en) + NPM@11.2.0
 - Any text editor or IDE of your choice, I highly suggest [WebStorm](https://www.jetbrains.com/es-es/webstorm/).
 - [Docker](https://www.docker.com/).
+- Java
+- [Maven](https://maven.apache.org/install.html)
 
 ## Environment Files
 
@@ -18,9 +20,13 @@ You will require to create three (3) files in your local copy of this project, t
 - `/enviroments/.env.docker`
 - `/enviroments/.env.production`
 
-As [Arturo Martínez Díaz](mailto:arturo.martinez@amartinez.dev) for details of the content of these files.
+Ask [Arturo Martínez Díaz](mailto:arturo.martinez@amartinez.dev) for details of the content of these files.
 
 ## Installation
+
+> [!NOTE]
+> You will need access to some _private_ repositories as well.
+> Ask [Arturo Martínez Díaz](mailto:arturo.martinez@amartinez.dev) for required invitations.
 
 Do the following:
 
@@ -29,6 +35,25 @@ $ git clone git@github.com:Wolfchamane/swdbapp.git
 $ cd swdbapp
 $ git submodule update --init --recursive
 $ npm ci
+```
+
+## API Generation
+
+**Firstly**, download the OpenAPI CLI `7.1.0` tool from https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.1.0/openapi-generator-cli-7.1.0.jar
+
+Save it under `/tools` folder.
+
+**Secondly**, compile the SWDBApp OpenAPI custom generator by running the following:
+
+```shell
+$ cd /tools/swdbapp-http-infra-generator
+$ mvn clean package -DskipTest
+```
+
+**Eventually**, run the following at any `feature/*/api-spec` folder:
+
+```shell
+$ make generate_code
 ```
 
 ## Run locally
@@ -106,6 +131,47 @@ where all code branch should start and end.
 
 As **protected** branch, just a few contributors has access to directly push content into `master` branch, therefore,
 for any content you need to integrate into `master` branch you must create a new Pull-Request.
+
+### Branch strategy
+
+The pattern to use in order to create new branches goes as follows:
+
+- `<type>/<ref>/short-description`
+
+See [Branch/Commit placeholders](#/branch-and-commit-placeholders) to obtain information about placeholders.
+
+### Commit strategy
+
+The pattern to use in commits is the following:
+
+```text
+<type> (<context>): meaningful description \
+could be multiline if required
+
+[<ref>]
+```
+
+See [Branch/Commit placeholders](#/branch-and-commit-placeholders) to obtain information about placeholders.
+
+#### Branch and Commit placeholders
+
+- `<type>` could be anyone of following:
+
+| Type | Description                                                   |   Branch target/source   |
+|:---:|:--------------------------------------------------------------|:------------------------:|
+| `feature` or `feat` | Related to any new content or modification of current content |          `any`           |
+| `ref` | Related to any refactor | `any` |
+| `fix` | Related to any tracked/reported bug solution                  |          `any`           |
+| `hotfix` | Related to any critical bug that must be solve ASAP.          | `master` or  `release/*` |
+| `chore` | Generic or architectural changes                              |          `any`           |
+| `task` | Produced as an outcome of automated execution                 |          `any`           |
+| `doc` | Related with changes into documentation                       |          `any`           |
+
+- `<context>` will be the specific folder or file paths affected by changes.
+  - Could be a wildcard (`*`) if it applies to several folders or files.
+  - Could also be a [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming)), i.e.: `/features/eras/backend/*`, `/features/titles/frotnend/**/*.ts`, etc..
+- `<ref>` is the project management ID task identifier.
+  - Could be `NO-REF` is no task is associated.
 
 ## CI/CD Workflow
 
