@@ -1,0 +1,8 @@
+clients/eras.http-client.ts
+clients/index.ts
+index.ts
+models/era-detail-response.model.ts
+models/era-item.model.ts
+models/era-title.model.ts
+models/eras-list-response.model.ts
+models/index.ts

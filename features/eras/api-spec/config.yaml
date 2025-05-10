@@ -1,0 +1,3 @@
+featureName: "eras"
+baseDirectory: "pkg"
+outputDirectory: "infra/http"

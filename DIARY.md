@@ -192,3 +192,23 @@ I am able to spin up the whole solution using just on simple command for `docker
 
 In order to achieve this, I have made some adjustments into `assets` submodule, and obviously,
 other configuration files.
+
+## 2025-05-10
+
+Some small winning points ...
+
+After struggling a bit with documentation through the Internet I have managed to properly define a feature API spec
+based on [OpenAPI](https://www.openapis.org/) specification and parse it using a custom API generator. At the end
+I have prepared a solution that runs within Docker.
+
+Also, I have found [Sliplane](https://sliplane.io/) which I think would really serve me to deploy the Docker containers
+of the whole application just for `9.00€/mo`, which is not _free_ but it is really cheap and affordable.
+
+Additionally, I had though on how to proceed with upcoming changes, and I may say that I am not 100% happy with my
+current solution. Therefore, I have been thinking of:
+
+- The UX/UI is fine, but is not perfect and user will have problems, mainly, with navigation items. I must rework that
+point in order to ensure that the experience is good enough for every user within any device.
+- Build a whole application into VueJS, later on ReactJS and eventually in WebComponents; just replicating
+components once and over again seems to me really boring. So maybe I will start building the WebComponents first, so I
+am able to reuse then within VueJS/ReactJS applications.

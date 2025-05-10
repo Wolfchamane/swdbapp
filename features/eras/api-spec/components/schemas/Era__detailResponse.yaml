@@ -1,20 +1,37 @@
-allOf:
-    - $ref: '../_index.yaml#/schemas/Era__item'
-    - type: object
-      required:
-          - description
-          - titles
-      properties:
-          description:
-              type: string
-              description: Description of the era
-              x-required: mandatory
-              example: |
-                  In secret, the legacy of the Empire transforms into the First Order and strikes a devastating blow
-                  against the New Republic. A fledgling Resistance and new generation of heroes are left to stand
-                  against a resurrected enemy.
-          titles:
-              type: array
-              x-required: mandatory
-              items:
-                  - $ref: '../_index.yaml#/schemas/Era__title'
+type: object
+description: Detailed information of an Era
+required:
+    - id
+    - name
+    - image
+    - description
+    - titles
+properties:
+    id:
+        type: integer
+        description: Unique era identifier
+        example: 8
+        x-required: mandatory
+    name:
+        type: string
+        description: Era name
+        example: 'Rise of the First Order'
+        x-required: mandatory
+    image:
+        type: string
+        description: URL path to era image
+        example: 'https://lumiere-a.akamaihd.net/v1/images/era8_f83e131b_2508094e.png'
+        x-required: mandatory
+    description:
+        type: string
+        description: Description of the era
+        x-required: mandatory
+        example: |
+            In secret, the legacy of the Empire transforms into the First Order and strikes a devastating blow
+            against the New Republic. A fledgling Resistance and new generation of heroes are left to stand
+            against a resurrected enemy.
+    titles:
+        type: array
+        x-required: mandatory
+        items:
+            $ref: '../_index.yaml#/schemas/Era__title'
