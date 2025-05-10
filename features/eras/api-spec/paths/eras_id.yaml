@@ -1,7 +1,8 @@
 get:
     tags:
         - eras
-    summary: Describe era
+    operationId: eras.era.details
+    summary: Describe an era
     description: Returns details of an era
     parameters:
         - $ref: '../components/_index.yaml#/parameters/Id'

@@ -1,6 +1,7 @@
 get:
     tags:
         - eras
+    operationId: eras.eras.list
     summary: List eras
     description: List all available eras
     parameters:
