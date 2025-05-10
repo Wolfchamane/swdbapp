@@ -4,7 +4,7 @@
     <groupId>org.openapitools</groupId>
     <artifactId>swdbapp-http-infra-generator-plugin</artifactId>
     <packaging>jar</packaging>
-    <name>swdbapp-http-infra-generator-plugin</name>
+    <name>http-infra-generator-plugin</name>
     <version>1.0.0</version>
     <build>
         <plugins>

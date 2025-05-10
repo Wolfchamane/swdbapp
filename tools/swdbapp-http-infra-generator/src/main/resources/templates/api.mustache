@@ -1,11 +1,10 @@
 {{>common-header}}
 
-import { BaseHttpClient, type ListInput, type ListOutput, type DescribeInput } from '@swdbapp/types';
+import { BaseHttpClient } from '@swdbapp/types';
 import { XHR_FETCH_METHODS } from '@amjs/js-utils';
 import { provideAPIHeaders } from '@swdbapp/core-feature';
-
 {{#imports}}
-    import type { {{ classname }} } from '{{ filename }}';
+    import type { {{ classname }} } from '../models';
 {{/imports}}
 
 {{#operations}}
@@ -41,14 +40,12 @@ import { provideAPIHeaders } from '@swdbapp/core-feature';
         {{#isDeprecated}}
             * @deprecated
         {{/isDeprecated}}*/
-        {{nickname}}({{#hasParams}}input{{^hasRequiredParams}}?{{/hasRequiredParams}}: {{#prefixParameterInterfaces}}{{classname}}{{/prefixParameterInterfaces}}{{operationIdCamelCase}}Input{{/hasParams}}): Promise<{{{returnType}}}{{^returnType}}void{{/returnType}}>;
+        {{nickname}}({{#hasParams}}input{{^hasRequiredParams}}?{{/hasRequiredParams}}: {{#prefixParameterInterfaces}}{{classname}}{{/prefixParameterInterfaces}}{{operationIdCamelCase}}Input{{/hasParams}}): Promise<{{{returnType}}}{{^returnType}}void{{/returnType}} | Error>;
 
     {{/operation}}
         }
 
         export class Default{{classname}} extends BaseHttpClient implements {{classname}} {
-
-        private readonly path = `{{path}}`;
 
         /**
         * @override
@@ -68,10 +65,11 @@ import { provideAPIHeaders } from '@swdbapp/core-feature';
 
     {{#operation}}
 
-            async {{nickname}}({{#hasParams}}{ {{#allParams}}{{#isBodyParam}}body{{/isBodyParam}}{{^isBodyParam}}{{paramName}}{{/isBodyParam}}{{^-last}}, {{/-last}}{{/allParams}} }: {{#prefixParameterInterfaces}}{{classname}}{{/prefixParameterInterfaces}}{{operationIdCamelCase}}Input{{^hasRequiredParams}} = {}{{/hasRequiredParams}}{{/hasParams}}): Promise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
-            return this.fetch<{{#returnType}}{{{returnType}}}{{#isResponseTypeFile}}|undefined{{/isResponseTypeFile}}{{/returnType}}{{^returnType}}void{{/returnType}}>(this.oath, {
+            async {{nickname}}({{#hasParams}}{ {{#allParams}}{{#isBodyParam}}body{{/isBodyParam}}{{^isBodyParam}}{{paramName}}{{/isBodyParam}}{{^-last}}, {{/-last}}{{/allParams}} }: {{#prefixParameterInterfaces}}{{classname}}{{/prefixParameterInterfaces}}{{operationIdCamelCase}}Input{{^hasRequiredParams}} = {}{{/hasRequiredParams}}{{/hasParams}}): Promise<{{{returnType}}}{{^returnType}}void{{/returnType}} | Error> {
+            return this.fetch<{{#returnType}}{{{returnType}}}{{#isResponseTypeFile}}|undefined{{/isResponseTypeFile}}{{/returnType}}{{^returnType}}void{{/returnType}}>(`{{path}}`, {
                 method: XHR_FETCH_METHODS.{{httpMethod}},
                 {{#hasQueryParams}}params: { {{#queryParams}}{{paramName}}{{^-last}}, {{/-last}} {{/queryParams}} },{{/hasQueryParams}}
+                {{#bodyParam}}body{{/bodyParam}}
             });
             }
 

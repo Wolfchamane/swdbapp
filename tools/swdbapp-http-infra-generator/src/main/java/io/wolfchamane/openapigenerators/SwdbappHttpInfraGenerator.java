@@ -8,10 +8,8 @@ import org.openapitools.codegen.model.OperationMap;
 import org.openapitools.codegen.model.OperationsMap;
 import org.openapitools.codegen.utils.CamelizeOption;
 import org.openapitools.codegen.utils.ModelUtils;
-
-
-import io.swagger.v3.oas.models.media.Schema;
 import org.openapitools.codegen.utils.StringUtils;
+import io.swagger.v3.oas.models.media.Schema;
 
 import java.util.*;
 import java.io.File;
@@ -24,8 +22,6 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
     private static final String DEFAULT_IMPORT_PREFIX = "./";
     private static final String DEFAULT_MODEL_IMPORT_DIRECTORY_PREFIX = "../";
 
-    protected String apiVersion = "1.0.0";
-
     protected String serviceSuffix = "HttpClient";
     protected String serviceFileSuffix = ".http-client";
     protected String modelSuffix = "";
@@ -34,7 +30,7 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
     public SwdbappHttpInfraGenerator() {
         super();
 
-        outputFolder = "generated-code/infra-http";
+        outputFolder = "generated-code/swdbapp-frontend";
 
         modelTemplateFiles.put("model.mustache", ".ts");
         apiTemplateFiles.put("api.mustache", ".ts");
@@ -48,8 +44,6 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
         supportingFiles
                 .add(new SupportingFile("apis.mustache", apiPackage().replace('.', File.separatorChar), "index.ts"));
         supportingFiles.add(new SupportingFile("index.mustache", getIndexDirectory(), "index.ts"));
-
-        additionalProperties.put("apiVersion", apiVersion);
     }
 
     @Override
@@ -94,7 +88,6 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
     public OperationsMap postProcessOperationsWithModels(OperationsMap operations, List<ModelMap> allModels) {
         OperationMap objs = operations.getOperations();
 
-        // Add filename information for api imports
         objs.put("apiFilename", getApiFilenameFromClassname(objs.getClassname()));
 
         List<CodegenOperation> ops = objs.getOperation();
@@ -140,10 +133,8 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
         operations.put("hasSomeEncodableParams", hasSomeEncodableParams);
         operations.put("hasProjectPathParam", hasSomeProjectPathParam);
 
-        // Add additional filename information for model imports in the services
         List<Map<String, String>> imports = operations.getImports();
         for (Map<String, String> im : imports) {
-            // This property is not used in the templates any more, subject for removal
             im.put("filename", im.get("import"));
             im.put("classname", im.get("classname"));
         }
@@ -164,7 +155,6 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
             for (ModelMap mo : entry.getModels()) {
                 CodegenModel cm = mo.getModel();
 
-                // Add additional filename information for imports
                 Set<String> parsedImports = parseImports(cm);
                 mo.put("tsImports", toTsImports(cm, parsedImports));
             }
@@ -212,8 +202,6 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
         return DEFAULT_MODEL_IMPORT_DIRECTORY_PREFIX + modelPackage() + "/" + toModelFilename(removeModelPrefixSuffix(name)).substring(DEFAULT_IMPORT_PREFIX.length());
     }
 
-
-
     @Override
     public String toModelName(String name) {
         name = addSuffix(name, modelSuffix);
@@ -237,12 +225,6 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
         return result;
     }
 
-    /**
-     * Converts the original name according to the current <code>fileNaming</code> strategy.
-     *
-     * @param originalName the original name to transform
-     * @return the transformed name
-     */
     private String convertUsingFileNamingConvention(String originalName) {
         String name = this.removeModelPrefixSuffix(originalName);
         return dashize(underscore(name));
@@ -278,9 +260,6 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
         return Boolean.FALSE;
     }
 
-    /**
-     * Parse imports
-     */
     private Set<String> parseImports(CodegenModel cm) {
         Set<String> newImports = new HashSet<>();
         if (cm.imports.size() > 0) {
@@ -301,7 +280,6 @@ public class SwdbappHttpInfraGenerator extends AbstractTypeScriptClientCodegen {
         for (String im : imports) {
             if (!im.equals(cm.classname)) {
                 HashMap<String, String> tsImport = new HashMap<>();
-                // TVG: This is used as class name in the import statements of the model file
                 tsImport.put("classname", im);
                 tsImport.put("filename", toModelFilename(removeModelPrefixSuffix(im)));
                 tsImports.add(tsImport);
