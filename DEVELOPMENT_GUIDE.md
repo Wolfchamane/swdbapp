@@ -31,26 +31,41 @@ Ask [Arturo Martínez Díaz](mailto:arturo.martinez@amartinez.dev) for details o
 Do the following:
 
 ```shell
-$ git clone git@github.com:Wolfchamane/swdbapp.git
-$ cd swdbapp
-$ git submodule update --init --recursive
-$ npm ci
+git clone git@github.com:Wolfchamane/swdbapp.git
+cd swdbapp
+git submodule update --init --recursive
+npm ci
 ```
 
-## API Generation
+## API
 
-**Firstly**, download the OpenAPI CLI `7.1.0` tool from https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.1.0/openapi-generator-cli-7.1.0.jar
-
-Save it under `/tools` folder.
-
-**Secondly**, compile the SWDBApp OpenAPI custom generator by running the following:
+Running the following at any `/feature/*/api-spec` folder:
 
 ```shell
-$ cd /tools/swdbapp-http-infra-generator
-$ mvn clean package -DskipTest
+make serve
 ```
 
-**Eventually**, run the following at any `feature/*/api-spec` folder:
+Will allow you to see the feature API spec at http://localhost:8000.
+
+## HTTP Infra Generation
+
+**Firstly**, compile the SWDBApp OpenAPI custom generator by running the following:
+
+```shell
+cd /tools/swdbapp-http-infra-generator
+mvn clean package -DskipTest
+```
+
+**Secondly**, compile the Docker `swdbapp-infra-generator` image by running:
+
+```shell
+docker build \
+  --build-arg ARG_OPENAPI_GENERATOR_VERSION="7.1.0" \
+  -t swdbapp-infra-generator \
+  -f .dockerfiles/api-generator/Dockerfile .
+```
+
+**Eventually**, run the following at any `/feature/*/api-spec` folder:
 
 ```shell
 $ make generate_code
@@ -66,17 +81,17 @@ To run the `backend` solution you must first execute the database locally by run
 
 ```shell
 # if not done yet, generate DB inserts:
-$ ./scripts/database.generate.sh
+./scripts/database.generate.sh
 # fi
-$ ./scripts/database.build.sh
-$ ./scripts/database.start.sh
+./scripts/database.build.sh
+./scripts/database.start.sh
 ```
 
 Then you can go and execute:
 
 ```shell
-$ cd /app/backend
-$ npm run dev
+cd /app/backend
+npm run dev
 ```
 
 You'll be able to check out the backend at http://localhost:3000/api
@@ -88,15 +103,15 @@ Choose the solution you would like to run, to know: vue-js, react-js or web-comp
 Then, you must prepare the environment by running the static assets' solution:
 
 ```shell
-$ ./scripts/assets.build.sh
-$ ./scripts/assets.start.sh
+./scripts/assets.build.sh
+./scripts/assets.start.sh
 ```
 
 Ensure you have the backend also running. Now you are ready to spin up the frontend, for example:
 
 ```shell
-$ cd /apps/frontend/vue-js
-$ npm run dev
+cd /apps/frontend/vue-js
+npm run dev
 ```
 
 You will have access to the application at http://localhost:8080/#/
@@ -113,15 +128,15 @@ docker-compose --env-file ./environments/.env.docker build && \
 Or run the `scripts` in this **strict** order:
 
 ```shell
-$ ./scripts/assets.build.sh docker
-$ ./scripts/assets.start.sh docker
+./scripts/assets.build.sh docker
+./scripts/assets.start.sh docker
 # if not done yet, generate DB inserts:
-$ ./scripts/database.generate.sh
+./scripts/database.generate.sh
 # fi
-$ ./scripts/database.build.sh docker
-$ ./scripts/database.start.sh docker
-$ ./scripts/backend.run.sh docker
-$ ./scripts/backend.start.sh docker
+./scripts/database.build.sh docker
+./scripts/database.start.sh docker
+./scripts/backend.run.sh docker
+./scripts/backend.start.sh docker
 ```
 
 ## Git Workflow
