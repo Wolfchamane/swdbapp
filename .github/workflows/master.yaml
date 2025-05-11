@@ -70,7 +70,7 @@ jobs:
                 with:
                     registry: ${{ env.REGISTRY }}
                     username: ${{ env.DOCKER_USER }}
-                    password: ${{ env.DOCKER_PASSWORD }}
+                    password: ${{ env.DOCKER_PASS }}
 
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v3
