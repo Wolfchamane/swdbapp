@@ -9,7 +9,7 @@ env:
     DOCKER_REGISTRY: docker.io
     DOCKER_USER: ${{ secrets.DOCKER_USER }}
     DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
-    DATABASE_IMAGE_TAG: ${{ secrets.DOCKER_USER }}/swdbapp-assets
+    DOCKER_DATABASE_IMAGE_TAG: swdbapp-database
 #     PGUSER: ${{ secrets.POSTGRES_USER }}
 #     PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 #     PGHOST: ${{ secrets.PG_HOST }}
@@ -23,7 +23,7 @@ env:
 #     FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
 
 jobs:
-    deploy_database:
+    database:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Repository
@@ -85,11 +85,11 @@ jobs:
                   file: ./apps/database/Dockerfile
                   platforms: linux/amd64
                   push: true
-                  tags: ${{ env.DATABASE_IMAGE_TAG }}:latest
+                  tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_TAG }}:latest
 
             - name: Inspect
               run: |
-                  docker image inspect ${{ env.REGISTRY }}/${{ env.DATABASE_IMAGE_TAG }}:latest
+                  docker image inspect ${{ env.REGISTRY }}/${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_TAG }}:latest
 
     # deploy_assets:
     #     runs-on: ubuntu-latest
