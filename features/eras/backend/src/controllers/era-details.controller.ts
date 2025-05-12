@@ -3,7 +3,7 @@ import type { EraDetailResponse, EraTitle } from '@swdbapp/feature-eras-infra-ht
 import type { Request, Response, NextFunction } from 'express';
 import type { QueryResult, QueryConfig } from 'pg';
 import { selectAllEraTitlesByEraName, selectOne } from './queries';
-import { query, type AppResponse, type AppError, type Logger, normalizeObjectKeys } from '@swdbapp/utils-backend';
+import { query, type AppResponse, type AppError, type Logger } from '@swdbapp/utils-backend';
 
 export interface EraDetailsControllerInput {
 	logger: Logger;

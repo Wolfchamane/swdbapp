@@ -1,7 +1,7 @@
 import type { EraItem } from '@swdbapp/feature-eras-infra-http';
 import type { Request, Response, NextFunction } from 'express';
 import { selectAll, count } from './queries';
-import { listController, type Logger, type SelectAllInput, query, normalizeObjectKeys } from '@swdbapp/utils-backend';
+import { listController, type Logger, type SelectAllInput, query } from '@swdbapp/utils-backend';
 import type { QueryConfig, QueryResult } from 'pg';
 
 export interface ErasListControllerInput {

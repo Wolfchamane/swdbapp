@@ -5,9 +5,7 @@ import {
 	ERAS_TABLE_FIELD_DESCRIPTION,
 	ERAS_TABLE_FIELD_IMAGE,
 	ERA_TITLES_TABLE_NAME,
-	ERA_TITLES_FIELD_TITLE,
 	ERA_TITLES_FIELD_ERA,
-	ERA_TITLES_FIELD_ORDER,
 } from './constants';
 import type { QueryConfig } from 'pg';
 import {
