@@ -19,5 +19,6 @@ npm*
 www/**/vue-js
 
 ## Environment files and other resource
-**/.env*
+.env/*
+!.env/.gitkeep
 .tsbuildinfo

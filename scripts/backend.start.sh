@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 ENV=$1
-ENVIRONMENT_FILE="$(pwd)/environments/.env${ENV}";
+if [ -z "$ENV" ]; then
+    ENV="local";
+fi
+ENVIRONMENT_FILE="$(pwd)/.env/.${ENV}";
 
 if ! [ -f "$ENVIRONMENT_FILE" ]; then
     echo "Could not found '$ENVIRONMENT_FILE' file!";
