@@ -1,0 +1,8 @@
+type: string
+description: The type of the title
+enum:
+    - films
+    - games-apps
+    - series
+x-required: mandatory
+nullable: false

@@ -1,0 +1,10 @@
+type: string
+description: Age rating (e.g., PG-13, R) of a title
+enum:
+    - G
+    - PG
+    - PG-13
+    - R
+    - NC-17
+x-required: mandatory
+nullable: false

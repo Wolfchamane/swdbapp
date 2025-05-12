@@ -1,5 +1,5 @@
 {
-    "name": "@swdbapp/features-eras-api-spec",
+    "name": "@swdbapp/features-titles-api-spec",
     "private": true,
     "license": "UNLICENSED",
     "devDependencies": {

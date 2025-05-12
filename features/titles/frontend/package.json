@@ -17,7 +17,7 @@
 		"@swdbapp/types": "file:../../../types",
 		"@swdbapp/utils-frontend": "file:../../../utils/frontend",
 		"@swdbapp/core-feature": "file:../../core",
-		"@swdbapp/feature-titles-infra-http": "file:../infra-http",
+		"@swdbapp/feature-titles-infra-http": "file:../infra/http",
 		"@fortawesome/free-brands-svg-icons": "~6.7.2",
 		"@fortawesome/vue-fontawesome": "~3.0.8",
 		"vue": "~3.5.13",

@@ -10,9 +10,9 @@ generate_code:
 	@docker run -v ${GIT_ROOT_DIR}:/local --rm swdbapp-infra-generator \
 	    generate \
 	    -g io.wolfchamane.openapigenerators.SwdbappHttpInfraGenerator \
-	    -i /local/features/eras/api-spec/generated/bundle.yaml \
-	    -o /local/features/eras/infra/http \
-	    -c /local/features/eras/api-spec/config.yaml
+	    -i /local/features/titles/api-spec/generated/bundle.yaml \
+	    -o /local/features/titles/infra/http \
+	    -c /local/features/titles/api-spec/config.yaml
 
 .PHONY: build
 build:

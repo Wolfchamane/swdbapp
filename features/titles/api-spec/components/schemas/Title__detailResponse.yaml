@@ -1,0 +1,94 @@
+allOf:
+    - $ref: '../_index.yaml#/schemas/Title__item'
+    - type: object
+      required:
+          - type
+          - poster
+          - rating
+          - duration
+          - releaseDate
+          - genre
+          - resume
+          - director
+          - musicDirector
+          - producers
+          - actors
+          - plot
+          - openingCrawl
+      properties:
+          type:
+              $ref: '../_index.yaml#/schemas/Title__type'
+          poster:
+              type: string
+              description: Partial URL of the title poster
+              x-required: mandatory
+              nullable: false
+              example: 'images/titles/posters/the-rise-of-skywalker.jpeg'
+          rating:
+              $ref: '../_index.yaml#/schemas/Title__rating'
+          duration:
+              type: string
+              description: |
+                Time in milliseconds that express the title duration.
+                Only applies for 'films' or 'series' types.
+              x-required: mandatory
+              nullable: true
+              example: '8520000'
+          releaseDate:
+              type: string
+              description: Date in which title was released.
+              x-required: mandatory
+              nullable: false
+              example: '2019-12-18T00:00:00.000Z'
+          genre:
+              type: string
+              description: Genres that matches with title content.
+              x-required: mandatory
+              nullable: false
+              example: 'Action, Adventure, Science Fiction'
+          resume:
+              type: string
+              description: Sort intro to title content
+              x-required: mandatory
+              nullable: false
+              example: 'Lucasfilm and director J.J. Abrams join forces ...'
+          director:
+              type: string
+              description: Director of the title
+              x-required: mandatory
+              nullable: true
+              example: 'J.J. Abrams'
+          musicDirector:
+              type: string
+              description: Music director of the title
+              x-required: mandatory
+              nullable: true
+              example: 'John Williams'
+          producers:
+              type: string
+              description: List of title's producers
+              x-required: mandatory
+              nullable: true
+              example: 'J.J. Abrams, Kathleen Kennedy, Michelle Rejwan'
+          actors:
+              type: string
+              description: List of title's actors
+              x-required: mandatory
+              nullable: true
+              example: 'Carrie Fisher, Mark Hamill, Adam Driver, ...'
+          plot:
+              type: string
+              description: The whole plot of the title, in HTML syntax.
+              x-required: mandatory
+              nullable: true
+              example: '<p>One year after the Battle of Crait, Kylo Ren ...</p>'
+          openingCrawl:
+              type: string
+              description: Title's opening crawl text, in HTML syntax
+              x-required: mandatory
+              nullable: true
+              example: '<p>Episode IX</p><h1>The Rise of Skywalker</h1><p>The dead speak! ...</p>'
+
+
+
+

@@ -1,0 +1,21 @@
+{
+	"name": "@swdbapp/feature-titles-infra-http",
+	"private": true,
+	"license": "UNLICENSED",
+	"version": "1.0.0",
+	"main": "index.ts",
+	"types": "index.d.ts",
+	"type": "module",
+	"scripts": {
+		"format:check": "prettier --check --config ../../../../prettier.config.js .",
+		"format:fix": "prettier --write --config ../../../../prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint --ext .ts --config ../../../../eslint.config.js",
+		"lint:js:fix": "eslint --ext .ts --fix --config ../../../../eslint.config.js"
+	},
+	"dependencies": {
+		"@amjs/js-utils": "~0.5.2",
+		"@swdbapp/core-feature": "file:../../../core",
+		"@swdbapp/types": "file:../../../../types"
+	}
+}

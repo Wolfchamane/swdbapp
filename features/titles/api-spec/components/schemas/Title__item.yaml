@@ -1,0 +1,22 @@
+type: object
+description: Short detail of a title
+required:
+    - id
+    - name
+    - logo
+properties:
+    id:
+        type: number
+        description: Unique title identifier
+        example: 8
+        x-required: mandatory
+    name:
+        type: string
+        description: Title name
+        example: 'Star Wars Episode IX: The Rise of Skywalker'
+        x-required: mandatory
+    logo:
+        type: string
+        description: Partial URL path to title image
+        example: 'images/titles/logos/the-rise-of-skywalker.png'
+        x-required: mandatory

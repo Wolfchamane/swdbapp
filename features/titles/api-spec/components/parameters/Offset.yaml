@@ -1,0 +1,6 @@
+name: offset
+required: false
+description: Index or pointer where to start filtering
+in: query
+schema:
+    type: integer

@@ -1,0 +1,27 @@
+parameters:
+    Id:
+        $ref: './parameters/Id.yaml'
+    Limit:
+        $ref: './parameters/Limit.yaml'
+    Offset:
+        $ref: './parameters/Offset.yaml'
+    OrderBy:
+        $ref: './parameters/OrderBy.yaml'
+    OrderDir:
+        $ref: './parameters/OrderDir.yaml'
+    Search:
+        $ref: './parameters/Search.yaml'
+    SearchBy:
+        $ref: './parameters/SearchBy.yaml'
+
+schemas:
+    Title__type:
+        $ref: './schemas/Title__type.yaml'
+    Title__rating:
+        $ref: './schemas/Title__rating.yaml'
+    Title__detailResponse:
+        $ref: './schemas/Title__detailResponse.yaml'
+    Title__item:
+        $ref: './schemas/Title__item.yaml'
+    Titles__listResponse:
+        $ref: './schemas/Titles__listResponse.yaml'
