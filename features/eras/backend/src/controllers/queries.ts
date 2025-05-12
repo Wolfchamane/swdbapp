@@ -36,13 +36,12 @@ export const selectOne = async (input: SelectOneInput): Promise<QueryConfig> => 
 	return selectOneQueryBuilder(selectOneQueryInput, ERAS_TABLE_NAME);
 };
 
-export const selectOneEraTitles = async (input: SelectOneInput): Promise<QueryConfig> => {
-	const selectOneQueryInput = {
-		...input,
-		searchBy: ERA_TITLES_FIELD_ERA,
-		orderBy: ERA_TITLES_FIELD_ORDER,
-		orderDir: 'asc',
-	};
-
-	return selectOneQueryBuilder(selectOneQueryInput, ERA_TITLES_TABLE_NAME, [ERA_TITLES_FIELD_TITLE]);
-};
+export const selectAllEraTitlesByEraName = async ({ era }: { era: string }): Promise<QueryConfig> =>
+	selectAllQueryBuilder(
+		{
+			search: era,
+			searchBy: ERA_TITLES_FIELD_ERA,
+		},
+		ERA_TITLES_TABLE_NAME,
+		['*']
+	);

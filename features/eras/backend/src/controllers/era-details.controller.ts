@@ -1,9 +1,9 @@
-import type { TitleModel } from '@swdbapp/feature-titles-infra-http';
-import type { EraModel, EraModelTitle } from '@swdbapp/feature-eras-infra-http';
+import type { TitleDetailResponse } from '@swdbapp/feature-titles-infra-http';
+import type { EraDetailResponse, EraTitle } from '@swdbapp/feature-eras-infra-http';
 import type { Request, Response, NextFunction } from 'express';
 import type { QueryResult, QueryConfig } from 'pg';
-import { selectOne, selectOneEraTitles } from './queries';
-import { query, type AppResponse, type AppError, type Logger } from '@swdbapp/utils-backend';
+import { selectAllEraTitlesByEraName, selectOne } from './queries';
+import { query, type AppResponse, type AppError, type Logger, normalizeObjectKeys } from '@swdbapp/utils-backend';
 
 export interface EraDetailsControllerInput {
 	logger: Logger;
@@ -24,24 +24,28 @@ export const eraDetailsController = ({
 		try {
 			const querySelectOneConfig: QueryConfig = await selectOne({ id });
 			logger.debug(`querySelectOneConfig: ${JSON.stringify(querySelectOneConfig)}`);
-			const selectResponse: QueryResult<EraModel> = await query(querySelectOneConfig);
+			const selectResponse: QueryResult<EraDetailResponse> = await query(querySelectOneConfig);
 			logger.debug('select one era performed!');
 
-			const item: EraModel | undefined = selectResponse.rows.pop();
+			const item: EraDetailResponse | undefined = selectResponse.rows.pop();
 			if (item) {
-				const querySelectOneEraTitlesConfig: QueryConfig = await selectOneEraTitles({ id: item.name });
-				logger.debug(`querySelectOneEraTitlesConfig: ${JSON.stringify(querySelectOneEraTitlesConfig)}`);
-				const eraTitlesResponse: QueryResult<{ title: string }> = await query(querySelectOneEraTitlesConfig);
+				const querySelectAllEraTitlesConfig: QueryConfig = await selectAllEraTitlesByEraName({
+					era: item.name,
+				});
+				logger.debug(`querySelectOneEraTitlesConfig: ${JSON.stringify(querySelectAllEraTitlesConfig)}`);
+				const eraTitlesResponse: QueryResult<{ order: number; title: string }> =
+					await query(querySelectAllEraTitlesConfig);
 				logger.debug('select one era titles performed!');
 
 				logger.debug(`Number of titles for era "${item.name}": ${eraTitlesResponse.rows.length}`);
 				for (const eraTitle of eraTitlesResponse.rows) {
 					const queryTitleDetailConfig: QueryConfig = await selectOneTitleByTitle(eraTitle.title);
 					logger.debug(`queryTitleDetailConfig: ${JSON.stringify(queryTitleDetailConfig)}`);
-					const selectTitleDetailResponse: QueryResult<TitleModel> = await query(queryTitleDetailConfig);
+					const selectTitleDetailResponse: QueryResult<TitleDetailResponse> =
+						await query(queryTitleDetailConfig);
 					logger.debug('select title details performed!');
 
-					const titleDetail: TitleModel | undefined = selectTitleDetailResponse.rows.pop();
+					const titleDetail: TitleDetailResponse | undefined = selectTitleDetailResponse.rows.pop();
 					logger.debug(`titleDetail: ${JSON.stringify(titleDetail)}`);
 
 					if (titleDetail) {
@@ -51,9 +55,10 @@ export const eraDetailsController = ({
 
 						item.titles.push({
 							id: titleDetail.id,
-							title: titleDetail.title,
+							order: item.titles.length,
+							title: titleDetail.name,
 							logo: titleDetail.logo,
-						} satisfies EraModelTitle);
+						} satisfies EraTitle);
 					} else {
 						logger.error('title detail not found for %s', eraTitle.title);
 					}
@@ -64,7 +69,7 @@ export const eraDetailsController = ({
 
 			const response: AppResponse | AppError = {
 				status: item ? 200 : 404,
-				message: item ? JSON.stringify(item) : 'Not Found',
+				message: item || 'Not Found',
 			};
 
 			next(response);
