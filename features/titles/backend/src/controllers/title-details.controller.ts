@@ -1,4 +1,4 @@
-import type { TitleModel } from '@swdbapp/feature-titles-infra-http';
+import type { TitleDetailResponse } from '@swdbapp/feature-titles-infra-http';
 import type { Request, Response, NextFunction } from 'express';
 import { query, type AppResponse, type AppError, type Logger } from '@swdbapp/utils-backend';
 import type { QueryResult, QueryConfig } from 'pg';
@@ -15,17 +15,17 @@ export const titleDetailsController = (logger: Logger): TitleDetailsControllerOu
 		try {
 			const querySelectOneConfig: QueryConfig = await selectOneById({ id });
 			logger.debug(`querySelectOneConfig: ${JSON.stringify(querySelectOneConfig)}`);
-			const selectResponse: QueryResult<TitleModel> = await query(querySelectOneConfig);
+			const selectResponse: QueryResult<TitleDetailResponse> = await query(querySelectOneConfig);
 			logger.debug('select one title performed!');
 
-			const item: TitleModel | undefined = selectResponse.rows.pop();
+			const item: TitleDetailResponse | undefined = selectResponse.rows.pop();
 			if (!item) {
 				logger.error(`era "${id}" not found!`);
 			}
 
 			const response: AppResponse | AppError = {
 				status: item ? 200 : 404,
-				message: item ? JSON.stringify(item) : 'Not Found',
+				message: item || 'Not Found',
 			};
 
 			next(response);

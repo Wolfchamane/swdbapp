@@ -1,6 +1,6 @@
 export const TITLES_TABLE_NAME: string = 'titles';
 export const TITLES_TABLE_FIELD_ID: string = 'id';
-export const TITLES_TABLE_FIELD_TITLE: string = 'title';
+export const TITLES_TABLE_FIELD_TITLE: string = 'name';
 export const TITLES_TABLE_FIELD_LOGO: string = 'logo';
 export const TITLES_TABLE_FIELD_TYPE: string = 'type';
 export const TITLES_TABLE_FIELD_POSTER: string = 'poster';
