@@ -1,0 +1,4 @@
+'/titles':
+    $ref: './titles.yaml'
+'/titles/{id}':
+    $ref: './titles_id.yaml'

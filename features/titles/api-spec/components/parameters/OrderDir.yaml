@@ -1,0 +1,10 @@
+name: orderDir
+required: false
+description: |
+    Direction of the ordering. Could be:
+
+    - 'asc' for ascending order
+    - 'desc' for descending order
+in: query
+schema:
+    type: string

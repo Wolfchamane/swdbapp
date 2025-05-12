@@ -1,0 +1,3 @@
+featureName: "titles"
+baseDirectory: "pkg"
+outputDirectory: "infra/http"

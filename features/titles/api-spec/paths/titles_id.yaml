@@ -1,0 +1,15 @@
+get:
+    tags:
+        - titles
+    operationId: titles.title.details
+    summary: Describes a title
+    description: Returns details of a title
+    parameters:
+        - $ref: '../components/_index.yaml#/parameters/Id'
+    responses:
+        '200':
+            description: Returns title details
+            content:
+                application/json:
+                    schema:
+                        $ref: '../components/_index.yaml#/schemas/Title__detailResponse'

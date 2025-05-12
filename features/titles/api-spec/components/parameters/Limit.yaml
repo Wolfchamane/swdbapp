@@ -1,0 +1,6 @@
+name: limit
+required: false
+description: Max. number of elements to return
+in: query
+schema:
+    type: integer
