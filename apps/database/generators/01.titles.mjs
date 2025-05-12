@@ -4,7 +4,7 @@ import scapeSingleQuotes from '../utils/scape-single-quotes.mjs';
 import nullableValue from '../utils/nullable-value.mjs';
 
 const titleProperties = [
-	'title',
+	'name',
 	'logo',
 	'type',
 	'poster',
@@ -21,10 +21,10 @@ const titleProperties = [
 	'opening_crawl',
 ];
 
-const valueLine = ({ title = '', ...rest }) =>
+const valueLine = ({ name = '', ...rest }) =>
 	`(${[
-		`'${scapeSingleQuotes(title)}'`,
-		...titleProperties.filter(prop => prop !== 'title').map(prop => nullableValue(rest[prop])),
+		`'${scapeSingleQuotes(name)}'`,
+		...titleProperties.filter(prop => prop !== 'name').map(prop => nullableValue(rest[prop])),
 	].join(', ')})`;
 
 const fileTemplate = (values = []) =>

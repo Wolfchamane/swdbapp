@@ -10,7 +10,7 @@ import { provideAPIHeaders } from '@swdbapp/core-feature';
 import type { EraDetailResponse } from '../models';
 import type { ErasListResponse } from '../models';
 
-export interface ErasErasDetailsInput {
+export interface ErasEraDetailsInput {
 	/** Unique era identifier */
 	id: string;
 }
@@ -36,7 +36,7 @@ export interface ErasHttpClient {
 	 *
 	 * @param input Request parameters
 	 */
-	details(input: ErasErasDetailsInput): Promise<EraDetailResponse | Error>;
+	details(input: ErasEraDetailsInput): Promise<EraDetailResponse | Error>;
 
 	/**
 	 * List all available eras
@@ -63,7 +63,7 @@ export class DefaultErasHttpClient extends BaseHttpClient implements ErasHttpCli
 		);
 	}
 
-	async details({ id }: ErasErasDetailsInput): Promise<EraDetailResponse | Error> {
+	async details({ id }: ErasEraDetailsInput): Promise<EraDetailResponse | Error> {
 		return this.fetch<EraDetailResponse>(`/eras/${id}`, {
 			method: XHR_FETCH_METHODS.GET,
 		});
