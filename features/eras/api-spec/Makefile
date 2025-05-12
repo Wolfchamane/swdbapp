@@ -7,7 +7,7 @@ lint: build
 
 .PHONY: generate_code
 generate_code:
-	@docker run -v ${GIT_ROOT_DIR}:/local --rm swdbapp-api-generator \
+	@docker run -v ${GIT_ROOT_DIR}:/local --rm swdbapp-infra-generator \
 	    generate \
 	    -g io.wolfchamane.openapigenerators.SwdbappHttpInfraGenerator \
 	    -i /local/features/eras/api-spec/generated/bundle.yaml \
