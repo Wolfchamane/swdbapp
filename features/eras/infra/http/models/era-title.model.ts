@@ -6,6 +6,10 @@
 
 export interface EraTitle {
 	/**
+	 * Unique title identifier
+	 */
+	id: number;
+	/**
 	 * Order of the title within the era. Starts in zero (0).
 	 */
 	order: number;

@@ -10,4 +10,4 @@ ALTER TABLE "era_titles"
     ADD CONSTRAINT "fk_era_titles__era" FOREIGN KEY ("era") REFERENCES "eras"("name");
 
 ALTER TABLE "era_titles"
-    ADD CONSTRAINT "fk_era_titles__title" FOREIGN KEY ("title") REFERENCES "titles"("title");
+    ADD CONSTRAINT "fk_era_titles__title" FOREIGN KEY ("title") REFERENCES "titles"("name");

@@ -47,7 +47,7 @@ export const listController = <T>({ logger, queryAll, queryCount }: ListControll
 
 			next({
 				status: 200,
-				message: JSON.stringify(listOutput),
+				message: listOutput,
 			} as AppResponse);
 		} catch (e: unknown) {
 			logger.error((e as Error).message);

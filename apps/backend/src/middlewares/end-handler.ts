@@ -1,10 +1,13 @@
 import type { NextFunction, Request, Response } from 'express';
-import type { Logger, AppError, AppResponse } from '@swdbapp/utils-backend';
+import { Logger, AppError, AppResponse, normalizeObjectKeys } from '@swdbapp/utils-backend';
 
 export const endHandler =
 	(logger: Logger) =>
 	(err: AppError | AppResponse, req: Request, res: Response, _: NextFunction): void => {
-		let message: string = err.message || 'Internal Server Error';
+		let message: object | string = err.message || 'Internal Server Error';
+		if (typeof message === 'object') {
+			message = JSON.stringify(normalizeObjectKeys(message));
+		}
 		res.statusCode = err.status || 500;
 
 		if (res.statusCode !== 200) {

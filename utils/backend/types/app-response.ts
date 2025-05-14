@@ -1,4 +1,4 @@
 export interface AppResponse {
 	status?: number;
-	message: string;
+	message: object | string;
 }
