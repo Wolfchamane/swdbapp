@@ -4,8 +4,6 @@
  * Do not edit the file manually!
  */
 
-/* model.mustache */
-
 import type { TitleItem } from './title-item.model';
 
 export interface TitlesListResponse {

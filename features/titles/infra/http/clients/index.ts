@@ -4,6 +4,4 @@
  * Do not edit the file manually!
  */
 
-/* apis.mustache */
-
 export * from './titles.http-client';

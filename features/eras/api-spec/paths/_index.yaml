@@ -1,4 +1,4 @@
-'/eras':
+'/api/eras':
     $ref: './eras.yaml'
-'/eras/{id}':
+'/api/eras/{id}':
     $ref: './eras_id.yaml'

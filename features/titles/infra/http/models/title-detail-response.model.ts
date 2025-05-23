@@ -4,8 +4,6 @@
  * Do not edit the file manually!
  */
 
-/* model.mustache */
-
 import type { TitleType } from './title-type.model';
 import type { TitleRating } from './title-rating.model';
 

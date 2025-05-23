@@ -4,8 +4,6 @@
  * Do not edit the file manually!
  */
 
-/* model.mustache */
-
 /**
  * Short detail of a title
  */

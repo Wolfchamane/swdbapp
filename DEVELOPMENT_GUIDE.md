@@ -19,9 +19,9 @@
 
 You will require to create three (3) files in your local copy of this project, to know:
 
-- `.env/.local`
-- `.env/.docker`
-- `.env/.production`
+- `.env/.env.development`
+- `.env/.env.docker`
+- `.env/.env.production`
 
 > [!NOTE]
 > Ask [Arturo Martínez Díaz](mailto:arturo.martinez@amartinez.dev) for details of the content of these files.

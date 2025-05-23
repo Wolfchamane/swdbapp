@@ -41,6 +41,22 @@ export class BaseHttpClient extends JSONAdapter {
 		this.cacheExpiration = new Date(Number(Date.now() + A_DAY)).getTime();
 	}
 
+	private _isUndefined(value: string | number): boolean {
+		return value === undefined || typeof value === 'undefined';
+	}
+
+	private _removeUndefinedParams(params?: Record<string, string | number>): void {
+		// Any { key: undefined } param is transformed as "(?|&)key=undefined"
+		// This method deletes all undefined params
+		if (params) {
+			Object.keys(params)
+				.filter(key => this._isUndefined(params[key]))
+				.forEach(key => {
+					delete params[key];
+				});
+		}
+	}
+
 	/**
 	 * @override
 	 */
@@ -72,6 +88,7 @@ export class BaseHttpClient extends JSONAdapter {
 	 */
 	async fetch<T>(path: string, options: XHRFetchOptions): Promise<T | Error> {
 		super.reset();
+		this._removeUndefinedParams(options.params);
 		super.buildRequest(path, options);
 		let response: T | Error | undefined;
 		if (this.url && this.request) {
