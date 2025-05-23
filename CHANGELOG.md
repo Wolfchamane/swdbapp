@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   [X.0.0] ReactJS Web Application
 -   [X.0.0] LitElement Web Application
 
+## 0.6.0 - 2025-05-23
+
+**Features**:
+
+-   \[NO-REF\] Define any feature API spec using OpenAPI syntax.
+-   \[NO-REF\] Generate any infra/http resource from OpenAPI specs.
+-   \[NO-REF\] Update both backend and frontend for all features to new generated infra/http solutions.
+-   \[NO-REF\] Add a "home" button to Vue application.
+-   \[NO-REF\] Improve link styles and information modal L&F.
+
 ## 0.5.0 - 2025-04-10
 
 **Features**:
