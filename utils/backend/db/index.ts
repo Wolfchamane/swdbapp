@@ -6,13 +6,15 @@ const config: PoolConfig = {
 	database: process.env.PGDATABASE,
 	password: process.env.PGPASSWORD,
 	port: Number(process.env.PGPORT),
-	connectionString: `postgres://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:5432/${process.env.PGDATABASE}`,
 };
+config.connectionString = `postgres://${config.user}:${config.password}@${config.host}:${config.port}/${config.database}`;
 
-const mode: string = process.env.NODE_ENV || process.env.MODE || '';
-if (/^dev/gi.test(mode)) {
-	console.log('[@swdbapp/backend] DB pool configuration: %s', JSON.stringify(config));
-}
+// const mode: string = process.env.NODE_ENV || process.env.MODE || '';
+// if (/^dev/gi.test(mode)) {
+// 	console.log('[@swdbapp/backend] DB pool configuration: %s', JSON.stringify(config));
+// }
+
+console.log('[@swdbapp/backend] DB pool configuration: %s', JSON.stringify(config));
 
 const pool: Pool = new Pool(config);
 
