@@ -5,9 +5,9 @@ import type { Logger, AppError } from '@swdbapp/utils-backend';
 export const auth =
 	(logger: Logger) =>
 	(req: Request, res: Response, next: NextFunction): void => {
-		if (['OPTIONS'].includes(req.method)) {
+		if (['OPTIONS'].includes(req.method) || /\/health/gi.test(req.url)) {
 			res.statusCode = 200;
-			next();
+			res.end();
 		} else {
 			logger.log('<-- [Middleware: Auth] %s: %s', req.method, req.url);
 			const apiKeyHeaderName: string = 'x-api-key';
