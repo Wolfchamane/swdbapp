@@ -1,7 +1,7 @@
 {
 	"name": "@amjs/swdbapp",
 	"private": true,
-	"version": "0.6.2",
+	"version": "0.6.1",
 	"license": "by-nc-nd",
 	"author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
 	"description": "Star Wars ® DB Explorer - Portfolio showcase application",
