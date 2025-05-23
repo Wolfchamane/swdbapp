@@ -27,14 +27,14 @@ COPY ./utils/backend ./
 WORKDIR /usr/src/features/core
 COPY ./features/core ./
 
-WORKDIR /usr/src/features/eras/infra-http
-COPY ./features/eras/infra-http ./
+WORKDIR /usr/src/features/eras/infra/http
+COPY ./features/eras/infra/http ./
 
 WORKDIR /usr/src/features/eras/backend
 COPY ./features/eras/backend ./
 
-WORKDIR /usr/src/features/titles/infra-http
-COPY ./features/titles/infra-http ./
+WORKDIR /usr/src/features/titles/infra/http
+COPY ./features/titles/infra/http ./
 
 WORKDIR /usr/src/features/titles/backend
 COPY ./features/titles/backend ./
