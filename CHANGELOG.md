@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   [X.0.0] ReactJS Web Application
 -   [X.0.0] LitElement Web Application
 
-## 0.6.0 - 2025-05-23
+## 0.6.X - 2025-05-23
 
 **Features**:
 
@@ -20,6 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   \[NO-REF\] Update both backend and frontend for all features to new generated infra/http solutions.
 -   \[NO-REF\] Add a "home" button to Vue application.
 -   \[NO-REF\] Improve link styles and information modal L&F.
+-   \[NO-REF\] Improved GHA master workflow
+-   \[NO-REF\] Added backend Docker image publish job to master workflow
+-   \[NO-REF\] Success backend response for `/health` endpoint
 
 ## 0.5.0 - 2025-04-10
 
