@@ -212,3 +212,18 @@ point in order to ensure that the experience is good enough for every user withi
 - Build a whole application into VueJS, later on ReactJS and eventually in WebComponents; just replicating
 components once and over again seems to me really boring. So maybe I will start building the WebComponents first, so I
 am able to reuse then within VueJS/ReactJS applications.
+
+## 2025-05-23
+
+**YEAH!** I have been able to publish Docker images for assets, database and backend into a private Docker registry of my own.
+Then, connecting Sliplane to those images was really easy.
+
+Now I have a backend running online, connected to a real running database!
+
+Next steps:
+
+- Evaluate why setting a strict allowed origin does not fire a CORS error.
+- Upcoming features: characters, creatures, droids, locations, organizations, species, vehicles, technology.
+As described above, I'll focus on finishing DB models, backend support and 1:1 navigation from the frontend.
+- Build a back-office solution in order to start populating the DB with information.
+- Build a solution from back-office in order to generate and download dump files, or to upload them.
