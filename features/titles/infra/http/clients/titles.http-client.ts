@@ -4,8 +4,6 @@
  * Do not edit the file manually!
  */
 
-/* api.mustache */
-
 import { BaseHttpClient } from '@swdbapp/types';
 import { XHR_FETCH_METHODS } from '@amjs/js-utils';
 import { provideAPIHeaders } from '@swdbapp/core-feature';
@@ -24,7 +22,7 @@ export interface TitlesTitlesListInput {
 	offset?: number;
 	/** Field to order */
 	orderBy?: string;
-	/** Direction of the ordering. Could be:  - \asc\ for ascending order - \desc\ for descending order  */
+	/** Direction of the ordering. Could be:  - \&#39;asc\&#39; for ascending order - \&#39;desc\&#39; for descending order  */
 	orderDir?: string;
 	/** Value to use as search criteria */
 	search?: string;
@@ -66,7 +64,7 @@ export class DefaultTitlesHttpClient extends BaseHttpClient implements TitlesHtt
 	}
 
 	async details({ id }: TitlesTitleDetailsInput): Promise<TitleDetailResponse | Error> {
-		return this.fetch<TitleDetailResponse>(`/titles/${id}`, {
+		return this.fetch<TitleDetailResponse>(`/api/titles/${id}`, {
 			method: XHR_FETCH_METHODS.GET,
 		});
 	}
@@ -74,7 +72,7 @@ export class DefaultTitlesHttpClient extends BaseHttpClient implements TitlesHtt
 	async list({ limit, offset, orderBy, orderDir, search, searchBy }: TitlesTitlesListInput = {}): Promise<
 		TitlesListResponse | Error
 	> {
-		return this.fetch<TitlesListResponse>(`/titles`, {
+		return this.fetch<TitlesListResponse>(`/api/titles`, {
 			method: XHR_FETCH_METHODS.GET,
 			params: { limit, offset, orderBy, orderDir, search, searchBy },
 		});

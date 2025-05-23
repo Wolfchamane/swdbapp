@@ -4,8 +4,6 @@
  * Do not edit the file manually!
  */
 
-/* model.mustache */
-
 /**
  * Age rating (e.g., PG-13, R) of a title
  */
