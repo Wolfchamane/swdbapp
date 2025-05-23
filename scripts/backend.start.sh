@@ -2,15 +2,15 @@
 
 ENV=$1
 if [ -z "$ENV" ]; then
-    ENV="local";
+    ENV="development";
 fi
-ENVIRONMENT_FILE="$(pwd)/.env/.${ENV}";
+ENVIRONMENT_FILE="$(pwd)/.env/.env.${ENV}";
 
 if ! [ -f "$ENVIRONMENT_FILE" ]; then
     echo "Could not found '$ENVIRONMENT_FILE' file!";
     exit 1;
 else
-    echo "Loading environment variables";
+    echo "Loading '$ENV' environment variables";
     # Read each line of the .env file
     while IFS='=' read -r key value; do
       # Skip comments and empty lines
