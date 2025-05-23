@@ -1,6 +1,9 @@
 $border-sizes: 1,2,3,4,0
 $radius-sizes:('xs': .25, 's': .5, 'm': 1, 'l': 1.25, 'xl': 1.5)
 
+.border-primary
+    border-color: var(--color-primary) !important
+
 @each $size in $border-sizes
     .border-#{$size}
         border-width: #{$size}px

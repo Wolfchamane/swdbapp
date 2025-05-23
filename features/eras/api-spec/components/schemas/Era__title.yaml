@@ -1,9 +1,15 @@
 type: object
 required:
+    - id
     - order
     - title
     - logo
 properties:
+    id:
+        type: integer
+        description: Unique title identifier
+        x-required: mandatory
+        example: 8
     order:
         type: integer
         description: |

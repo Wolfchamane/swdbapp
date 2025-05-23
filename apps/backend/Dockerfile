@@ -18,6 +18,8 @@ ENV PGPASSWORD=${PG_PASSWORD}
 ENV PGDATABASE=${PG_DATABASE}
 ENV VITE_API_KEY=${API_KEY}
 
+ENV NODE_ENV=production
+
 WORKDIR /usr/src/types
 COPY ./types ./
 
@@ -27,14 +29,14 @@ COPY ./utils/backend ./
 WORKDIR /usr/src/features/core
 COPY ./features/core ./
 
-WORKDIR /usr/src/features/eras/infra-http
-COPY ./features/eras/infra-http ./
+WORKDIR /usr/src/features/eras/infra/http
+COPY ./features/eras/infra/http ./
 
 WORKDIR /usr/src/features/eras/backend
 COPY ./features/eras/backend ./
 
-WORKDIR /usr/src/features/titles/infra-http
-COPY ./features/titles/infra-http ./
+WORKDIR /usr/src/features/titles/infra/http
+COPY ./features/titles/infra/http ./
 
 WORKDIR /usr/src/features/titles/backend
 COPY ./features/titles/backend ./

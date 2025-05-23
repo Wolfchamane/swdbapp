@@ -10,7 +10,7 @@ import { provideAPIHeaders } from '@swdbapp/core-feature';
 import type { EraDetailResponse } from '../models';
 import type { ErasListResponse } from '../models';
 
-export interface ErasErasDetailsInput {
+export interface ErasEraDetailsInput {
 	/** Unique era identifier */
 	id: string;
 }
@@ -36,7 +36,7 @@ export interface ErasHttpClient {
 	 *
 	 * @param input Request parameters
 	 */
-	details(input: ErasErasDetailsInput): Promise<EraDetailResponse | Error>;
+	details(input: ErasEraDetailsInput): Promise<EraDetailResponse | Error>;
 
 	/**
 	 * List all available eras
@@ -63,8 +63,8 @@ export class DefaultErasHttpClient extends BaseHttpClient implements ErasHttpCli
 		);
 	}
 
-	async details({ id }: ErasErasDetailsInput): Promise<EraDetailResponse | Error> {
-		return this.fetch<EraDetailResponse>(`/eras/${id}`, {
+	async details({ id }: ErasEraDetailsInput): Promise<EraDetailResponse | Error> {
+		return this.fetch<EraDetailResponse>(`/api/eras/${id}`, {
 			method: XHR_FETCH_METHODS.GET,
 		});
 	}
@@ -72,7 +72,7 @@ export class DefaultErasHttpClient extends BaseHttpClient implements ErasHttpCli
 	async list({ limit, offset, orderBy, orderDir, search, searchBy }: ErasErasListInput = {}): Promise<
 		ErasListResponse | Error
 	> {
-		return this.fetch<ErasListResponse>(`/eras`, {
+		return this.fetch<ErasListResponse>(`/api/eras`, {
 			method: XHR_FETCH_METHODS.GET,
 			params: { limit, offset, orderBy, orderDir, search, searchBy },
 		});

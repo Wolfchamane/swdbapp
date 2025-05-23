@@ -16,6 +16,10 @@
 		return !era.value || (!era.value.description && !era.value.titles?.length);
 	});
 
+	const eraHasTitles: ComputedRef<boolean> = computed(() => {
+		return era.value && Array.isArray(era.value.titles) && !!era.value.titles.length;
+	});
+
 	const fetchEraDetails = async (id: string): Promise<void> => {
 		toggleLoading();
 		await useCases.detail({ id });
@@ -42,7 +46,7 @@
 			<span>{{ era?.name }}</span>
 		</h1>
 		<p class="mt-2 ta-justify">{{ era?.description }}</p>
-		<template v-if="era?.titles">
+		<template v-if="eraHasTitles">
 			<p class="text-uppercase border-bottom-1 pb-05 mt-2">Titles</p>
 			<div class="era-details-view__grid">
 				<template v-for="title in era?.titles" :key="`era-title-${title.$id}`">

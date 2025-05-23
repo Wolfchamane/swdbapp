@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 ENV=$1
-ENVIRONMENT_FILE="$(pwd)/environments/.env${ENV}";
+if [ -z "$ENV" ]; then
+    ENV="development";
+fi
+ENVIRONMENT_FILE="$(pwd)/.env/.env.${ENV}";
 BACKEND_DOCKER_FILE="$(pwd)/apps/backend/Dockerfile";
 
 OS="$(uname | tr '[:upper:]' '[:lower:]')"
@@ -27,7 +30,7 @@ if ! [ -f "$ENVIRONMENT_FILE" ]; then
     echo "Could not found '$ENVIRONMENT_FILE' file!";
     exit 1;
 else
-    echo "Loading environment variables";
+    echo "Loading '$ENV' environment variables";
 
     # Read each line of the .env file
     while IFS='=' read -r key value; do

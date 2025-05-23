@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS "titles";
 
 CREATE TABLE "titles" (
     "id" serial NOT NULL,
-    "title" VARCHAR(512) UNIQUE NOT NULL,
+    "name" VARCHAR(512) UNIQUE NOT NULL,
     "logo"	VARCHAR(512),
     "type"  VARCHAR(16),
     "poster" VARCHAR(512),
@@ -20,4 +20,4 @@ CREATE TABLE "titles" (
 );
 
 ALTER TABLE "titles"
-    ADD CONSTRAINT "pk_titles" PRIMARY KEY ("id", "title");
+    ADD CONSTRAINT "pk_titles" PRIMARY KEY ("id", "name");

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 	import { capitalize } from '@amjs/js-utils';
-	import { faCircleInfo, faCircleLeft, faCircleXmark, faGear } from '@fortawesome/free-solid-svg-icons';
+	import { faCircleInfo, faCircleLeft, faCircleXmark, faGear, faHome } from '@fortawesome/free-solid-svg-icons';
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 	import { type ComputedRef, type Ref, computed, provide, ref } from 'vue';
 	import { RouterView, useRoute, useRouter } from 'vue-router';
@@ -28,6 +28,10 @@
 		ROUTER.back();
 	};
 
+	const navigateHome = () => {
+		ROUTER.replace({ path: '/' });
+	};
+
 	const toggleLoading = () => (isLoading.value = !isLoading.value);
 
 	provide('toggleLoading', toggleLoading);
@@ -35,6 +39,7 @@
 
 <template>
 	<header class="app-header d-flex align-center border-bottom-1 center color-primary py-1">
+		<font-awesome-icon class="ml-1 cursor-pointer" v-if="!isHomeView" :icon="faHome" @click="navigateHome" />
 		<font-awesome-icon class="mx-1 cursor-pointer" v-if="!isHomeView" :icon="faCircleLeft" @click="navigateBack" />
 		<div class="d-flex flex-column center grow">
 			<span class="sw-ff color-primary m-0 my-1 fs-xl">Star Wars</span>
@@ -64,7 +69,7 @@
 	</transition>
 	<transition name="fade" appear>
 		<div
-			class="app-license p-absolute top-0 left-0 z-1 w-100 h-100 m-1 p-1 radius-m bg-color-background color-foreground overflow-hidden"
+			class="app-license p-absolute top-0 left-0 z-1 w-100 h-100 m-1 p-1 radius-m bg-color-background color-foreground overflow-hidden border-1 border-primary"
 			v-show="showLicense">
 			<font-awesome-icon
 				class="p-absolute top-1 right-1 cursor-pointer"
