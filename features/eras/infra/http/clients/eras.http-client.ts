@@ -64,7 +64,7 @@ export class DefaultErasHttpClient extends BaseHttpClient implements ErasHttpCli
 	}
 
 	async details({ id }: ErasEraDetailsInput): Promise<EraDetailResponse | Error> {
-		return this.fetch<EraDetailResponse>(`/eras/${id}`, {
+		return this.fetch<EraDetailResponse>(`/api/eras/${id}`, {
 			method: XHR_FETCH_METHODS.GET,
 		});
 	}
@@ -72,7 +72,7 @@ export class DefaultErasHttpClient extends BaseHttpClient implements ErasHttpCli
 	async list({ limit, offset, orderBy, orderDir, search, searchBy }: ErasErasListInput = {}): Promise<
 		ErasListResponse | Error
 	> {
-		return this.fetch<ErasListResponse>(`/eras`, {
+		return this.fetch<ErasListResponse>(`/api/eras`, {
 			method: XHR_FETCH_METHODS.GET,
 			params: { limit, offset, orderBy, orderDir, search, searchBy },
 		});
