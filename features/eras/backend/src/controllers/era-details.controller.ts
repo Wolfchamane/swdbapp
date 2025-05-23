@@ -55,7 +55,7 @@ export const eraDetailsController = ({
 
 						item.titles.push({
 							id: titleDetail.id,
-							order: item.titles.length,
+							order: eraTitle.order,
 							title: titleDetail.name,
 							logo: titleDetail.logo,
 						} satisfies EraTitle);
