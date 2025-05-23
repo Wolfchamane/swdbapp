@@ -12,14 +12,14 @@ env:
     DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
     DOCKER_DATABASE_IMAGE_NAME: swdbapp-database
     DOCKER_BACKEND_IMAGE_NAME: swdbapp-backend
-    PGUSER: ${{ secrets.POSTGRES_USER }}
-    PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-    PGHOST: ${{ secrets.POSTGRES_HOST }}
-    PGPORT: 5432
-    PGDATABASE: ${{ secrets.POSTGRES_DB }}
+    PG_USER: ${{ secrets.POSTGRES_USER }}
+    PG_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+    PG_HOST: ${{ secrets.POSTGRES_HOST }}
+    PG_PORT: 5432
+    PG_DATABASE: ${{ secrets.POSTGRES_DB }}
     BACKEND_ACCEPT_ORIGIN: https://wolfchamane.com
     BACKEND_PORT: 3000
-#    VITE_API_KEY: ${{ secrets.API_KEY }}
+    API_KEY: ${{ secrets.API_KEY }}
 #    VITE_API_HOST: ${{ secrets.API_HOST }}
 #    VITE_API_PORT: ${{ secrets.API_PORT }}
 #    VITE_API_PROTOCOL: https
@@ -88,7 +88,9 @@ jobs:
                   file: ./apps/database/Dockerfile
                   platforms: linux/amd64
                   push: true
-                  tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_NAME }}:${{ env.TAG_VERSION }},${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_NAME }}:lastest
+                  tags:
+                    - ${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_NAME }}:${{ env.TAG_VERSION }}
+                    - ${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_NAME }}:lastest
 
 #            - name: Inspect Docker Image
 #              run: |
@@ -154,7 +156,18 @@ jobs:
                   file: ./apps/backend/Dockerfile
                   platforms: linux/amd64
                   push: true
-                  tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:${{ env.TAG_VERSION }},${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:lastest
+                  build-args:
+                      - BACKEND_ACCEPT_ORIGIN: ${{ env.BACKEND_ACCEPT_ORIGIN }}
+                      - BACKEND_PORT: ${{ env.BACKEND_PORT }}
+                      - PG_PORT: ${{ env.PG_PORT }}
+                      - PG_HOST: ${{ env.PG_HOST }}
+                      - PG_USER: ${{ env.PG_USER }}
+                      - PG_PASSWORD: ${{ env.PG_PASSWORD }}
+                      - PG_DATABASE: ${{ env.PG_DATABASE }}
+                      - API_KEY: ${{ env.API_KEY }}
+                  tags:
+                    - ${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:${{ env.TAG_VERSION }}
+                    - ${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:lastest
 
 #            - name: Inspect Docker Image
 #              run: |
