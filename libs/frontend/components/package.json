@@ -1,0 +1,28 @@
+{
+	"name": "@swdbapp/frontend-lib-components",
+	"version": "1.0.0",
+	"private": true,
+	"description": "SW DB Explorer DS Web Components",
+	"author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
+	"license": "UNLICENSED",
+	"type": "module",
+	"main": "index.ts",
+	"types": "index.d.ts",
+	"scripts": {
+		"format:check": "prettier --check --config prettier.config.js .",
+		"format:fix": "prettier --write --config prettier.config.js .",
+		"lint:check": "npm run lint:js:check",
+		"lint:js:check": "eslint  --ext .vue,.ts --config eslint.config.js",
+		"lint:js:fix": "eslint  --ext .vue,.ts --fix --config eslint.config.js",
+		"test:unit": "vitest run --passWithNoTests",
+		"test:unit:coverage": "vitest run --passWithNoTests --coverage",
+		"test:unit:watch": "vitest",
+		"type:check": "vue-tsc --build --force"
+	},
+	"dependencies": {
+		"lit": "~3.3.0"
+	},
+	"devDependencies": {
+		"typescript": "~5.8.3"
+	}
+}
