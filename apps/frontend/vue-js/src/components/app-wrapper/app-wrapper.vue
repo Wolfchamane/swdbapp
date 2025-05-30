@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 	import { capitalize } from '@amjs/js-utils';
-	import { faCircleInfo, faCircleLeft, faCircleXmark, faGear, faHome } from '@fortawesome/free-solid-svg-icons';
+	import { faBars, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 	import { type ComputedRef, type Ref, computed, provide, ref } from 'vue';
-	import { RouterView, useRoute, useRouter } from 'vue-router';
+	import { RouterView, useRoute } from 'vue-router';
+	import { AppHeader, AppMenu, type MenuItem } from '@swdbapp/frontend-lib-components';
+	import routes from '@/router/routes';
 	// @ts-expect-error import
 	import LICENSE from '../../../../../../LICENSE?raw';
-	import { AppMenu } from '../app-menu';
 	import { LoadingBar } from '../loading-bar';
 
-	const ROUTER = useRouter();
 	const currentRoute = useRoute();
 	const showLicense: Ref<boolean> = ref(false);
 	const isLoading: Ref<boolean> = ref(false);
@@ -19,18 +19,18 @@
 	});
 
 	const title: ComputedRef<string> = computed(() => {
-		return capitalize(String(currentRoute.name).replace('-view', '')).replace(/-/g, ' ');
+		const viewName: string = String(currentRoute.name).replace('-view', '');
+		return /home/gi.test(viewName) ? 'DB Explorer' : capitalize(viewName).replace(/-/g, ' ');
+	});
+
+	const menuItems: ComputedRef<MenuItem[]> = computed(() => {
+		return routes.map(({ name, path }) => ({
+			to: path,
+			label: name,
+		}));
 	});
 
 	const toggleLicense = () => (showLicense.value = !showLicense.value);
-
-	const navigateBack = () => {
-		ROUTER.back();
-	};
-
-	const navigateHome = () => {
-		ROUTER.replace({ path: '/' });
-	};
 
 	const toggleLoading = () => (isLoading.value = !isLoading.value);
 
@@ -38,22 +38,13 @@
 </script>
 
 <template>
-	<header class="app-header d-flex align-center border-bottom-1 center color-primary py-1">
-		<font-awesome-icon class="ml-1 cursor-pointer" v-if="!isHomeView" :icon="faHome" @click="navigateHome" />
-		<font-awesome-icon class="mx-1 cursor-pointer" v-if="!isHomeView" :icon="faCircleLeft" @click="navigateBack" />
-		<div class="d-flex flex-column center grow">
-			<span class="sw-ff color-primary m-0 my-1 fs-xl">Star Wars</span>
-			<span class="sw-ff color-primary m-0 mb-05" v-if="isHomeView">Explorer</span>
-			<span class="sw-ff m-0 mb-05 color-primary" v-else>{{ title }}</span>
-		</div>
-		<div class="d-flex align-center jusitify-space-between px-1">
-			<font-awesome-icon class="mr-1 cursor-pointer" :icon="faCircleInfo" @click="toggleLicense" />
-			<font-awesome-icon class="disabled" v-if="!isHomeView" :icon="faGear" />
-		</div>
-	</header>
+	<app-header :location="title">
+		<font-awesome-icon :icon="faBars" />
+	</app-header>
+	<app-menu :items="menuItems"></app-menu>
 	<loading-bar :is-visible="isLoading" />
 	<main class="app-main grow d-flex h-100 overflow-hidden">
-		<app-menu />
+		<!--app-menu /-->
 		<div class="grow overflow-y-auto">
 			<router-view v-slot="{ Component }">
 				<transition name="fade">

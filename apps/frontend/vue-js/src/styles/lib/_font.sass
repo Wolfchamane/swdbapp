@@ -1,15 +1,22 @@
-$font-sizes:('xxs': .25, 'xs': .5, 's': .75, 'm': 1, 'l': 1.25, 'xl': 1.5)
+$font-sizes:('xxs': .25, 'xs': .5, 's': .75, 'm': 1, 'l': 1.25, 'xl': 1.5, 'xxl': 2)
 $font-family: 'Arial', 'sans-serif'
+$font-jedi: 'Star Jedi', $font-family
+$font-jedi-hollow: 'Star Jedi Hollow', $font-family
 
 :root
     #{--font-family}: $font-family
+    #{--font-jedi}: $font-jedi
+    #{--font-jedi-hollow}: $font-jedi-hollow
 
 .sw-ff
-    font-family: 'Star Jedi', $font-family
+    font-family: var(--font-jedi)
 
 .swh-ff
-    font-family: 'Star Jedi Hollow', $font-family
+    font-family: var(--font-jedi-hollow)
 
 @each $size, $value in $font-sizes
+    :root
+        #{--font-size-#{$size}}: #{$value}em
+
     .fs-#{$size}
         font-size: #{$value}em

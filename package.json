@@ -15,7 +15,7 @@
 		"./apps/database",
 		"./apps/frontend/vue-js",
 		"./features/**/*",
-		"./libs/frontend/components/vue-js",
+		"./libs/frontend/components",
 		"./types",
 		"./utils/backend",
 		"./utils/frontend"
