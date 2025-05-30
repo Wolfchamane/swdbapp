@@ -9,7 +9,7 @@
 		"build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --format=cjs",
 		"start": "node dist/index.js",
 		"dev:env:development": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-		"dev": "dotenvx run -f ../../.env/.env.development -- npm run dev:env:development",
+		"dev": "NODE_ENV=development dotenvx run -f ../../.env/.env.development -- npm run dev:env:development",
 		"format:check": "prettier --check --config ../../prettier.config.js .",
 		"format:fix": "prettier --write --config ../../prettier.config.js .",
 		"lint:check": "npm run lint:js:check",
