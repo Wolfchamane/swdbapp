@@ -7,9 +7,36 @@ const debugMessage = chalk.blue;
 type MessageType = 'DEB' | 'INF' | 'LOG' | 'WAR' | 'ERR';
 type MessageArgs = (string | number | boolean | object)[];
 
+export type LoggerLevel = 'DEBUG' | 'INFO' | 'LOG' | 'WARNING' | 'ERROR';
+export const LOGGER_LEVELS: Record<string, LoggerLevel> = Object.freeze({
+	DEBUG: 'DEBUG' as LoggerLevel,
+	INFO: 'INFO' as LoggerLevel,
+	LOG: 'LOG' as LoggerLevel,
+	WARNING: 'WARNING' as LoggerLevel,
+	ERROR: 'ERROR' as LoggerLevel,
+});
+
+interface MapLoggerLevelToMessageTypeInput {
+	level: LoggerLevel;
+	type: MessageType;
+}
+
+const isMessageTypeWithinLoggerLevel = ({ level, type }: MapLoggerLevelToMessageTypeInput): boolean => {
+	const map: Record<LoggerLevel, MessageType[]> = {
+		DEBUG: ['DEB', 'INF', 'LOG', 'WAR', 'ERR'],
+		INFO: ['INF', 'LOG', 'WAR', 'ERR'],
+		LOG: ['LOG', 'WAR', 'ERR'],
+		WARNING: ['WAR', 'ERR'],
+		ERROR: ['ERR'],
+	};
+
+	return map[level].includes(type);
+};
+
 export interface LoggerOptions {
 	module: string;
 	version: string;
+	level?: LoggerLevel;
 }
 
 export interface Logger {
@@ -27,6 +54,7 @@ export class DefaultLogger implements Logger {
 	readonly version: string = '';
 
 	private singleton: Logger | undefined;
+	private level: LoggerLevel = 'LOG';
 
 	static $i(options: LoggerOptions): Logger {
 		DefaultLogger.prototype.singleton = DefaultLogger.prototype.singleton || new DefaultLogger(options);
@@ -40,16 +68,26 @@ export class DefaultLogger implements Logger {
 	}
 
 	private _traceMessage(type: MessageType, message: string, ...args: MessageArgs) {
-		const level =
-			type === 'ERR'
-				? errorMessage(type)
-				: type === 'WAR'
-					? warnMessage(type)
-					: type === 'DEB'
-						? debugMessage(type)
-						: type;
+		const canPrintMessage: boolean = isMessageTypeWithinLoggerLevel({
+			level: this.level,
+			type,
+		});
 
-		console.log(`[${new Date().toISOString()}] [${this.module}:${this.version}] [${level}] ${message}`, ...args);
+		if (canPrintMessage) {
+			const level =
+				type === 'ERR'
+					? errorMessage(type)
+					: type === 'WAR'
+						? warnMessage(type)
+						: type === 'DEB'
+							? debugMessage(type)
+							: type;
+
+			console.log(
+				`[${new Date().toISOString()}] [${this.module}:${this.version}] [${level}] ${message}`,
+				...args
+			);
+		}
 	}
 
 	log(message: string, ...args: MessageArgs): void {
