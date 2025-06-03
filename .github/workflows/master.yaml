@@ -20,10 +20,9 @@ env:
     BACKEND_ACCEPT_ORIGIN: https://wolfchamane.com
     BACKEND_PORT: 3000
     API_KEY: ${{ secrets.API_KEY }}
-#    VITE_API_HOST: ${{ secrets.API_HOST }}
-#    VITE_API_PORT: ${{ secrets.API_PORT }}
-#    VITE_API_PROTOCOL: https
-#    VITE_ASSETS_PATH: ${{ secrets.ASSETS_PATH }}
+    FTP_SERVER: ${{ secrets.FTP_SERVER }}
+    FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+    FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
 
 jobs:
     database:
@@ -168,3 +167,71 @@ jobs:
 #            - name: Inspect Docker Image
 #              run: |
 #                docker image inspect ${{ env.REGISTRY }}/${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:latest
+    frontend:
+        runs-on: ubuntu-latest
+        needs:
+            - database
+            - backend
+        steps:
+            -   name: Checkout Repository
+                uses: actions/checkout@v4
+                with:
+                    token: ${{ secrets.SWDBAPP_SSH_PAT }}
+                    submodules: 'recursive'
+
+            -   name: Detect package manager
+                id: detect-package-manager
+                run: |
+                    if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+                      echo "manager=yarn" >> $GITHUB_OUTPUT
+                      echo "command=install" >> $GITHUB_OUTPUT
+                      echo "runner=yarn" >> $GITHUB_OUTPUT
+                      exit 0
+                    elif [ -f "${{ github.workspace }}/package.json" ]; then
+                      echo "manager=npm" >> $GITHUB_OUTPUT
+                      echo "command=ci" >> $GITHUB_OUTPUT
+                      echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+                      exit 0
+                    else
+                      echo "Unable to determine package manager"
+                      exit 1
+                    fi
+
+            -   name: Setup Node
+                uses: actions/setup-node@v4
+                with:
+                    node-version: '22'
+                    cache: ${{ steps.detect-package-manager.outputs.manager }}
+
+            -   name: Update NPM
+                run: npm i -g npm
+
+            -   name: Install dependencies
+                run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+            -   name: Prepare environment file
+                run: |
+                    touch ./.env/.env.production
+                    cd ./.env/
+                    echo "VITE_API_KEY=${{ env.API_KEY }}" >> .env.production
+                    echo "VITE_ASSETS_PATH=https://swdbapp-assets.sliplane.app" >> .env.production
+                    echo "VITE_API_HOST=wolfchamane-swdbapp-backend.sliplane.app" >> .env.production
+                    echo "VITE_API_PORT=" >> .env.production
+                    echo "VITE_API_PROTOCOL=https" >> .env.production
+
+            -   name: Compile Frontend
+                run: |
+                    cd ./apps/frontend/vue-js
+                    NODE_ENV=production npm run build
+
+            -   name: Deploy Statics to Server
+                uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+                with:
+                    server: ${{ env.FTP_SERVER }}
+                    username: ${{ env.FTP_USERNAME }}
+                    password: ${{ env.FTP_PASSWORD }}
+                    port: 21
+                    protocol: ftp
+                    local-dir: ./www/software/swdbapp
+                    server-dir: wolfchamane.com/software/swdbapp
+                    dangerous-clean-slate: true
