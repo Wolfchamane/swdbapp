@@ -5,7 +5,10 @@ import type { Logger, AppError } from '@swdbapp/utils-backend';
 export const auth =
 	(logger: Logger) =>
 	(req: Request, res: Response, next: NextFunction): void => {
-		if (['OPTIONS'].includes(req.method) || /\/health/gi.test(req.url)) {
+		const isOptionsRequest: boolean = ['OPTIONS'].includes(req.method);
+		const isHealthEndpoint: boolean = /health/gi.test(req.url);
+		if (isOptionsRequest || isHealthEndpoint) {
+			logger.info('--> OK');
 			res.statusCode = 200;
 			res.end();
 		} else {
@@ -13,13 +16,14 @@ export const auth =
 			const apiKeyHeaderName: string = 'x-api-key';
 			const apiKeyValue: string = `${config.apiKey}`;
 
-			const apiHeader = req.get(apiKeyHeaderName);
-			if (!apiHeader && apiHeader !== apiKeyValue) {
-				logger.error('NOT AUTHORIZED!');
-				next({ status: 401, message: 'Unauthorized' } as AppError);
-			} else {
+			const apiHeader: string | undefined = req.get(apiKeyHeaderName);
+			const apiHeaderIsValid: boolean = apiHeader === apiKeyValue;
+			if (apiHeaderIsValid) {
 				logger.log('<-- Authorized');
 				next();
+			} else {
+				logger.error('NOT AUTHORIZED!');
+				next({ status: 401, message: 'Unauthorized' } as AppError);
 			}
 		}
 	};
