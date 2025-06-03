@@ -8,7 +8,7 @@ import svg from 'vite-svg-loader';
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const envDir: string = path.resolve(__dirname, '..', '..', '..', '.env');
 const publicDir: string = path.resolve(__dirname, '..', '..', 'assets');
-const outDir: string = path.resolve(__dirname, 'dist');
+const outDir: string = path.resolve(__dirname, '..', '..', '..', 'www', 'software', 'swdbapp', 'vue-js');
 const srcDir: string = path.resolve(__dirname, 'src');
 
 // https://vite.dev/config/
