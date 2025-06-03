@@ -227,3 +227,23 @@ Next steps:
 As described above, I'll focus on finishing DB models, backend support and 1:1 navigation from the frontend.
 - Build a back-office solution in order to start populating the DB with information.
 - Build a solution from back-office in order to generate and download dump files, or to upload them.
+
+## 2025-06-03
+
+I have done some experiments with WebComponents \([lit-element](https://lit.dev/)\) in order to build the frontend site.
+I am starting to consider that building a static web application in three \(3\) different technologies is an amount of
+work maybe I won't be able to complete in a reasonable time. And in addition I do need a back-office application to
+manage the DB properly.
+
+Yes ... it is too much just for one.
+
+I am concluding that the best effort roadmap will be:
+- To develop the public website using one technology, maybe VueJS.
+- To develop the back-office solution website using other technology, probably ReactJS.
+- Both supported through a Design System library built using WebComponents.
+
+Additionally, and just for possible future contributors, I've working on a solution to serve all Backend APIs
+documentation on a private website.
+
+Eventually, I do have to investigate a minor issue related with the data generator for the DB through the CI/CD workflow,
+but I am `99%` close to publicly open the website worldwide!
