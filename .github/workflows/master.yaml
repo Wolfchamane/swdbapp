@@ -164,6 +164,6 @@ jobs:
                   password: ${{ env.FTP_PASSWORD }}
                   port: 21
                   protocol: ftp
-                  local-dir: ./www/software/swdbapp
-                  server-dir: wolfchamane.com/software/swdbapp
+                  local-dir: ./www/software/swdbapp/
+                  server-dir: wolfchamane.com/software/swdbapp/
                   dangerous-clean-slate: true
