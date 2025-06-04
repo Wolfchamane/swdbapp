@@ -71,7 +71,7 @@ jobs:
                   push: true
                   tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_NAME }}:lastest
 
-            - name: Publish v${{ env.TAG_VERSION }} Database Image
+            - name: Publish ${{ env.TAG_VERSION }} Database Image
               uses: docker/build-push-action@v6
               with:
                   context: .
@@ -126,7 +126,7 @@ jobs:
                       API_KEY=${{ env.API_KEY }}
                   tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:lastest
 
-            - name: Publish v${{ env.TAG_VERSION }} Backend Image
+            - name: Publish ${{ env.TAG_VERSION }} Backend Image
               uses: docker/build-push-action@v6
               with:
                   context: .
