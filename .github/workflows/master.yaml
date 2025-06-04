@@ -61,14 +61,24 @@ jobs:
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v3
 
-            - name: Publish Database Image
+            - name: Publish Latest Database Image
+              uses: docker/build-push-action@v6
+              with:
+                  no-cache: 'true'
+                  context: .
+                  file: ./apps/database/Dockerfile
+                  platforms: linux/amd64
+                  push: true
+                  tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_NAME }}:lastest
+
+            - name: Publish v${{ env.TAG_VERSION }} Database Image
               uses: docker/build-push-action@v6
               with:
                   context: .
                   file: ./apps/database/Dockerfile
                   platforms: linux/amd64
                   push: true
-                  tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_NAME }}:${{ env.TAG_VERSION }},${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_NAME }}:lastest
+                  tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_DATABASE_IMAGE_NAME }}:${{ env.TAG_VERSION }}
 
 #            - name: Inspect Docker Image
 #              run: |
@@ -97,7 +107,26 @@ jobs:
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v3
 
-            - name: Publish Backend Image
+            - name: Publish Latest Backend Image
+              uses: docker/build-push-action@v6
+              with:
+                  no-cache: 'true'
+                  context: .
+                  file: ./apps/backend/Dockerfile
+                  platforms: linux/amd64
+                  push: true
+                  build-args: |
+                      BACKEND_ACCEPT_ORIGIN=${{ env.BACKEND_ACCEPT_ORIGIN }}
+                      BACKEND_PORT=${{ env.BACKEND_PORT }}
+                      PG_PORT=${{ env.PG_PORT }}
+                      PG_HOST=${{ env.PG_HOST }}
+                      PG_USER=${{ env.PG_USER }}
+                      PG_PASSWORD=${{ env.PG_PASSWORD }}
+                      PG_DATABASE=${{ env.PG_DATABASE }}
+                      API_KEY=${{ env.API_KEY }}
+                  tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:lastest
+
+            - name: Publish v${{ env.TAG_VERSION }} Backend Image
               uses: docker/build-push-action@v6
               with:
                   context: .
@@ -113,7 +142,7 @@ jobs:
                       PG_PASSWORD=${{ env.PG_PASSWORD }}
                       PG_DATABASE=${{ env.PG_DATABASE }}
                       API_KEY=${{ env.API_KEY }}
-                  tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:${{ env.TAG_VERSION }},${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:lastest
+                  tags: ${{env.DOCKER_USER}}/${{ env.DOCKER_BACKEND_IMAGE_NAME }}:${{ env.TAG_VERSION }}
 
 #            - name: Inspect Docker Image
 #              run: |
