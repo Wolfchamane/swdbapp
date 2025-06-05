@@ -4,7 +4,7 @@
 	import type { ErasUseCases } from '../../../../application';
 	import { provideErasUseCases } from '../../../../graph';
 	import type { Era } from '../../../../types';
-	import { EraItem } from '../components/era-item';
+	import { ListItem } from '@swdbapp/frontend-vue-components';
 
 	const ROUTER = useRouter();
 	const useCases: ErasUseCases = provideErasUseCases();
@@ -30,6 +30,7 @@
 
 <template>
 	<div class="eras-view p-1">
-		<era-item v-for="era in eras" :key="`era-${era.$id}`" :era="era" @click="navigateTo(era)" />
+		<list-item v-for="era in eras" :key="`era-${era.$id}`" @click="navigateTo(era)"
+			:image="era.logo.href" :label="era.name"/>
 	</div>
 </template>

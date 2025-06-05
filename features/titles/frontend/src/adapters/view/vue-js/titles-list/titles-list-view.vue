@@ -6,7 +6,7 @@
 	import type { TitlesListAllUseCaseInput, TitlesUseCases } from '../../../../application';
 	import { provideTitlesUseCases } from '../../../../graph';
 	import type { Title } from '../../../../types';
-	import { TitleItem } from '../components/title-item';
+	import { ListItem } from '@swdbapp/frontend-vue-components';
 
 	const ROUTER = useRouter();
 	const CURRENT_ROUTE = useRoute();
@@ -72,10 +72,11 @@
 <template>
 	<div class="titles-list-view p-1 pr-0 d-flex flex-column h-100 overflow-hidden">
 		<div class="grow pr-1 overflow-y-auto" ref="titlesList">
-			<title-item
+			<list-item
 				v-for="title in titles"
 				:key="`title-${title.$id}`"
-				:title="title"
+				:image="title.logo.href"
+				:label="title.title"
 				@click="navigateToTitleDetail(title.$id)" />
 		</div>
 		<div class="d-flex center p-sticky bottom-0 pr-1">
