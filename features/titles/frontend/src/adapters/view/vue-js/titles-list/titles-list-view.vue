@@ -2,11 +2,11 @@
 	import { type Ref, inject, nextTick, ref, watch } from 'vue';
 	import { useRoute, useRouter } from 'vue-router';
 	import { PaginationControl } from '@swdbapp/frontend-vue-components';
+	import { ListItem } from '@swdbapp/frontend-vue-components';
 	import type { Nullable } from '@swdbapp/types';
 	import type { TitlesListAllUseCaseInput, TitlesUseCases } from '../../../../application';
 	import { provideTitlesUseCases } from '../../../../graph';
 	import type { Title } from '../../../../types';
-	import { ListItem } from '@swdbapp/frontend-vue-components';
 
 	const ROUTER = useRouter();
 	const CURRENT_ROUTE = useRoute();
