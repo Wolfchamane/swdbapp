@@ -1,41 +1,59 @@
 <script lang="ts" setup>
+	import { capitalize } from '@amjs/js-utils';
 	import { type Ref, ref } from 'vue';
-	import { type RouteLocation, useRoute, useRouter } from 'vue-router';
+	import { type RouteLocation } from 'vue-router';
+	import { ListItem } from '@swdbapp/frontend-vue-components';
 	// @ts-expect-error import
 	import routes from '@/router/routes';
-	import { AppMenuItem } from '../app-menu-item';
+	import { useNavigation } from '@/utils/use-navigation';
+	import { injectTogglers } from '@/utils/use-providers';
+	import type { AppMenuProperties } from './app-menu.types';
 
-	const ROUTER = useRouter();
-	const currentRoute = useRoute();
-	const menuItems: Ref<RouteLocation[]> = ref(
+	defineProps<AppMenuProperties>();
+
+	const { isActiveRoute, navigateTo } = useNavigation();
+	const { showMenu, toggleMenu } = injectTogglers();
+
+	interface MenuItem {
+		lcName: string;
+		ccName: string;
+		route: RouteLocation;
+	}
+
+	const menuItems: Ref<MenuItem[]> = ref(
 		routes
-			.filter((route: RouteLocation) => route.path !== '/')
-			.filter((route: RouteLocation) => {
-				return !!route.meta?.icon;
+			.filter((route: RouteLocation) => !/details/.test(String(route.name)))
+			.map((route: RouteLocation) => {
+				const parsedName: string = String(route.name).replace('-view', '');
+
+				return {
+					lcName: parsedName.toLowerCase(),
+					ccName: capitalize(parsedName),
+					route,
+				};
 			})
 	);
 
-	const navigateTo = (route: RouteLocation) => {
-		const { meta, name } = route;
-		const query = meta?.query || null;
-		ROUTER.push({ name, query });
+	const onListItemClick = (route: RouteLocation) => {
+		navigateTo({ route, showMenu, toggleMenu });
 	};
 
-	const isActive = (route: RouteLocation): boolean => {
-		return new RegExp(route.path).test(currentRoute.path);
+	const _isActiveRoute = (name: string): boolean => {
+		debugger;
+		return isActiveRoute(name);
 	};
 </script>
 
 <template>
-	<aside class="app-menu mx-1">
-		<app-menu-item
-			v-for="route in menuItems"
-			:key="`route-${String(route.name)}`"
-			:title="String(route.name)"
-			:icon="route.meta.icon"
-			:active="isActive(route)"
-			@click="navigateTo(route)" />
+	<aside :class="['app-menu', { 'app-menu--open': open }]">
+		<list-item
+			v-for="menuItem in menuItems"
+			:key="`route-${menuItem.lcName}`"
+			:label="menuItem.ccName"
+			:image="''"
+			:active="_isActiveRoute(menuItem.lcName)"
+			@click="onListItemClick(menuItem.route)" />
 	</aside>
 </template>
 
-<style lang="sass" src="./styles.sass"></style>
+<style lang="sass" src="./app-menu.styles.sass"></style>

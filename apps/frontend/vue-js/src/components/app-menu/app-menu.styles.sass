@@ -1,0 +1,14 @@
+.app-menu
+    position: absolute
+    z-index: 1
+    margin: 0
+    width: 0
+    height: 100%
+    background-color: rgba(0, 0, 0, .95)
+    transition: opacity .39s ease-in-out, margin .39s ease-in-out, width .4s ease-in-out
+    opacity: 0
+
+    &--open
+        margin: 0 1em
+        width: calc(100% - 2em)
+        opacity: 1
