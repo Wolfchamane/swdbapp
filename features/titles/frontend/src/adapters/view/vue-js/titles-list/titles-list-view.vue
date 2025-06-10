@@ -71,6 +71,9 @@
 
 <template>
 	<div class="titles-list-view p-1 pr-0 d-flex flex-column h-100 overflow-hidden">
+		<div class="d-flex center p-sticky bottom-0 pr-1">
+			<pagination-control :current-page="currentPage" :total-pages="totalPages" :min="1" @paginate="onPaginate" />
+		</div>
 		<div class="grow pr-1 overflow-y-auto" ref="titlesList">
 			<list-item
 				v-for="title in titles"
@@ -78,9 +81,6 @@
 				:image="title.logo.href"
 				:label="title.title"
 				@click="navigateToTitleDetail(title.$id)" />
-		</div>
-		<div class="d-flex center p-sticky bottom-0 pr-1">
-			<pagination-control :current-page="currentPage" :total-pages="totalPages" :min="1" @paginate="onPaginate" />
 		</div>
 	</div>
 </template>
