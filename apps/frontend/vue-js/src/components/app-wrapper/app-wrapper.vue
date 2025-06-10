@@ -1,60 +1,25 @@
 <script lang="ts" setup>
-	import { capitalize } from '@amjs/js-utils';
-	import { faCircleInfo, faCircleLeft, faCircleXmark, faGear, faHome } from '@fortawesome/free-solid-svg-icons';
+	import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 	import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-	import { type ComputedRef, type Ref, computed, provide, ref } from 'vue';
-	import { RouterView, useRoute, useRouter } from 'vue-router';
+	import { RouterView } from 'vue-router';
+	import { useNavigation } from '@/utils/use-navigation';
+	import { provideTogglers } from '@/utils/use-providers';
 	// @ts-expect-error import
 	import LICENSE from '../../../../../../LICENSE?raw';
+	import { AppHeader } from '../app-header';
 	import { AppMenu } from '../app-menu';
 	import { LoadingBar } from '../loading-bar';
 
-	const ROUTER = useRouter();
-	const currentRoute = useRoute();
-	const showLicense: Ref<boolean> = ref(false);
-	const isLoading: Ref<boolean> = ref(false);
-
-	const isHomeView: ComputedRef<boolean> = computed(() => {
-		return currentRoute.name === 'home-view';
-	});
-
-	const title: ComputedRef<string> = computed(() => {
-		return capitalize(String(currentRoute.name).replace('-view', '')).replace(/-/g, ' ');
-	});
-
-	const toggleLicense = () => (showLicense.value = !showLicense.value);
-
-	const navigateBack = () => {
-		ROUTER.back();
-	};
-
-	const navigateHome = () => {
-		ROUTER.replace({ path: '/' });
-	};
-
-	const toggleLoading = () => (isLoading.value = !isLoading.value);
-
-	provide('toggleLoading', toggleLoading);
+	const { isHomeView } = useNavigation();
+	const { showLicense, showMenu, isLoading } = provideTogglers();
 </script>
 
 <template>
-	<header class="app-header d-flex align-center border-bottom-1 center color-primary py-1">
-		<font-awesome-icon class="ml-1 cursor-pointer" v-if="!isHomeView" :icon="faHome" @click="navigateHome" />
-		<font-awesome-icon class="mx-1 cursor-pointer" v-if="!isHomeView" :icon="faCircleLeft" @click="navigateBack" />
-		<div class="d-flex flex-column center grow">
-			<span class="sw-ff color-primary m-0 my-1 fs-xl">Star Wars</span>
-			<span class="sw-ff color-primary m-0 mb-05" v-if="isHomeView">Explorer</span>
-			<span class="sw-ff m-0 mb-05 color-primary" v-else>{{ title }}</span>
-		</div>
-		<div class="d-flex align-center jusitify-space-between px-1">
-			<font-awesome-icon class="mr-1 cursor-pointer" :icon="faCircleInfo" @click="toggleLicense" />
-			<font-awesome-icon class="disabled" v-if="!isHomeView" :icon="faGear" />
-		</div>
-	</header>
+	<app-header />
 	<loading-bar :is-visible="isLoading" />
-	<main class="app-main grow d-flex h-100 overflow-hidden">
-		<app-menu />
-		<div class="grow overflow-y-auto">
+	<main class="app-main grow h-100 overflow-hidden p-relative">
+		<app-menu :open="isHomeView || showMenu" />
+		<div class="h-100 overflow-y-auto">
 			<router-view v-slot="{ Component }">
 				<transition name="fade">
 					<component :is="Component" />
