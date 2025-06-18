@@ -12,6 +12,7 @@
 		"format:fix": "prettier --write --config ../../prettier.config.js .",
 		"lint:check": "npm run lint:js:check",
 		"lint:js:check": "eslint  --ext .mjs",
-		"lint:js:fix": "eslint  --ext .mjs --fix"
+		"lint:js:fix": "eslint  --ext .mjs --fix",
+        "test:pro": "PGUSER=test PGPASSWORD=test node main.mjs"
 	}
 }
