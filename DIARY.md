@@ -247,3 +247,10 @@ documentation on a private website.
 
 Eventually, I do have to investigate a minor issue related with the data generator for the DB through the CI/CD workflow,
 but I am `99%` close to publicly open the website worldwide!
+
+## 2025-06-18
+
+And back again to the starting point ... my current employer is finishing the contract by this next June 30th.
+Additionally, I have found the DB is being hacked by someone somewhere.
+
+I do need to prepare for an upcoming work experience ASAP, therefore, I am going to pause this project for a short time.
